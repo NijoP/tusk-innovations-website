@@ -29,6 +29,11 @@ export const metadata: Metadata = {
     'Schematic Synthesis',
   ],
   authors: [{ name: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED' }],
+  icons: {
+    icon: '/icon.png',
+    shortcut: '/favicon.ico',
+    apple: '/apple-icon.png',
+  },
   metadataBase: new URL('https://www.tuskinnovations.in'),
   alternates: {
     canonical: 'https://www.tuskinnovations.in',
