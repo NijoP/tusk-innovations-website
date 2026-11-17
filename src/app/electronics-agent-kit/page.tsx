@@ -208,8 +208,8 @@ export default function EAKProductPage() {
           </div>
           <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-[#0a0c0f] mt-3">
             <Image
-              src="/assets/eak/pcb/eak-pcb-routing.png"
-              alt="Electronics Agent Kit Multi-Layer PCB Interface"
+              src="/assets/eak/eak-ai-eda-terminal.jpg"
+              alt="Electronics Agent Kit AI-Assisted EDA Workstation"
               fill
               className="object-cover"
               priority
@@ -287,8 +287,8 @@ export default function EAKProductPage() {
           <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
             <div className="relative aspect-16/10 bg-[#0a0c0f]">
               <Image
-                src="/products/eak/pcb-routing.png"
-                alt="EAK Multi-Layer PCB Workspace"
+                src="/assets/electronics/pcb-macro-4layer.jpg"
+                alt="High-Density Multi-Layer PCB Architecture"
                 fill
                 className="object-cover"
               />
@@ -305,8 +305,8 @@ export default function EAKProductPage() {
           <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
             <div className="relative aspect-16/10 bg-[#0a0c0f]">
               <Image
-                src="/products/eak/dfm-verification.png"
-                alt="EAK DFM Verification Engine"
+                src="/assets/eak/eak-dfm-fabrication-view.jpg"
+                alt="Automated Optical Inspection and DFM Verification"
                 fill
                 className="object-cover"
               />

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Layers, ShieldCheck, CheckCircle2, FileText, Database, Wrench } from 'lucide-react';
+import { Layers, ShieldCheck, CheckCircle2, Terminal, Cpu, Wrench } from 'lucide-react';
 
 interface WalkthroughTab {
   id: string;
@@ -18,83 +18,83 @@ interface WalkthroughTab {
 
 const TABS: WalkthroughTab[] = [
   {
-    id: 'pcb',
-    label: 'PCB Layout & Routing',
-    icon: Layers,
-    title: 'Multi-Layer High-Density PCB Routing Engine',
-    badge: 'Verified E2E Capture',
+    id: 'workstation',
+    label: 'AI-Assisted Workstation',
+    icon: Terminal,
+    title: 'AI-Native EDA Shell & Automated Netlist Synthesis',
+    badge: 'Hardware Design Studio',
     description:
-      'High-speed multi-layer trace routing with clearance halos, interactive via placement, ground pour zone refills, and real-time net connectivity checking.',
-    image: '/assets/eak/pcb/eak-pcb-routing.png',
-    alt: 'EAK PCB Layout Workspace with 4 Copper Layers and Auto-Routed Tracks',
+      'Curved ultra-wide engineering environment integrating natural language design agents with real-time circuit schematic synthesis and live copper trace routing.',
+    image: '/assets/eak/eak-ai-eda-terminal.jpg',
+    alt: 'AI-Assisted Electronic Design Automation Workstation with Netlist Synthesis',
     features: [
-      '4-layer high-density routing with impedance control parameters',
-      'Dynamic airwire rendering and net highlight inspection',
-      'Deterministic clearance checking avoiding unrouted nets',
+      'Synchronized terminal agent & schematic synthesis',
+      'Typed command bus with fail-closed validation',
+      'Event-sourced design model with audit logging',
     ],
   },
   {
-    id: 'layers',
-    label: 'Stackup Manager',
-    icon: Wrench,
-    title: 'Multi-Layer Stackup & Copper Allocation',
-    badge: 'Verified E2E Capture',
+    id: 'pcb',
+    label: 'Multi-Layer PCB Routing',
+    icon: Layers,
+    title: 'High-Density 4-Layer Trace Routing & Stackup',
+    badge: 'Precision Hardware',
     description:
-      'Configurable substrate layer stackups supporting 2, 4, 6, and 8+ copper layers. Visualizes top/bottom copper, dielectric prepreg, and internal ground planes.',
-    image: '/assets/eak/pcb/eak-pcb-4layers.png',
-    alt: 'EAK PCB Layer Stackup Manager Showing 4 Copper Layers',
+      'High-speed multi-layer trace routing with controlled impedance differential pairs, ground reference planes, gold-plated test pads, and thermal relief management.',
+    image: '/assets/electronics/pcb-macro-4layer.jpg',
+    alt: 'High-Density 4-Layer PCB with Precision Copper Traces and SMT Micro-Components',
     features: [
-      'Top/Bottom signal layers with internal reference ground planes',
-      'Individual layer visibility, locking, and copper pour assignment',
-      'Direct mapping to standard fabhouse stackup specifications',
+      '4-layer high-density routing with impedance control parameters',
+      'Precision SMT component placement and annular ring rules',
+      'Thermal vias and ground pour polygon optimization',
     ],
   },
   {
     id: 'dfm',
-    label: 'DFM Verification',
+    label: 'DFM Optical Inspection',
     icon: ShieldCheck,
-    title: 'Automated DFM & Electrical Rules Check (ERC/DRC)',
-    badge: 'Verified E2E Capture',
+    title: 'Automated Optical Inspection (AOI) & DRC Validation',
+    badge: 'Zero-Tolerance DRC',
     description:
-      'Zero-tolerance clearance DRC and Design-for-Manufacturing audits. Generates tabular finding reports before committing fabrication packages.',
-    image: '/assets/eak/visualization/eak-dfm-verification.png',
-    alt: 'EAK DFM Verification Matrix and Fabrication Preparation Table',
+      'Deterministic clearance checking and automated optical inspection verification. Every net, track clearance, and pad geometry is validated before fabrication release.',
+    image: '/assets/eak/eak-dfm-fabrication-view.jpg',
+    alt: 'Finished 4-Layer PCB Undergoing Automated Optical Inspection with Laser Guidance',
     features: [
       'Automated DRC clearance checks with explicit violation lists',
       'Design for Assembly (DFA) component boundary verification',
-      'Distributor catalog validation for component availability',
+      'Zero-short netlist verification prior to Gerber export',
     ],
   },
   {
-    id: 'export',
-    label: 'Fabrication Export',
-    icon: FileText,
-    title: 'Production Gerber & Manufacturing Export Pipeline',
-    badge: 'Verified E2E Capture',
+    id: 'soc',
+    label: 'Silicon & SoC Integration',
+    icon: Cpu,
+    title: 'Advanced System-on-Chip (SoC) & High-Speed BGA Routing',
+    badge: 'Component Engineering',
     description:
-      'Generates 18 production-ready fabrication files including RS-274X Gerbers, NC drill coordinates, centroid pick-and-place files, and verified BOMs.',
-    image: '/assets/eak/visualization/eak-manufacturing-export.png',
-    alt: 'EAK Manufacturing Export Dialog Generating Complete Gerber and BOM Bundles',
+      'Multi-core silicon SoC processor integration with high-density ball grid array (BGA) escape routing, micro-vias, and high-frequency clock distribution.',
+    image: '/assets/eak/eak-component-cad-model.jpg',
+    alt: 'Multi-Core Silicon SoC Processor with Gold-Plated BGA Breakout Traces',
     features: [
-      'Complete RS-274X Gerber layer packages (.gtl, .gbl, .gbo, etc.)',
-      'IPC-D-356 electrical test netlists & NC drill files',
-      'Consolidated BOM with manufacturer part numbers',
+      'High-density BGA breakout routing with micro-vias',
+      'High-speed differential length matching & skew tuning',
+      'Parametric footprint verification against manufacturer specs',
     ],
   },
   {
-    id: 'library',
-    label: 'Component Library',
-    icon: Database,
-    title: 'Structured Component Catalog & Parts Discovery',
-    badge: 'Verified E2E Capture',
+    id: 'bench',
+    label: 'Hardware Lab Bring-Up',
+    icon: Wrench,
+    title: 'Lab Bench Prototyping & Oscilloscope Validation',
+    badge: 'Physical Verification',
     description:
-      'Native vendor-neutral structured component repository with verified pin matrices, parametric footprint mappings, and KiCad library asset interchange.',
-    image: '/assets/eak/workspace/eak-component-library.png',
-    alt: 'EAK Component Library and Parametric Search Interface',
+      'Comprehensive bench verification in our electronics lab: digital oscilloscopic waveform capture, power rail regulation, and hardware-in-the-loop stress testing.',
+    image: '/assets/embedded-systems/electronics-workbench.jpg',
+    alt: 'Electronics Engineering Workbench with Digital Oscilloscope and Test Hardware',
     features: [
-      'Parametric search across passive and active component packages',
-      'Transactional KiCad (.kicad_sym and .kicad_mod) import',
-      'Zero vendor lock-in with open structured JSON models',
+      'Real-time signal integrity & jitter analysis on oscilloscopes',
+      'Multi-rail power delivery network (PDN) ripple testing',
+      'Firmware flashing, UART debugging, and RTOS bring-up',
     ],
   },
 ];
@@ -102,6 +102,7 @@ const TABS: WalkthroughTab[] = [
 export function InteractiveEAKWalkthrough() {
   const [activeTab, setActiveTab] = useState(TABS[0].id);
   const currentTab = TABS.find((t) => t.id === activeTab) || TABS[0];
+  const Icon = currentTab.icon;
 
   return (
     <div className="space-y-8">
@@ -128,7 +129,7 @@ export function InteractiveEAKWalkthrough() {
         })}
       </div>
 
-      {/* Screen Frame with Real Screenshot */}
+      {/* Screen Frame with High-Resolution Visual */}
       <div className="rounded-3xl border border-[#e6e4dc] bg-white p-4 sm:p-6 shadow-[0_12px_40px_rgba(0,0,0,0.04)] overflow-hidden space-y-6">
         {/* Frame Topbar */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 pb-4 border-b border-[#f2f0e8] text-xs font-mono text-[#888780]">
@@ -140,12 +141,12 @@ export function InteractiveEAKWalkthrough() {
             <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border border-emerald-200">
               {currentTab.badge}
             </span>
-            <span className="text-[#888780] hidden sm:inline">• EAK Desktop Engineering Workstation</span>
+            <span className="text-[#888780] hidden sm:inline">• Electronics Agent Kit Architecture</span>
           </div>
         </div>
 
-        {/* Real Screenshot Viewport */}
-        <div className="relative aspect-16/10 w-full rounded-2xl overflow-hidden bg-[#0a0c0f] border border-neutral-800 shadow-inner">
+        {/* Studio Visual Viewport */}
+        <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-[#0a0c0f] border border-neutral-800 shadow-inner">
           <Image
             src={currentTab.image}
             alt={currentTab.alt}

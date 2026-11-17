@@ -111,7 +111,7 @@ export default function ElectronicsPCBPage() {
           <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
             <div className="relative aspect-16/10 bg-[#0a0c0f]">
               <Image
-                src="/products/eak/pcb-routing.png"
+                src="/assets/electronics/pcb-macro-4layer.jpg"
                 alt="4-Layer High-Density PCB Routing"
                 fill
                 className="object-cover"
@@ -119,7 +119,7 @@ export default function ElectronicsPCBPage() {
             </div>
             <div className="p-6 space-y-2">
               <span className="text-xs font-mono font-semibold text-[#da552f] uppercase">Multi-Layer Routing</span>
-              <h3 className="text-lg font-serif font-bold text-[#141413]">High-Density Signal & Power Routing</h3>
+              <h3 className="text-lg font-serif font-bold text-[#141413]">High-Density Signal &amp; Power Routing</h3>
               <p className="text-xs text-[#5a5a55] leading-relaxed">
                 Controlled impedance differential pairs, ground planes, decoupling loops, and optimized thermal vias for high-performance operation.
               </p>
@@ -129,8 +129,8 @@ export default function ElectronicsPCBPage() {
           <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.03)]">
             <div className="relative aspect-16/10 bg-[#0a0c0f]">
               <Image
-                src="/products/eak/dfm-verification.png"
-                alt="Automated DFM & Electrical Rules Check"
+                src="/assets/eak/eak-dfm-fabrication-view.jpg"
+                alt="Automated DFM &amp; Electrical Rules Check"
                 fill
                 className="object-cover"
               />
