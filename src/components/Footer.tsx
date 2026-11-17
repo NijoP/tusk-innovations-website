@@ -12,12 +12,23 @@ export function Footer() {
           <div className="col-span-2 md:col-span-6 lg:col-span-4 space-y-4">
             <BrandLogo size={36} />
             <p className="text-sm text-[#5a5a55] dark:text-neutral-400 max-w-sm leading-relaxed mt-2 font-sans">
-              TUSK Innovations Global Pvt. Ltd. is an independent technology startup building intelligent AI solutions and engineering electronic products from concept to final delivery.
+              TUSK Innovations is the public brand of TUSK Innovations Global Private Limited, an independent AI and electronics engineering company based in Thiruvananthapuram, Kerala, India.
             </p>
 
             <div className="pt-2 text-xs font-mono text-[#888780] dark:text-neutral-500 space-y-1">
               <p><span className="text-[#5a5a55] dark:text-neutral-400">CIN:</span> {COMPANY_DETAILS.cin}</p>
               <p><span className="text-[#5a5a55] dark:text-neutral-400">LEGAL:</span> {COMPANY_DETAILS.legalName}</p>
+              <p>
+                <a
+                  href="https://startups.startupmission.in/startups/poGrk"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-1 text-[#da552f] dark:text-[#ff5500] hover:underline"
+                >
+                  <span>KSUM Verified Profile</span>
+                  <ArrowUpRight className="w-3 h-3" />
+                </a>
+              </p>
             </div>
           </div>
 

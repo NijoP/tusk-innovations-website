@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Bot, Cpu, Zap, CheckCircle2, Workflow, Database, Shield } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'AI Solutions for Businesses | TUSK Innovations',
   description:
-    'Custom AI applications, autonomous agent systems, workflow automation, and enterprise AI tools built by TUSK Innovations. Problem-first engineering for real business outcomes.',
+    'Custom AI applications, autonomous agent systems, workflow automation, and enterprise AI tools built by TUSK Innovations Global Private Limited. Problem-first engineering for real business outcomes.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/services/ai-solutions',
+  },
+  openGraph: {
+    title: 'AI Solutions for Businesses | TUSK Innovations',
+    description:
+      'Custom AI applications, autonomous agent systems, workflow automation, and enterprise AI tools built by TUSK Innovations.',
+    url: 'https://www.tuskinnovations.in/services/ai-solutions',
+    siteName: 'TUSK Innovations',
   },
 };
 
@@ -74,6 +82,13 @@ const CASE_PROBLEMS = [
 export default function AISolutionsPage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Services', url: 'https://www.tuskinnovations.in/services' },
+          { name: 'AI Solutions for Businesses', url: 'https://www.tuskinnovations.in/services/ai-solutions' },
+        ]}
+      />
       {/* Hero */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#5a5a55] dark:text-neutral-300 mb-6">

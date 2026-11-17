@@ -25,11 +25,19 @@ import { HomeFAQSection } from '@/components/HomeFAQSection';
 import { GuidedProjectEnquiry } from '@/components/GuidedProjectEnquiry';
 
 export const metadata: Metadata = {
-  title: 'TUSK Innovations | AI Solutions & Electronics Engineering',
+  title: 'TUSK Innovations | Official Website — AI & Electronics Engineering',
   description:
-    'TUSK Innovations builds intelligent AI solutions and engineers electronic products from concept to final delivery. Selected for NVIDIA Inception and KSUM Idea Grant.',
+    'TUSK Innovations Global Private Limited is an AI and electronics engineering startup based in Kerala, India, building intelligent software, AI solutions, PCB designs and complete technology products.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in',
+  },
+  openGraph: {
+    title: 'TUSK Innovations | Official Website — AI & Electronics Engineering',
+    description:
+      'TUSK Innovations Global Private Limited is an AI and electronics engineering startup based in Kerala, India, building intelligent software, AI solutions, PCB designs and complete technology products.',
+    url: 'https://www.tuskinnovations.in',
+    siteName: 'TUSK Innovations',
+    type: 'website',
   },
 };
 
@@ -62,7 +70,7 @@ export default function HomePage() {
               Intelligent Software. Advanced Electronics. Complete Solutions.
             </p>
             <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 font-sans leading-relaxed">
-              TUSK Innovations builds intelligent AI solutions and engineers electronic products from concept to final delivery.
+              TUSK Innovations is the public brand of TUSK Innovations Global Private Limited, an independent AI and electronics engineering company based in Thiruvananthapuram, Kerala, India. We architect intelligent software and engineer physical electronic hardware from concept to verified production.
             </p>
           </div>
 

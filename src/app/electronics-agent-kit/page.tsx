@@ -16,13 +16,22 @@ import {
 } from 'lucide-react';
 import { GithubIcon } from '@/components/SocialIcons';
 import { EAK_CAPABILITIES } from '@/lib/data';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
-  title: 'Electronics Agent Kit (EAK) | AI-Native Electronics Engineering Workstation',
+  title: 'Electronics Agent Kit (EAK) | AI-Native Electronics Workstation by TUSK Innovations',
   description:
-    'Electronics Agent Kit (EAK) is an AI-native electronics engineering workstation bringing intelligent agents, schematic design, and PCB engineering into one verifiable environment.',
+    'Electronics Agent Kit (EAK) is an AI-native electronics engineering workstation and hardware compiler developed by TUSK Innovations Global Private Limited. Open source on GitHub.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/electronics-agent-kit',
+  },
+  openGraph: {
+    title: 'Electronics Agent Kit (EAK) | Developed by TUSK Innovations',
+    description:
+      'AI-native electronics engineering workstation bringing intelligent agents, schematic design, and PCB engineering into one verifiable environment.',
+    url: 'https://www.tuskinnovations.in/electronics-agent-kit',
+    siteName: 'TUSK Innovations',
   },
 };
 
@@ -125,6 +134,24 @@ const ROADMAP_MILESTONES = [
 ];
 
 export default function EAKProductPage() {
+  const eakProductSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Electronics Agent Kit (EAK)',
+    operatingSystem: 'Windows, macOS, Linux',
+    applicationCategory: 'DesignApplication',
+    description:
+      'Electronics Agent Kit (EAK) is an open-source AI-driven hardware design platform and engineering workstation developed by TUSK Innovations (TUSK Innovations Global Private Limited), automating the electronics development lifecycle.',
+    creator: {
+      '@type': 'Organization',
+      name: 'TUSK Innovations',
+      legalName: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
+      url: 'https://www.tuskinnovations.in/',
+    },
+    url: 'https://www.tuskinnovations.in/electronics-agent-kit',
+    downloadUrl: 'https://github.com/NijoP/electronics-agent-kit-new-prototype',
+  };
+
   const getBadgeStyle = (status: string) => {
     switch (status) {
       case 'Implemented':
@@ -140,6 +167,17 @@ export default function EAKProductPage() {
 
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Electronics Agent Kit (EAK)', url: 'https://www.tuskinnovations.in/electronics-agent-kit' },
+        ]}
+      />
+      <Script
+        id="eak-software-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(eakProductSchema) }}
+      />
       {/* =========================================================================
           HERO & ACTUAL WORKSTATION SCREENSHOT
           ========================================================================= */}
@@ -149,7 +187,7 @@ export default function EAKProductPage() {
             <Sparkles className="w-3.5 h-3.5" />
             <span>Flagship Technology Prototype</span>
             <span className="text-[#888780] dark:text-neutral-500">•</span>
-            <span className="text-[#5a5a55] dark:text-neutral-400">Open Source on GitHub</span>
+            <span className="text-[#5a5a55] dark:text-neutral-400">Developed by TUSK Innovations</span>
           </div>
 
           <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight text-[#141413] dark:text-white leading-[1.06]">
@@ -161,7 +199,7 @@ export default function EAKProductPage() {
           </p>
 
           <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 font-sans leading-relaxed max-w-3xl">
-            Electronics Agent Kit (EAK) is an AI-native engineering workstation bringing intelligent software agents, interactive schematic editing, and deterministic PCB layout into one verifiable environment.
+            Electronics Agent Kit (EAK) is the flagship open-source hardware compiler and AI-native engineering workstation developed by <strong>TUSK Innovations</strong> (TUSK Innovations Global Private Limited). It unifies autonomous software agents, interactive schematic editing, and deterministic multi-layer PCB layout into one verifiable environment.
           </p>
 
           <div className="pt-2 flex flex-wrap gap-4">

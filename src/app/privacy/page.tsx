@@ -2,19 +2,33 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowLeft } from 'lucide-react';
 import { COMPANY_DETAILS } from '@/lib/data';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | TUSK Innovations',
   description:
-    'Privacy Policy and Data Protection standards of TUSK Innovations Global Private Limited.',
+    'Privacy Policy, data protection practices, and compliance standards of TUSK Innovations Global Private Limited.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/privacy',
+  },
+  openGraph: {
+    title: 'Privacy Policy | TUSK Innovations',
+    description:
+      'Privacy Policy and Data Protection standards of TUSK Innovations Global Private Limited.',
+    url: 'https://www.tuskinnovations.in/privacy',
+    siteName: 'TUSK Innovations',
   },
 };
 
 export default function PrivacyPage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Privacy Policy', url: 'https://www.tuskinnovations.in/privacy' },
+        ]}
+      />
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <Link
           href="/"

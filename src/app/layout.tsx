@@ -65,6 +65,9 @@ export const metadata: Metadata = {
   alternates: {
     canonical: 'https://www.tuskinnovations.in',
   },
+  verification: {
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+  },
   openGraph: {
     title: 'TUSK Innovations | AI Solutions, Electronics & PCB Engineering',
     description:
@@ -110,7 +113,7 @@ export default function RootLayout({
   // Enhanced Google Structured Data (JSON-LD)
   const organizationSchema = {
     '@context': 'https://schema.org',
-    '@type': 'Corporation',
+    '@type': 'Organization',
     '@id': 'https://www.tuskinnovations.in/#organization',
     name: 'TUSK Innovations',
     legalName: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
@@ -121,14 +124,30 @@ export default function RootLayout({
       'TUSK AI',
       'TUSK Innovations Kerala',
     ],
-    url: 'https://www.tuskinnovations.in',
-    logo: 'https://www.tuskinnovations.in/brand/tusk-logo.jpg',
-    founder: {
-      '@type': 'Person',
-      name: 'Nijo Ponnachan',
-      jobTitle: 'Founder & CEO',
-      sameAs: 'https://www.linkedin.com/in/nijoponnachan',
+    url: 'https://www.tuskinnovations.in/',
+    logo: {
+      '@type': 'ImageObject',
+      url: 'https://www.tuskinnovations.in/brand/tusk-logo.jpg',
+      width: 800,
+      height: 800,
+      caption: 'TUSK Innovations Official Brand Logo',
     },
+    image: 'https://www.tuskinnovations.in/brand/tusk-logo.jpg',
+    description:
+      'TUSK Innovations Global Private Limited is an AI and electronics engineering company based in Thiruvananthapuram, Kerala, India, building intelligent software, autonomous AI solutions, multi-layer PCB designs, and complete physical technology products.',
+    founder: [
+      {
+        '@type': 'Person',
+        name: 'Nijo Ponnachan',
+        jobTitle: 'Founder, CEO & Principal Systems Architect',
+        sameAs: 'https://www.linkedin.com/in/nijoponnachan',
+      },
+      {
+        '@type': 'Person',
+        name: 'Anjai Itty Jacob',
+        jobTitle: 'Co-Founder',
+      },
+    ],
     address: {
       '@type': 'PostalAddress',
       streetAddress: '26/378(1), Thekkumoodu, Vanchiyoor P.O.',
@@ -139,17 +158,19 @@ export default function RootLayout({
     },
     contactPoint: {
       '@type': 'ContactPoint',
-      telephone: COMPANY_DETAILS.phone,
+      telephone: '+91 62823 53042',
       contactType: 'corporate',
-      email: COMPANY_DETAILS.email,
+      email: 'tuskinnovationsglobal@gmail.com',
       areaServed: ['IN', 'Worldwide'],
       availableLanguage: ['English', 'Malayalam'],
     },
     sameAs: [
-      'https://github.com/NijoP',
+      'https://startups.startupmission.in/startups/poGrk',
       'https://github.com/NijoP/electronics-agent-kit-new-prototype',
       'https://github.com/NijoP/tusk-innovations-website',
+      'https://github.com/NijoP',
       'https://www.linkedin.com/company/tusk-innovations',
+      'https://www.linkedin.com/in/nijoponnachan',
     ],
     identifier: {
       '@type': 'PropertyValue',
@@ -164,6 +185,7 @@ export default function RootLayout({
       'PCB Design',
       'Embedded Systems',
       'Electronics Design Automation',
+      'Hardware Compilers',
     ],
   };
 
@@ -171,8 +193,9 @@ export default function RootLayout({
     '@context': 'https://schema.org',
     '@type': 'WebSite',
     '@id': 'https://www.tuskinnovations.in/#website',
-    url: 'https://www.tuskinnovations.in',
+    url: 'https://www.tuskinnovations.in/',
     name: 'TUSK Innovations',
+    alternateName: 'TUSK',
     publisher: {
       '@id': 'https://www.tuskinnovations.in/#organization',
     },

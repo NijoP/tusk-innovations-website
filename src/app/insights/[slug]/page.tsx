@@ -3,6 +3,8 @@ import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { ArrowLeft, Clock, Calendar, User, Share2 } from 'lucide-react';
 import type { Metadata } from 'next';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
+import Script from 'next/script';
 
 interface Props {
   params: Promise<{ slug: string }>;
@@ -29,8 +31,44 @@ export default async function ArticleDetailPage({ params }: Props) {
     notFound();
   }
 
+  const articleSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'TechArticle',
+    headline: article.title,
+    description: article.excerpt,
+    datePublished: article.publishedAt,
+    dateModified: article.publishedAt,
+    author: {
+      '@type': 'Organization',
+      name: 'TUSK Innovations Engineering Team',
+      url: 'https://www.tuskinnovations.in/',
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: 'TUSK Innovations',
+      url: 'https://www.tuskinnovations.in/',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://www.tuskinnovations.in/brand/tusk-logo.jpg',
+      },
+    },
+    mainEntityOfPage: `https://www.tuskinnovations.in/insights/${slug}`,
+  };
+
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Insights', url: 'https://www.tuskinnovations.in/insights' },
+          { name: article.title, url: `https://www.tuskinnovations.in/insights/${slug}` },
+        ]}
+      />
+      <Script
+        id="tech-article-ld"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }}
+      />
       <article className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 max-w-3xl mx-auto">
         {/* Back Link */}
         <Link

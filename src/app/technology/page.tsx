@@ -1,19 +1,33 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, Cpu, Shield, GitCommit, Database, Terminal, FileCode, CheckCircle2 } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Engineering Architecture & Technology Principles | TUSK Innovations',
   description:
-    'Deep architectural breakdown of the Electronics Agent Kit (EAK) software system, compile-time Clean Architecture in Rust, and deterministic event-sourced engineering.',
+    'Deep architectural breakdown of the Electronics Agent Kit (EAK) software system, compile-time Clean Architecture in Rust, and deterministic event-sourced engineering by TUSK Innovations.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/technology',
+  },
+  openGraph: {
+    title: 'Engineering Architecture & Technology Principles | TUSK Innovations',
+    description:
+      'Deterministic kernel, event-sourced design model, and fail-closed invariant validation.',
+    url: 'https://www.tuskinnovations.in/technology',
+    siteName: 'TUSK Innovations',
   },
 };
 
 export default function TechnologyPage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Technology & Architecture', url: 'https://www.tuskinnovations.in/technology' },
+        ]}
+      />
       {/* Header */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500] mb-6">

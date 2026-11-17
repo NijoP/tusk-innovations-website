@@ -1,13 +1,21 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, Bot, Cpu, Rocket, CheckCircle2 } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Engineering & AI Services | TUSK Innovations',
   description:
-    'Comprehensive engineering solutions: Custom AI systems for businesses, high-density multi-layer PCB design, embedded systems, and end-to-end product development.',
+    'Comprehensive engineering solutions from TUSK Innovations Global Private Limited: Custom AI systems for businesses, high-density multi-layer PCB design, embedded systems, and end-to-end product development.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/services',
+  },
+  openGraph: {
+    title: 'Engineering & AI Services | TUSK Innovations',
+    description:
+      'Comprehensive engineering solutions: Custom AI systems, high-density PCB design, embedded firmware, and full-cycle product development.',
+    url: 'https://www.tuskinnovations.in/services',
+    siteName: 'TUSK Innovations',
   },
 };
 
@@ -65,6 +73,12 @@ const SERVICES = [
 export default function ServicesOverviewPage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Services', url: 'https://www.tuskinnovations.in/services' },
+        ]}
+      />
       {/* Hero Header */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#5a5a55] dark:text-neutral-300 mb-6">

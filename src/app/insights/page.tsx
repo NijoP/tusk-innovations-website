@@ -2,13 +2,21 @@ import type { Metadata } from 'next';
 import { getArticles } from '@/lib/sanityQueries';
 import Link from 'next/link';
 import { ArrowRight, Clock, BookOpen, Calendar, User } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Technical Insights & Engineering Notes | TUSK Innovations',
   description:
-    'Deep-dive articles and technical essays from the engineering team at TUSK Innovations on hardware compiler design, Clean Architecture in EDA, physical invariant checking, and AI agents.',
+    'Deep-dive articles and technical essays from the engineering team at TUSK Innovations Global Private Limited on hardware compiler design, Clean Architecture in EDA, physical invariant checking, and AI agents.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/insights',
+  },
+  openGraph: {
+    title: 'Technical Insights & Engineering Notes | TUSK Innovations',
+    description:
+      'Engineering essays and architecture notes on hardware compilers, AI agents, and PCB design.',
+    url: 'https://www.tuskinnovations.in/insights',
+    siteName: 'TUSK Innovations',
   },
 };
 
@@ -19,6 +27,12 @@ export default async function InsightsPage() {
 
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Technical Insights', url: 'https://www.tuskinnovations.in/insights' },
+        ]}
+      />
       {/* Header */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500] mb-6">

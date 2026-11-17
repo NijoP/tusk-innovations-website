@@ -2,13 +2,21 @@ import type { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
 import { ArrowRight, Cpu, Layers, Activity, CheckCircle2, ShieldCheck, Wrench, FileSpreadsheet } from 'lucide-react';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Electronics & PCB Engineering Services | TUSK Innovations',
   description:
-    'Comprehensive electronics engineering from circuit schematics to high-density multi-layer PCB design, embedded firmware, electrical validation, and manufacturing coordination.',
+    'Comprehensive electronics engineering from circuit schematics to high-density multi-layer PCB design, embedded firmware, electrical validation, and manufacturing coordination by TUSK Innovations Global Private Limited.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/services/electronics-pcb',
+  },
+  openGraph: {
+    title: 'Electronics & PCB Engineering Services | TUSK Innovations',
+    description:
+      'High-density multi-layer PCB design, impedance control, embedded firmware, and physical bring-up in our lab.',
+    url: 'https://www.tuskinnovations.in/services/electronics-pcb',
+    siteName: 'TUSK Innovations',
   },
 };
 
@@ -63,6 +71,13 @@ const SPEC_STANDARDS = [
 export default function ElectronicsPCBPage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Services', url: 'https://www.tuskinnovations.in/services' },
+          { name: 'Electronics & PCB Engineering', url: 'https://www.tuskinnovations.in/services/electronics-pcb' },
+        ]}
+      />
       {/* Hero */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#5a5a55] dark:text-neutral-300 mb-6">

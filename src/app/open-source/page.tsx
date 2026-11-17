@@ -2,13 +2,21 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { ArrowRight, ArrowUpRight, GitBranch, Terminal, ShieldAlert, CheckCircle2, Code2 } from 'lucide-react';
 import { GithubIcon } from '@/components/SocialIcons';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'Open Source & Community Engineering | TUSK Innovations',
   description:
-    'Contribute to Electronics Agent Kit (EAK), our open-prototype AI electronics workstation. Built with Rust, Tauri, React, and TypeScript under the MIT / Apache-2.0 dual license.',
+    'Contribute to Electronics Agent Kit (EAK), our open-prototype AI electronics workstation. Built with Rust, Tauri, React, and TypeScript by TUSK Innovations Global Private Limited.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/open-source',
+  },
+  openGraph: {
+    title: 'Open Source & Community Engineering | TUSK Innovations',
+    description:
+      'Open-source initiatives, community engineering, and EAK workstation codebase on GitHub.',
+    url: 'https://www.tuskinnovations.in/open-source',
+    siteName: 'TUSK Innovations',
   },
 };
 
@@ -22,6 +30,12 @@ const STACK = [
 export default function OpenSourcePage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'Open Source', url: 'https://www.tuskinnovations.in/open-source' },
+        ]}
+      />
       {/* Header */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500] mb-6">

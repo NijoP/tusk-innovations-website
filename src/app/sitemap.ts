@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next';
 import { getArticles } from '@/lib/sanityQueries';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.tuskinnovations.in';
+  const baseUrl = 'https://www.tuskinnovations.in';
   const articles = await getArticles();
 
   const staticRoutes: MetadataRoute.Sitemap = [

@@ -6,19 +6,33 @@ import { LinkedinIcon } from '@/components/SocialIcons';
 import { COMPANY_DETAILS } from '@/lib/data';
 import { AchievementsMilestonesSection } from '@/components/AchievementsMilestonesSection';
 import { CompanyRegistrationsSection } from '@/components/CompanyRegistrationsSection';
+import { BreadcrumbJsonLd } from '@/components/BreadcrumbJsonLd';
 
 export const metadata: Metadata = {
   title: 'About TUSK Innovations | AI & Electronics Engineering Company',
   description:
-    'TUSK Innovations Global Pvt. Ltd. is an independent AI and electronics engineering startup headquartered in Thiruvananthapuram, Kerala. Founded by Nijo Ponnachan.',
+    'Learn about TUSK Innovations Global Private Limited, an AI and electronics engineering company headquartered in Thiruvananthapuram, Kerala, India. Engineering culture, statutory accreditations, and technical philosophy.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/about',
+  },
+  openGraph: {
+    title: 'About TUSK Innovations | Company, Mission & Registrations',
+    description:
+      'TUSK Innovations is the public brand of TUSK Innovations Global Private Limited, an AI and electronics engineering company based in Thiruvananthapuram, Kerala, India.',
+    url: 'https://www.tuskinnovations.in/about',
+    siteName: 'TUSK Innovations',
   },
 };
 
 export default function AboutPage() {
   return (
     <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
+      <BreadcrumbJsonLd
+        items={[
+          { name: 'Home', url: 'https://www.tuskinnovations.in/' },
+          { name: 'About TUSK Innovations', url: 'https://www.tuskinnovations.in/about' },
+        ]}
+      />
       {/* Header */}
       <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500] mb-6">
@@ -29,7 +43,7 @@ export default function AboutPage() {
           Engineered for Truth. Built for the Physical World.
         </h1>
         <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] dark:text-neutral-400 font-sans leading-relaxed max-w-3xl">
-          TUSK Innovations Global Pvt. Ltd. is an independent technology startup based in Thiruvananthapuram, Kerala. We build intelligent software systems and engineer physical electronic hardware from concept to verified delivery.
+          TUSK Innovations is the public brand of TUSK Innovations Global Private Limited, an independent AI and electronics engineering company headquartered in Thiruvananthapuram, Kerala, India. We build intelligent software systems and engineer physical electronic hardware from concept to verified delivery.
         </p>
 
         {/* Quick jumps */}

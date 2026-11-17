@@ -97,7 +97,7 @@ export const ACHIEVEMENTS_MILESTONES: MilestoneItem[] = [
     category: 'Technology & Innovation Grant Selection',
     description:
       'TUSK Innovations was selected under the Kerala Startup Mission Idea Grant program for technology and innovation development in AI-assisted electronics engineering.',
-    link: 'https://startupmission.kerala.gov.in/',
+    link: 'https://startups.startupmission.in/startups/poGrk',
     logo: '/brand/ksum-logo.svg',
     badge: 'KSUM Idea Grant',
   },
@@ -134,7 +134,7 @@ export const COMPANY_REGISTRATIONS: RegistrationItem[] = [
     statutoryDetail: 'State Innovation Portal',
     description:
       'Accredited and registered as an innovative technology startup with Kerala Startup Mission (KSUM), the nodal agency of the Government of Kerala for entrepreneurship development.',
-    link: 'https://startupmission.kerala.gov.in/',
+    link: 'https://startups.startupmission.in/startups/poGrk',
     badge: 'Registered Startup',
     logoType: 'ksum',
   },
