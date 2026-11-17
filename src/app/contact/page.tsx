@@ -1,28 +1,69 @@
-import type { Metadata } from 'next';
-import { Section } from '@/components/Section';
-import { COMPANY_DETAILS } from '@/lib/data';
-import { Mail, Phone, ArrowUpRight, Send } from 'lucide-react';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Contact Corporate Office',
-  description:
-    'Contact TUSK INNOVATIONS GLOBAL PRIVATE LIMITED for enterprise partnerships, research collaborations, or investor inquiries.',
-};
+import { useState } from 'react';
+import { Section } from '@/components/Section';
+import { COMPANY_DETAILS, RECOGNITIONS } from '@/lib/data';
+import { Mail, Phone, ArrowUpRight, Send, CheckCircle2, Copy, Check } from 'lucide-react';
+import Image from 'next/image';
+
+const CATEGORIES = [
+  'AI & Software Solutions',
+  'AI Agents & Automation',
+  'Electronics & PCB Design',
+  'Embedded Systems',
+  'Complete Product Development',
+  'Other Engineering Requirements',
+];
 
 export default function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    company: '',
+    email: '',
+    category: CATEGORIES[0],
+    description: '',
+    requirements: '',
+  });
+
+  const [copied, setCopied] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    const subject = encodeURIComponent(`[Project Enquiry - ${formData.category}] ${formData.company || formData.name}`);
+    const body = encodeURIComponent(
+      `Project Category: ${formData.category}\n` +
+      `Contact Name: ${formData.name}\n` +
+      `Company / Organisation: ${formData.company}\n` +
+      `Email: ${formData.email}\n\n` +
+      `Project Description:\n${formData.description}\n\n` +
+      `Key Technical Requirements & Constraints:\n${formData.requirements}\n`
+    );
+
+    // Open mail client
+    window.location.href = `mailto:${COMPANY_DETAILS.email}?subject=${subject}&body=${body}`;
+    setSubmitted(true);
+  };
+
+  const copyEmail = () => {
+    navigator.clipboard.writeText(COMPANY_DETAILS.email);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
   return (
     <div>
       {/* Header */}
       <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
         <div className="mx-auto max-w-4xl text-center space-y-4">
           <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-            Direct Inquiries
+            Direct Business & Project Inquiries
           </span>
           <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121316]">
-            Contact TUSK INNOVATIONS
+            Start a Project with TUSK INNOVATIONS
           </h1>
           <p className="text-lg text-[#585c65] max-w-2xl mx-auto leading-relaxed">
-            Reach out to our executive team regarding technical evaluation, commercial partnerships, research inquiries, or investor relations.
+            Reach out to our engineering leads regarding custom AI systems, electronics & PCB engineering, embedded solutions, or complete product development.
           </p>
         </div>
       </section>
@@ -30,12 +71,12 @@ export default function ContactPage() {
       {/* Main Content */}
       <Section id="contact-info">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Official Registered Details */}
+          {/* Official Registered Details & Trust */}
           <div className="lg:col-span-5 space-y-8">
             <div>
               <h2 className="text-xl font-bold text-[#121316] mb-2">Corporate Headquarters</h2>
               <p className="text-sm text-[#585c65] leading-relaxed">
-                TUSK INNOVATIONS GLOBAL PRIVATE LIMITED is an incorporated engineering technology company headquartered in Kerala, India.
+                TUSK INNOVATIONS GLOBAL PRIVATE LIMITED is an incorporated deep-tech engineering company headquartered in Thiruvananthapuram, Kerala, India.
               </p>
             </div>
 
@@ -58,14 +99,24 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              <div className="p-4 bg-white border border-[#e6e5e0] rounded-lg space-y-2">
+              <div className="p-4 bg-white border border-[#e6e5e0] rounded-lg space-y-3">
                 <span className="text-[#8b909a] block">COMMUNICATIONS:</span>
-                <p className="flex items-center gap-2 text-sm font-sans text-[#121316]">
-                  <Mail className="w-4 h-4 text-[#ff5500]" />
-                  <a href={`mailto:${COMPANY_DETAILS.email}`} className="hover:underline">
-                    {COMPANY_DETAILS.email}
-                  </a>
-                </p>
+                <div className="flex items-center justify-between text-sm font-sans text-[#121316]">
+                  <p className="flex items-center gap-2">
+                    <Mail className="w-4 h-4 text-[#ff5500]" />
+                    <a href={`mailto:${COMPANY_DETAILS.email}`} className="hover:underline">
+                      {COMPANY_DETAILS.email}
+                    </a>
+                  </p>
+                  <button
+                    onClick={copyEmail}
+                    className="text-xs font-mono text-[#8b909a] hover:text-[#121316] inline-flex items-center gap-1 px-2 py-1 rounded bg-neutral-100"
+                    title="Copy Email"
+                  >
+                    {copied ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                    <span>{copied ? 'Copied' : 'Copy'}</span>
+                  </button>
+                </div>
                 <p className="flex items-center gap-2 text-sm font-sans text-[#121316]">
                   <Phone className="w-4 h-4 text-[#ff5500]" />
                   <a href={`tel:${COMPANY_DETAILS.phone.replace(/\s+/g, '')}`} className="hover:underline">
@@ -79,38 +130,68 @@ export default function ContactPage() {
                 <p><span className="text-[#8b909a]">CIN:</span> <strong className="text-[#121316]">{COMPANY_DETAILS.cin}</strong></p>
                 <p><span className="text-[#8b909a]">LEGAL:</span> {COMPANY_DETAILS.legalName}</p>
               </div>
+
+              {/* Recognition Accreditation Badges */}
+              <div className="p-4 bg-[#faf9f6] border border-[#e6e5e0] rounded-lg space-y-2">
+                <span className="text-[#8b909a] block">ACCREDITATIONS & RECOGNITION:</span>
+                <div className="space-y-1 text-[11px] font-sans text-[#585c65]">
+                  <p className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3 h-3 text-[#ff5500]" />
+                    Part of the NVIDIA Inception Program
+                  </p>
+                  <p className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    Selected under Kerala Startup Mission Idea Grant
+                  </p>
+                  <p className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3 h-3 text-sky-600" />
+                    DPIIT-Recognised Startup (Startup India)
+                  </p>
+                  <p className="flex items-center gap-1.5">
+                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
+                    Recognised by Kerala Startup Mission
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Contact Inquiry Form */}
-          <div className="lg:col-span-7 bg-white border border-[#e6e5e0] rounded-lg p-6 sm:p-8 shadow-xs">
-            <h2 className="text-xl font-bold text-[#121316] mb-1">Send an Inquiry</h2>
+          {/* Project Enquiry Form */}
+          <div className="lg:col-span-7 bg-white border border-[#e6e5e0] rounded-xl p-6 sm:p-8 shadow-xs">
+            <div className="flex items-center justify-between mb-1">
+              <h2 className="text-xl font-bold text-[#121316]">Project Enquiry Form</h2>
+              <span className="text-[11px] font-mono text-[#ff5500] font-semibold uppercase">Executive Response</span>
+            </div>
             <p className="text-xs text-[#585c65] mb-6">
-              Inquiries are routed directly to our executive engineering office.
+              Tell us about your project requirements. Enquiries are routed directly to our engineering leads.
             </p>
 
-            <form className="space-y-4">
+            <form onSubmit={handleSubmit} className="space-y-4">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div>
                   <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                    Your Name *
+                    Your Full Name *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Dr. Jane Doe"
-                    className="w-full px-3.5 py-2 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
+                    value={formData.name}
+                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                    placeholder="e.g. John Doe"
+                    className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
                   />
                 </div>
                 <div>
                   <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                    Organization / Company *
+                    Company / Organisation *
                   </label>
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Hardware Systems Inc."
-                    className="w-full px-3.5 py-2 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
+                    value={formData.company}
+                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                    placeholder="e.g. Acme Tech Solutions"
+                    className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
                   />
                 </div>
               </div>
@@ -122,47 +203,81 @@ export default function ContactPage() {
                 <input
                   type="email"
                   required
-                  placeholder="jane.doe@organization.com"
-                  className="w-full px-3.5 py-2 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  placeholder="name@company.com"
+                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
                 />
               </div>
 
               <div>
                 <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                  Subject / Area of Interest *
+                  Project Category *
                 </label>
                 <select
-                  className="w-full px-3.5 py-2 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50 text-[#121316]"
+                  value={formData.category}
+                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50 text-[#121316]"
                 >
-                  <option>EAK Developer Preview & Early Access</option>
-                  <option>Commercial & Technical Partnership</option>
-                  <option>Incubator / Grant / Startup India Inquiries</option>
-                  <option>Academic Research Collaboration</option>
-                  <option>General Corporate Inquiries</option>
+                  {CATEGORIES.map((cat) => (
+                    <option key={cat} value={cat}>
+                      {cat}
+                    </option>
+                  ))}
                 </select>
               </div>
 
               <div>
                 <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                  Message *
+                  Project Description *
                 </label>
                 <textarea
-                  rows={4}
+                  rows={3}
                   required
-                  placeholder="Describe your project, evaluation interest, or query..."
-                  className="w-full px-3.5 py-2 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
+                  value={formData.description}
+                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                  placeholder="Outline the core objective, problem to solve, or product vision..."
+                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
+                ></textarea>
+              </div>
+
+              <div>
+                <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
+                  Technical Requirements & Constraints
+                </label>
+                <textarea
+                  rows={3}
+                  value={formData.requirements}
+                  onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
+                  placeholder="Mention components, target platform, power constraints, timeline, or interfaces..."
+                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
                 ></textarea>
               </div>
 
               <div className="pt-2">
                 <button
-                  type="button"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-neutral-800 rounded-md transition-colors"
+                  type="submit"
+                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-[#ff5500] rounded-md transition-colors shadow-xs"
                 >
                   <Send className="w-3.5 h-3.5" />
-                  <span>Transmit Inquiry</span>
+                  <span>Send Project Enquiry</span>
                 </button>
               </div>
+
+              {submitted && (
+                <div className="mt-4 p-4 rounded-md bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 space-y-1">
+                  <p className="font-semibold flex items-center gap-1.5">
+                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                    Enquiry Form Prepared
+                  </p>
+                  <p>
+                    Your mail client has been opened with your enquiry details. If it did not open automatically, you can send your inquiry directly to{' '}
+                    <a href={`mailto:${COMPANY_DETAILS.email}`} className="font-bold underline">
+                      {COMPANY_DETAILS.email}
+                    </a>.
+                  </p>
+                </div>
+              )}
             </form>
           </div>
         </div>

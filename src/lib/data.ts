@@ -25,6 +25,32 @@ export interface ArticleItem {
   content: string[];
 }
 
+export interface RecognitionItem {
+  id: string;
+  title: string;
+  organization: string;
+  category: string;
+  description: string;
+  link: string;
+  logo: string;
+  badge: string;
+}
+
+export interface WorkflowStep {
+  step: number;
+  title: string;
+  summary: string;
+  details: string;
+}
+
+export interface ServiceCategory {
+  id: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  capabilities: string[];
+}
+
 export const COMPANY_DETAILS = {
   legalName: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
   shortName: 'TUSK INNOVATIONS',
@@ -34,100 +60,261 @@ export const COMPANY_DETAILS = {
   address: '26/378(1), Thekkumoodu, Vanchiyoor P.O., Thiruvananthapuram, Kerala 695035, India.',
   mapsUrl: 'https://maps.google.com/?q=26/378(1),+Thekkumoodu,+Vanchiyoor+P.O.,+Thiruvananthapuram,+Kerala+695035',
   githubOrg: 'https://github.com/NijoP',
-  eakRepo: 'https://github.com/NijoP/electronics-agent-kit-proto',
-  tagline: 'Engineering Intelligence for the Next Generation of Electronics.',
+  eakRepo: 'https://github.com/NijoP/electronics-agent-kit-new-prototype',
+  tagline: 'Building Intelligent Technology. Engineering the Future.',
 };
+
+export const RECOGNITIONS: RecognitionItem[] = [
+  {
+    id: 'nvidia-inception',
+    title: 'Selected for the NVIDIA Inception Program',
+    organization: 'NVIDIA Corporation',
+    category: 'Global Tech Acceleration',
+    description:
+      'TUSK Innovations is part of the NVIDIA Inception Program, supporting startups building innovative technology and AI solutions with technical tools, mentorship, and ecosystem resources.',
+    link: 'https://www.nvidia.com/en-us/startups/',
+    logo: '/brand/nvidia-full.svg',
+    badge: 'NVIDIA Inception',
+  },
+  {
+    id: 'ksum-idea-grant',
+    title: 'Selected under Kerala Startup Mission Idea Grant',
+    organization: 'Kerala Startup Mission (KSUM)',
+    category: 'R&D Innovation Selection',
+    description:
+      'Selected under the Kerala Startup Mission Idea Grant program to accelerate research, architectural prototyping, and technology development in AI-assisted electronics engineering.',
+    link: 'https://startupmission.kerala.gov.in/',
+    logo: '/brand/ksum-logo.svg',
+    badge: 'KSUM Idea Grant',
+  },
+  {
+    id: 'dpiit-recognition',
+    title: 'DPIIT-Recognised Startup',
+    organization: 'Ministry of Commerce & Industry, Govt. of India',
+    category: 'National Startup Recognition',
+    description:
+      'Officially recognized as an innovative startup under the Startup India initiative by the Department for Promotion of Industry and Internal Trade (DPIIT), Government of India.',
+    link: 'https://www.startupindia.gov.in/',
+    logo: '/brand/startup-india.png',
+    badge: 'Startup India',
+  },
+  {
+    id: 'ksum-recognition',
+    title: 'Recognised by Kerala Startup Mission',
+    organization: 'Kerala Startup Mission',
+    category: 'State Startup Ecosystem',
+    description:
+      'Accredited and registered with Kerala Startup Mission (KSUM), the nodal agency of the Government of Kerala for fostering entrepreneurship and technology innovation.',
+    link: 'https://startupmission.kerala.gov.in/',
+    logo: '/brand/ksum-logo.svg',
+    badge: 'Recognised Startup',
+  },
+];
+
+export const WORKFLOW_STEPS: WorkflowStep[] = [
+  {
+    step: 1,
+    title: 'Discovery',
+    summary: 'Understand business requirements, project objectives, and technical constraints.',
+    details:
+      'We engage directly with your team to dissect functional requirements, operational environments, compliance requirements, target user experience, and cost boundaries.',
+  },
+  {
+    step: 2,
+    title: 'Research & Architecture',
+    summary: 'Develop the technical architecture, component roadmap, and engineering strategy.',
+    details:
+      'We establish deterministic system topologies, evaluate component feasibility, formulate hardware-software interfaces, and design the complete technical foundation.',
+  },
+  {
+    step: 3,
+    title: 'Design & Development',
+    summary: 'Build software, AI systems, circuit schematics, and PCB layouts.',
+    details:
+      'Our engineers implement custom AI pipelines, robust systems software, multi-layer PCB designs, embedded firmware, and responsive modern user interfaces in parallel.',
+  },
+  {
+    step: 4,
+    title: 'Integration & Testing',
+    summary: 'Validate functionality, reliability, electrical rules, and system performance.',
+    details:
+      'Comprehensive DRC/ERC rule validation, signal integrity checks, bench testing, software unit and integration test suites, and hardware stress evaluation.',
+  },
+  {
+    step: 5,
+    title: 'Production & Deployment',
+    summary: 'Coordinate manufacturing, component procurement, and production release.',
+    details:
+      'We generate auditable manufacturing packages (Gerbers, drill files, BOMs, centroid files), coordinate with fabrication facilities, and deploy software services.',
+  },
+  {
+    step: 6,
+    title: 'Final Delivery',
+    summary: 'Deliver the completed solution, documentation, and operational handoff.',
+    details:
+      'We deliver fully verified physical hardware, working software codebases, comprehensive schematics, architecture documentation, and ongoing maintenance support.',
+  },
+];
+
+export const SERVICES_LIST: ServiceCategory[] = [
+  {
+    id: 'ai-solutions',
+    title: 'AI Solutions for Businesses',
+    subtitle: 'Intelligent Software, Autonomous Agents & Workflow Automation',
+    description:
+      'We architect, build, and deploy custom artificial intelligence systems that streamline complex operations, automate repetitive workflows, and empower business intelligence.',
+    capabilities: [
+      'Custom AI application development',
+      'Autonomous AI agent development & tool orchestration',
+      'Business workflow automation & RPA pipelines',
+      'AI-powered internal operational tools',
+      'Custom AI integrations, LLM adapters & secure APIs',
+      'Intelligent executive dashboards & real-time analytics',
+      'Business-specific reasoning systems & domain knowledge graphs',
+      'Process automation, document analysis & productivity solutions',
+    ],
+  },
+  {
+    id: 'electronics-engineering',
+    title: 'Electronics & PCB Engineering',
+    subtitle: 'From Circuit Schematics to Verified Multi-Layer Boards',
+    description:
+      'Comprehensive hardware engineering from concept schematic synthesis to high-density PCB layouts, embedded firmware development, and manufacturing coordination.',
+    capabilities: [
+      'End-to-end electronics product development',
+      'Circuit design and schematic engineering',
+      'High-speed PCB layout, routing & stackup design',
+      'Multi-layer PCB development & impedance matching',
+      'Embedded systems & microcontroller-based solutions (ARM, ESP32, STM32)',
+      'IoT systems, wireless communication & sensor integration',
+      'Power electronics, regulators & custom electronic controllers',
+      'Bill of Materials (BOM) preparation & component sourcing assistance',
+      'Rapid prototype development, bring-up & lab testing',
+      'Manufacturing coordination, assembly audit & fabrication packages',
+    ],
+  },
+  {
+    id: 'end-to-end',
+    title: 'End-to-End Product Development',
+    subtitle: 'From Project Idea to Final Delivery',
+    description:
+      'Our signature offering. Whether you arrive with a napkin sketch, an incomplete hardware prototype, or an enterprise specification, we take full ownership of the engineering cycle from discovery to deployed reality.',
+    capabilities: [
+      'Concept feasibility analysis & technical architecture formulation',
+      'Unified software, AI, and electronics co-design',
+      'Full-stack cloud applications, mobile apps & desktop IDE shells',
+      'Hardware prototyping, component sourcing & vendor coordination',
+      'Rigorous electrical, thermal, and functional testing',
+      'Regulatory compliance audit & manufacturing preparation',
+      'Production deployment, documentation & client handover',
+      'Post-delivery iteration, firmware updates & lifecycle support',
+    ],
+  },
+];
 
 export const EAK_CAPABILITIES: CapabilityItem[] = [
   {
-    name: 'Event-Sourced Engineering Runtime Core',
-    category: 'Kernel & Runtime',
+    name: 'Live Terminal-to-EDA Synchronization',
+    category: 'Workstation & Shell',
     status: 'Implemented',
-    description: 'Deterministic state machine (`RuntimeCore::commit`) with append-only event log, invariant validation, and deterministic replay.',
+    description:
+      'A coding agent in the terminal workspace edits the design via typed commands; the schematic and PCB views update live in real-time, preserving camera orientation and selection.',
     order: 1,
   },
   {
-    name: 'Physical Quantities & Typed Unit System',
-    category: 'Kernel & Runtime',
+    name: 'Typed Deterministic Engine with Fail-Closed Validation',
+    category: 'Kernel & Physics',
     status: 'Implemented',
-    description: 'Compile-time physical quantity validation (`eak-units`) with tolerances, unit conversion, and SI-derived dimensions.',
+    description:
+      'Every change is a typed runtime command on one canonical design model. Invariant validation (ERC/DRC) is computed by deterministic engines, never guessed by neural models. Unknown checks report fail-closed.',
     order: 2,
   },
   {
-    name: 'Clean Architecture Port & Adapter Boundary',
-    category: 'Kernel & Runtime',
+    name: 'Interactive Schematic Design & Editing',
+    category: 'Schematic Engine',
     status: 'Implemented',
-    description: 'Ring dependency structure where kernel never depends on outer adapters, enforced at compile time via Cargo topology.',
+    description:
+      'Drag-and-drop component placement, click-to-place with rotation, automatic junction dots, wires, net labels, no-connect markers, mirror, and multi-level undo/redo.',
     order: 3,
   },
   {
-    name: 'Desktop IDE Bridge (Tauri v2 Spine)',
-    category: 'EDA Integration',
+    name: 'PCB Layout, Layer Manager & Net Highlighting',
+    category: 'PCB Engine',
     status: 'Implemented',
-    description: 'Native desktop shell streaming live kernel events over `eak_ports::EventSink` to reactive desktop UI surfaces.',
+    description:
+      'Board outlines, footprint placement, tracks, vias, zone refills with dynamic connectivity recomputation, net highlighting, and comprehensive multi-layer stackup management.',
     order: 4,
   },
   {
-    name: 'Multi-Provider Model Isolation Layer',
-    category: 'Kernel & Runtime',
+    name: 'Electrical Rules Check (ERC) & Design Rules Check (DRC)',
+    category: 'Verification',
     status: 'Implemented',
-    description: 'Pluggable reasoning ports (`eak-reasoning`) supporting NVIDIA, OpenAI, and local offline inference models behind strict capability seams.',
+    description:
+      'Automated ERC verification required before PCB synchronization; clearance and connectivity DRC with explicit finding reports and gap disclosures.',
     order: 5,
   },
   {
-    name: 'Component Asset Management & Schemas',
-    category: 'Component Intelligence',
+    name: 'Automated Placement & Routing (Auto-Route)',
+    category: 'PCB Engine',
     status: 'Partially Implemented',
-    description: 'Asset pipeline (`eak-assets`) managing symbol libraries, footprints, 3D bodies, and structured parametric attributes.',
+    description:
+      "Native auto-place heuristics and EAK's built-in routing engine. Functional in developer preview for rapid board layout exploration.",
     order: 6,
   },
   {
-    name: 'KiCad Bidirectional Sync & Adapter',
-    category: 'EDA Integration',
-    status: 'Partially Implemented',
-    description: 'Import/export adapter (`eak-kicad`) translating canonical engineering state to and from KiCad schematic/PCB files.',
+    name: 'Native 3D PCB Visualization',
+    category: '3D Rendering',
+    status: 'Implemented',
+    description:
+      'Interactive 3D board rendering with substrate layers, copper geometry, drill holes, and component body projections for visual inspection.',
     order: 7,
   },
   {
-    name: 'Requirement & Engineering IR Compiler',
-    category: 'Kernel & Runtime',
-    status: 'Partially Implemented',
-    description: 'Domain-specific lowering passes (`eak-compiler`) translating natural-language requirements into verified netlists and constraints.',
+    name: 'Native Vendor-Neutral Component Library',
+    category: 'Component Intelligence',
+    status: 'Implemented',
+    description:
+      "EAK's own structured component format is the source of truth, with verified pin matrices, parametric attributes, and symbol-to-footprint mappings.",
     order: 8,
   },
   {
-    name: 'Rule-Based Verification Engine',
-    category: 'Verification & Physics',
-    status: 'Partially Implemented',
-    description: 'Deterministic DRC, ERC, voltage-drop, and pin-constraint checkers (`eak-engines`) that validate AI proposals prior to commit.',
+    name: 'KiCad Bidirectional Asset Interchange',
+    category: 'EDA Interoperability',
+    status: 'Implemented',
+    description:
+      'Import symbols (.kicad_sym) and footprints (.kicad_mod) with transactional library commits, allowing seamless migration without vendor lock-in.',
     order: 9,
   },
   {
-    name: 'Automated Schematic Synthesis',
-    category: 'Schematic Synthesis',
-    status: 'Experimental',
-    description: 'Constraint-driven netlist synthesis and automatic multi-sheet schematic layout generation from engineering specs.',
+    name: 'Circuit Simulation Engine (ngspice)',
+    category: 'Verification & Physics',
+    status: 'Partially Implemented',
+    description:
+      'Integrated ngspice simulation interface for transient, AC, and DC operating point circuit analysis directly from schematic models.',
     order: 10,
   },
   {
-    name: 'Autonomous PCB Component Placement',
-    category: 'PCB Layout & Placement',
-    status: 'Experimental',
-    description: 'Geometric thermal and signal integrity heuristics evaluating component floorplans and routing topology.',
+    name: 'Manufacturing Package Generator (Draft Gerbers & BOM)',
+    category: 'Manufacturing',
+    status: 'Implemented',
+    description:
+      'Deterministic generation of RS-274X Gerber files, Excellon drill files, structured Bill of Materials (BOM), and centroid placement files (explicitly marked draft for review).',
     order: 11,
   },
   {
-    name: 'Automated DRC-Clean Autorouting',
-    category: 'PCB Layout & Placement',
-    status: 'Planned',
-    description: 'Multi-layer high-density interconnect routing with deterministic return-path and differential-pair validation.',
+    name: 'Agent Orchestration & Typed Task Graphs',
+    category: 'AI Orchestration',
+    status: 'Partially Implemented',
+    description:
+      'Typed task graphs, journaled task histories, scoped context boundaries, and smart re-run capabilities across agent phases.',
     order: 12,
   },
   {
-    name: 'Automated Fabrication Package Compiler',
-    category: 'Manufacturing & BOM',
+    name: 'Interactive Push-and-Shove Routing',
+    category: 'PCB Engine',
     status: 'Planned',
-    description: 'One-click generation of verified Gerbers, drill tables, IPC-D-356 netlists, centroid files, and supply-chain audited BOMs.',
+    description:
+      'Real-time obstacle avoidance and trace pushing during interactive manual routing for high-density interconnect designs.',
     order: 13,
   },
 ];
@@ -139,15 +326,15 @@ export const ROADMAP_STAGES: RoadmapStage[] = [
     gate: 'Gate 0: Repository Clean & Verified Docs',
     status: 'Completed',
     description: 'Establish canonical documentation, clean architecture boundaries, branding, and comprehensive testing gates.',
-    deliverables: ['Clean workspace layout', '16 Canonical Architecture RFCs', 'Clean Cargo topology'],
+    deliverables: ['Clean workspace layout', 'Canonical Architecture RFCs', 'Clean Cargo topology'],
   },
   {
     stage: 1,
     title: 'Foundation Product & Tauri Spine',
     gate: 'Gate 1: Developer Preview',
-    status: 'Active Development',
-    description: 'Native desktop IDE bridge connecting the Rust kernel event stream (`EventSink`) to real-time UI views.',
-    deliverables: ['Desktop IDE shell (Tauri v2)', 'Live event streaming pipeline', 'Canonical state viewer'],
+    status: 'Completed',
+    description: 'Native desktop IDE bridge connecting the Rust kernel event stream to real-time UI views with live terminal sync.',
+    deliverables: ['Desktop IDE shell (Tauri v2)', 'Live event streaming pipeline', 'Interactive schematic & PCB canvas'],
   },
   {
     stage: 2,
@@ -155,13 +342,13 @@ export const ROADMAP_STAGES: RoadmapStage[] = [
     gate: 'Gate 2: Real AI Engineering Workflow',
     status: 'Active Development',
     description: 'Standardized capability seams ensuring AI proposals never bypass deterministic engineering verification.',
-    deliverables: ['NVIDIA/OpenAI/Local providers', 'Validated capability proposals', 'Provenance-tracked event logs'],
+    deliverables: ['Multi-provider reasoning ports', 'Validated capability proposals', 'Provenance-tracked event logs'],
   },
   {
     stage: 3,
     title: 'Component Intelligence & Parametric Search',
     gate: 'Gate 3: Component-Aware Engineering',
-    status: 'Planned',
+    status: 'Active Development',
     description: 'Automated datasheet parsing, pin-matrix extraction, and verified library footprint mapping.',
     deliverables: ['Datasheet parser', 'Parametric attribute graph', 'Standardized footprints/symbols'],
   },
@@ -169,25 +356,25 @@ export const ROADMAP_STAGES: RoadmapStage[] = [
     stage: 4,
     title: 'Schematic Synthesis & Netlist Generation',
     gate: 'Gate 4: Schematic-Capable',
-    status: 'Planned',
+    status: 'Active Development',
     description: 'Deterministic translation of high-level functional intent into formal schematic hierarchies and pin connections.',
-    deliverables: ['Hierarchical schematic engine', 'ERC validation suite', 'KiCad schematic sync'],
+    deliverables: ['Hierarchical schematic engine', 'ERC validation suite', 'KiCad symbol import adapter'],
   },
   {
     stage: 5,
     title: 'PCB Physical Geometry & Placement',
     gate: 'Gate 5: PCB-Capable',
-    status: 'Planned',
+    status: 'Active Development',
     description: 'Physical constraint engine handling enclosure dimensions, keepouts, mechanical mounting, and copper geometry.',
-    deliverables: ['Board stackup editor', 'Thermal/signal placement engine', 'KiCad PCB bidirectional sync'],
+    deliverables: ['Board stackup editor', 'Thermal/signal placement engine', 'Zone refill & net highlight'],
   },
   {
     stage: 6,
     title: 'Verification & Physics Engine',
     gate: 'Gate 6: Verified Engineering Workflow',
-    status: 'Planned',
+    status: 'Active Development',
     description: 'Multi-layer physics verification checking impedance, current density, signal timing, and manufacturing rules.',
-    deliverables: ['Impedance solver', 'DRC rule evaluator', 'Automated error remediation suggestions'],
+    deliverables: ['Impedance solver', 'DRC rule evaluator', 'ngspice simulation bridge'],
   },
   {
     stage: 7,
@@ -203,15 +390,7 @@ export const ROADMAP_STAGES: RoadmapStage[] = [
     gate: 'Gate 8: Public V1',
     status: 'Planned',
     description: 'Exporting production-ready manufacturing packages with verified distributor stock availability and design-for-assembly checks.',
-    deliverables: ['Gerber / Drill generators', 'BOM stock validation', 'Turnkey assembly handoff packages'],
-  },
-  {
-    stage: 9,
-    title: 'Product Maturity & Enterprise Workspace',
-    gate: 'Gate 9: Mature Engineering Platform',
-    status: 'Planned',
-    description: 'Scalable multi-seat collaboration, versioned team libraries, enterprise on-premise execution, and private model support.',
-    deliverables: ['Team workspaces', 'Versioned component repositories', 'Enterprise security & audit controls'],
+    deliverables: ['Gerber / Drill generators', 'BOM preparation engine', 'Turnkey assembly handoff packages'],
   },
 ];
 
@@ -238,7 +417,7 @@ export const TECHNICAL_ARTICLES: ArticleItem[] = [
     excerpt: 'How we structured EAK into concentric rings where dependencies point only inward, ensuring UI frameworks, CAD wrappers, and LLMs remain peripheral adapters.',
     content: [
       'EDA software tends to grow into monolithic systems with tight coupling between geometric rendering engines, schematic databases, and file parsers.',
-      'In EAK, we enforce Robert C. Martin\'s Clean Architecture using Cargo workspace crate boundaries. The central kernel (eak-runtime) depends only on domain definitions (eak-domain), physical units (eak-units), and abstract ports (eak-ports).',
+      "In EAK, we enforce Robert C. Martin's Clean Architecture using Cargo workspace crate boundaries. The central kernel (eak-runtime) depends only on domain definitions (eak-domain), physical units (eak-units), and abstract ports (eak-ports).",
       'This means our KiCad integration (eak-kicad), desktop UI (Tauri), and LLM reasoning providers (eak-reasoning) are merely peripheral adapters. They can be refactored, replaced, or mocked in tests without altering a single line of core engineering logic.',
     ],
   },

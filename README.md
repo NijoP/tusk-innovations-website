@@ -12,7 +12,7 @@ Official corporate website and engineering knowledge portal of **TUSK INNOVATION
 - **Official Inquiries:** [tuskinnovationsglobal@gmail.com](mailto:tuskinnovationsglobal@gmail.com)
 - **Direct Phone:** [+91 62823 53042](tel:+916282353042)
 - **Flagship Product:** Electronics Agent Kit (EAK)
-- **EAK Repository:** [https://github.com/NijoP/electronics-agent-kit-proto](https://github.com/NijoP/electronics-agent-kit-proto)
+- **EAK Repository:** [https://github.com/NijoP/electronics-agent-kit-new-prototype](https://github.com/NijoP/electronics-agent-kit-new-prototype)
 
 ---
 

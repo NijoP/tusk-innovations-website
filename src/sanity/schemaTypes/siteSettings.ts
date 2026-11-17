@@ -51,7 +51,7 @@ export const siteSettings = defineType({
       name: 'eakRepo',
       title: 'EAK Repository URL',
       type: 'url',
-      initialValue: 'https://github.com/NijoP/electronics-agent-kit-proto',
+      initialValue: 'https://github.com/NijoP/electronics-agent-kit-new-prototype',
     }),
   ],
 });

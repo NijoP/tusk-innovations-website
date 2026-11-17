@@ -8,10 +8,10 @@ import './globals.css';
 export const metadata: Metadata = {
   title: {
     template: '%s | TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
-    default: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED | Official Corporate Website',
+    default: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED | AI Solutions, Electronics & Hardware Engineering',
   },
   description:
-    'Official corporate portal of TUSK INNOVATIONS GLOBAL PRIVATE LIMITED (CIN: U62011KL2026PTC106386). Engineering intelligence for electronics development and developers of Electronics Agent Kit (EAK).',
+    'Official corporate portal of TUSK INNOVATIONS GLOBAL PRIVATE LIMITED (CIN: U62011KL2026PTC106386). Engineering intelligent software, AI business automation, electronics engineering, PCB design, and end-to-end product development. Developers of Electronics Agent Kit (EAK).',
   keywords: [
     'Tusk Innovations',
     'Tusk Innovations Global',
@@ -20,13 +20,20 @@ export const metadata: Metadata = {
     'Tusk Innovation',
     'Tusk Innovations Kerala',
     'Nijo Ponnachan',
+    'AI Solutions',
+    'AI Agents',
+    'Workflow Automation',
+    'Electronics Engineering',
+    'PCB Design',
+    'PCB Layout',
+    'Embedded Systems',
+    'End-to-End Product Development',
     'Electronics Agent Kit',
     'EAK',
     'EDA',
-    'Electronics Design Automation',
-    'AI in Electronics',
-    'PCB Design Automation',
-    'Schematic Synthesis',
+    'NVIDIA Inception',
+    'Kerala Startup Mission',
+    'DPIIT Startup India',
   ],
   authors: [{ name: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED' }],
   icons: {
@@ -41,7 +48,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
     description:
-      'Official corporate website of TUSK INNOVATIONS GLOBAL PRIVATE LIMITED. Developers of Electronics Agent Kit (EAK).',
+      'Engineering intelligent software, custom AI systems, electronics engineering, and end-to-end hardware solutions from concept to delivery.',
     type: 'website',
     locale: 'en_US',
     url: 'https://www.tuskinnovations.in',
@@ -58,7 +65,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
-    description: 'Engineering Intelligence for the Next Generation of Electronics.',
+    description: 'Building Intelligent Technology. Engineering the Future.',
     images: ['/brand/tusk-logo.jpg'],
   },
   robots: {
@@ -112,7 +119,7 @@ export default function RootLayout({
     },
     sameAs: [
       'https://github.com/NijoP',
-      'https://github.com/NijoP/electronics-agent-kit-proto',
+      'https://github.com/NijoP/electronics-agent-kit-new-prototype',
       'https://github.com/NijoP/tusk-innovations-website',
     ],
     identifier: {

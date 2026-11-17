@@ -5,9 +5,11 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { BrandLogo } from './BrandLogo';
 import { Menu, X, ArrowUpRight } from 'lucide-react';
+import { COMPANY_DETAILS } from '@/lib/data';
 
 const navItems = [
   { label: 'Company', href: '/about' },
+  { label: 'Services', href: '/services' },
   { label: 'Product (EAK)', href: '/electronics-agent-kit' },
   { label: 'Technology', href: '/technology' },
   { label: 'Open Source', href: '/open-source' },
@@ -51,10 +53,10 @@ export function Navbar() {
             href="/contact"
             className="inline-flex items-center justify-center px-4 py-2 text-xs font-mono font-medium tracking-wide uppercase text-white bg-[#121316] hover:bg-neutral-800 rounded-md transition-all duration-150 shadow-xs"
           >
-            Contact TUSK
+            Start a Project
           </Link>
           <a
-            href="https://github.com/NijoP/electronics-agent-kit-proto"
+            href={COMPANY_DETAILS.eakRepo}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-mono text-[#585c65] hover:text-[#121316] border border-[#e6e5e0] hover:border-[#d0ceca] bg-white rounded-md transition-colors"
@@ -94,16 +96,16 @@ export function Navbar() {
               onClick={() => setMobileMenuOpen(false)}
               className="w-full text-center py-2.5 text-xs font-mono font-medium uppercase text-white bg-[#121316] rounded-md"
             >
-              Contact TUSK
+              Start a Project
             </Link>
             <a
-              href="https://github.com/NijoP/electronics-agent-kit-proto"
+              href={COMPANY_DETAILS.eakRepo}
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full text-center py-2.5 text-xs font-mono text-[#121316] border border-[#e6e5e0] bg-white rounded-md flex items-center justify-center gap-1"
+              className="w-full text-center py-2.5 text-xs font-mono text-[#585c65] border border-[#e6e5e0] bg-white rounded-md flex items-center justify-center gap-1"
             >
-              <span>View EAK on GitHub</span>
-              <ArrowUpRight className="w-3.5 h-3.5" />
+              <span>GitHub (EAK Prototype)</span>
+              <ArrowUpRight className="w-3.5 h-3.5 opacity-70" />
             </a>
           </div>
         </div>

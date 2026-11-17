@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { BrandLogo } from './BrandLogo';
-import { ArrowUpRight, Mail, Phone, MapPin, GitBranch } from 'lucide-react';
+import { ArrowUpRight, Mail, Phone, MapPin, GitBranch, Award, ShieldCheck } from 'lucide-react';
 import { COMPANY_DETAILS } from '@/lib/data';
 
 export function Footer() {
@@ -12,8 +12,25 @@ export function Footer() {
           <div className="md:col-span-5 space-y-4">
             <BrandLogo size={40} />
             <p className="text-sm text-[#585c65] max-w-sm leading-relaxed mt-2">
-              Developing intelligent engineering software systems to simplify complex electronics hardware development workflows.
+              Building intelligent software, custom AI systems, electronics engineering, and end-to-end hardware solutions from concept to delivery.
             </p>
+
+            {/* Recognition Highlights */}
+            <div className="pt-2 flex flex-wrap gap-2 text-[11px] font-mono text-[#585c65]">
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white border border-[#e6e5e0]">
+                <Award className="w-3 h-3 text-[#ff5500]" />
+                NVIDIA Inception
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white border border-[#e6e5e0]">
+                <ShieldCheck className="w-3 h-3 text-emerald-600" />
+                KSUM Idea Grant
+              </span>
+              <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded bg-white border border-[#e6e5e0]">
+                <ShieldCheck className="w-3 h-3 text-sky-600" />
+                DPIIT Recognised
+              </span>
+            </div>
+
             <div className="pt-2 text-xs font-mono text-[#585c65] space-y-1">
               <p><span className="text-[#8b909a]">CIN:</span> {COMPANY_DETAILS.cin}</p>
               <p><span className="text-[#8b909a]">LEGAL:</span> {COMPANY_DETAILS.legalName}</p>
@@ -27,6 +44,11 @@ export function Footer() {
               <li>
                 <Link href="/about" className="text-[#585c65] hover:text-[#121316] transition-colors">
                   About TUSK
+                </Link>
+              </li>
+              <li>
+                <Link href="/services" className="text-[#585c65] hover:text-[#121316] transition-colors font-medium">
+                  Services & Solutions
                 </Link>
               </li>
               <li>
@@ -97,10 +119,10 @@ export function Footer() {
                     href={COMPANY_DETAILS.eakRepo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-[#121316] hover:text-[#ff5500] inline-flex items-center gap-1"
+                    className="text-[#121316] hover:text-[#ff5500] inline-flex items-center gap-1 truncate"
                   >
-                    <span>NijoP/electronics-agent-kit-proto</span>
-                    <ArrowUpRight className="w-3 h-3" />
+                    <span>NijoP/electronics-agent-kit-new-prototype</span>
+                    <ArrowUpRight className="w-3 h-3 shrink-0" />
                   </a>
                 </p>
               </div>
