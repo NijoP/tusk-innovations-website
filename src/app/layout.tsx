@@ -184,8 +184,13 @@ export default function RootLayout({
   };
 
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `(function(){try{var t=localStorage.getItem('tusk-theme');var d=window.matchMedia('(prefers-color-scheme: dark)').matches;if(t==='dark'||(!t&&d)){document.documentElement.classList.add('dark');}else{document.documentElement.classList.remove('dark');}}catch(e){}})();`,
+          }}
+        />
         <Script
           id="organization-ld-json"
           type="application/ld+json"
@@ -197,7 +202,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
         />
       </head>
-      <body className={`${serifFont.variable} ${sansFont.variable} ${monoFont.variable} min-h-screen flex flex-col bg-[#faf9f5] text-[#141413] antialiased selection:bg-[#da552f]/15 selection:text-[#141413]`}>
+      <body className={`${serifFont.variable} ${sansFont.variable} ${monoFont.variable} min-h-screen flex flex-col bg-[#faf9f5] dark:bg-[#0a0c0f] text-[#141413] dark:text-[#f5f5f7] antialiased selection:bg-[#da552f]/15 dark:selection:bg-[#ff5500]/30 selection:text-[#141413] dark:selection:text-white transition-colors duration-200`}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

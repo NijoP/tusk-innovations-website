@@ -4,18 +4,18 @@ import { ACHIEVEMENTS_MILESTONES } from '@/lib/data';
 
 export function AchievementsMilestonesSection() {
   return (
-    <section id="achievements" className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e4dc] bg-[#faf9f5]">
+    <section id="achievements" className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e4dc] dark:border-neutral-800 bg-[#faf9f5] dark:bg-[#0a0c0f] transition-colors duration-200">
       <div className="mx-auto max-w-5xl">
         {/* Section Header */}
         <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e6e4dc] text-[#da552f] text-xs font-mono font-medium">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#da552f] dark:text-[#ff5500] text-xs font-mono font-medium">
             <Award className="w-3.5 h-3.5" />
             <span>Select Programs & Grants</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
             Achievements & Milestones
           </h2>
-          <p className="text-sm sm:text-base text-[#5a5a55] leading-relaxed font-sans">
+          <p className="text-sm sm:text-base text-[#5a5a55] dark:text-neutral-400 leading-relaxed font-sans">
             Recognized by premier acceleration programs and state innovation initiatives to advance artificial intelligence and physical hardware engineering.
           </p>
         </div>
@@ -25,65 +25,65 @@ export function AchievementsMilestonesSection() {
           {ACHIEVEMENTS_MILESTONES.map((item) => (
             <div
               key={item.id}
-              className="group bg-white border border-[#e6e4dc] hover:border-[#d4d1c6] rounded-2xl p-8 transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col justify-between"
+              className="group bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 hover:border-[#d4d1c6] dark:hover:border-neutral-700 rounded-2xl p-8 transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col justify-between"
             >
               <div className="space-y-6">
                 {/* Header row: Logo & Category Badge */}
-                <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#f2f0e8]">
-                  <div className="h-10 flex items-center">
+                <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#f2f0e8] dark:border-neutral-800">
+                  <div className="h-10 flex items-center bg-white/90 dark:bg-white px-2 py-1 rounded-md">
                     {item.id === 'nvidia-inception' ? (
-                      <div className="flex items-center gap-3">
-                        <div className="relative h-8 w-32">
+                      <div className="flex items-center gap-2">
+                        <div className="relative h-7 w-28">
                           <Image
                             src="/brand/nvidia-full.svg"
                             alt="NVIDIA Official Logo"
                             fill
                             className="object-contain object-left"
-                            sizes="130px"
+                            sizes="120px"
                           />
                         </div>
-                        <span className="text-[10px] font-mono font-bold text-[#888780]">/ INCEPTION</span>
+                        <span className="text-[10px] font-mono font-bold text-neutral-600">/ INCEPTION</span>
                       </div>
                     ) : (
-                      <div className="relative h-9 w-40">
+                      <div className="relative h-7 w-36">
                         <Image
                           src="/brand/ksum-logo.svg"
                           alt="Kerala Startup Mission Official Logo"
                           fill
                           className="object-contain object-left"
-                          sizes="160px"
+                          sizes="150px"
                         />
                       </div>
                     )}
                   </div>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-[#faf9f5] border border-[#e6e4dc] text-[#5a5a55]">
-                    <CheckCircle2 className="w-3 h-3 text-[#da552f]" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-[#faf9f5] dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#5a5a55] dark:text-neutral-300">
+                    <CheckCircle2 className="w-3 h-3 text-[#da552f] dark:text-[#ff5500]" />
                     {item.badge}
                   </span>
                 </div>
 
                 {/* Content */}
                 <div className="space-y-2">
-                  <h3 className="text-xl font-serif font-bold text-[#141413] group-hover:text-[#da552f] transition-colors leading-snug">
+                  <h3 className="text-xl font-serif font-bold text-[#141413] dark:text-white group-hover:text-[#da552f] dark:group-hover:text-[#ff5500] transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <p className="text-xs font-mono text-[#888780]">
+                  <p className="text-xs font-mono text-[#888780] dark:text-neutral-500">
                     Organization: {item.organization}
                   </p>
-                  <p className="pt-2 text-sm text-[#5a5a55] leading-relaxed">
+                  <p className="pt-2 text-sm text-[#5a5a55] dark:text-neutral-300 leading-relaxed">
                     {item.description}
                   </p>
                 </div>
               </div>
 
               {/* Footer link */}
-              <div className="pt-6 mt-6 border-t border-[#f2f0e8] flex items-center justify-between">
-                <span className="text-xs font-mono text-[#888780]">{item.category}</span>
+              <div className="pt-6 mt-6 border-t border-[#f2f0e8] dark:border-neutral-800 flex items-center justify-between">
+                <span className="text-xs font-mono text-[#888780] dark:text-neutral-500">{item.category}</span>
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#141413] group-hover:text-[#da552f] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#141413] dark:text-neutral-200 group-hover:text-[#da552f] dark:group-hover:text-[#ff5500] transition-colors"
                 >
                   <span>Verify Program</span>
                   <ArrowUpRight className="w-3.5 h-3.5" />

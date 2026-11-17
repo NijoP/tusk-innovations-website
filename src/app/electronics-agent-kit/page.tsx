@@ -128,39 +128,39 @@ export default function EAKProductPage() {
   const getBadgeStyle = (status: string) => {
     switch (status) {
       case 'Implemented':
-        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+        return 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-700 dark:text-emerald-400 border-emerald-200 dark:border-emerald-800/60';
       case 'Implemented in Beta':
-        return 'bg-sky-50 text-sky-700 border-sky-200';
+        return 'bg-sky-50 dark:bg-sky-950/40 text-sky-700 dark:text-sky-400 border-sky-200 dark:border-sky-800/60';
       case 'Partially Implemented':
-        return 'bg-amber-50 text-amber-700 border-amber-200';
+        return 'bg-amber-50 dark:bg-amber-950/40 text-amber-700 dark:text-amber-400 border-amber-200 dark:border-amber-800/60';
       default:
-        return 'bg-neutral-100 text-neutral-600 border-neutral-200';
+        return 'bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 border-neutral-200 dark:border-neutral-700';
     }
   };
 
   return (
-    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
+    <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
       {/* =========================================================================
           HERO & ACTUAL WORKSTATION SCREENSHOT
           ========================================================================= */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-6 max-w-4xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#da552f]">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500]">
             <Sparkles className="w-3.5 h-3.5" />
             <span>Flagship Technology Prototype</span>
-            <span className="text-[#888780]">•</span>
-            <span className="text-[#5a5a55]">Open Source on GitHub</span>
+            <span className="text-[#888780] dark:text-neutral-500">•</span>
+            <span className="text-[#5a5a55] dark:text-neutral-400">Open Source on GitHub</span>
           </div>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight text-[#141413] leading-[1.06]">
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight text-[#141413] dark:text-white leading-[1.06]">
             Electronics Engineering, Reimagined.
           </h1>
 
-          <p className="text-xl sm:text-2xl font-serif text-[#da552f] tracking-tight">
+          <p className="text-xl sm:text-2xl font-serif text-[#da552f] dark:text-[#ff5500] tracking-tight">
             Intent In. Manufactured Board Out.
           </p>
 
-          <p className="text-base sm:text-lg text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+          <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 font-sans leading-relaxed max-w-3xl">
             Electronics Agent Kit (EAK) is an AI-native engineering workstation bringing intelligent software agents, interactive schematic editing, and deterministic PCB layout into one verifiable environment.
           </p>
 
@@ -169,7 +169,7 @@ export default function EAKProductPage() {
               href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm hover:shadow-md"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm hover:shadow-md"
             >
               <GithubIcon className="w-4 h-4" />
               <span>Explore GitHub Repository</span>
@@ -177,7 +177,7 @@ export default function EAKProductPage() {
             </a>
             <a
               href="#status"
-              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#141413] bg-white border border-[#e6e4dc] hover:bg-[#f5f4ee] rounded-full transition-all"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#141413] dark:text-white bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 hover:bg-[#f5f4ee] dark:hover:bg-neutral-800 rounded-full transition-all"
             >
               <span>View Capability Matrix</span>
               <ArrowRight className="w-3.5 h-3.5" />
@@ -185,8 +185,8 @@ export default function EAKProductPage() {
           </div>
 
           {/* Development Prototype Warning */}
-          <div className="mt-6 p-4 rounded-xl bg-amber-50/70 border border-amber-200/60 text-xs font-mono text-amber-900 flex items-start gap-3">
-            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+          <div className="mt-6 p-4 rounded-xl bg-amber-50/70 dark:bg-amber-950/30 border border-amber-200/60 dark:border-amber-800/60 text-xs font-mono text-amber-900 dark:text-amber-200 flex items-start gap-3">
+            <AlertTriangle className="w-4 h-4 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
             <div>
               <strong>Development Status Disclosure: </strong>
               EAK is actively developed as a working prototype. Core schematic editing, live agent synchronization, and DRC validation are functional; advanced automated routing and simulation are in active development.
@@ -195,14 +195,14 @@ export default function EAKProductPage() {
         </div>
 
         {/* Primary Product Hero Screenshot */}
-        <div className="mt-12 rounded-3xl border border-[#e6e4dc] bg-white p-3 sm:p-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
-          <div className="flex items-center justify-between pb-3 px-2 border-b border-[#f2f0e8] text-xs font-mono text-[#888780]">
+        <div className="mt-12 rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-[#121418] p-3 sm:p-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.5)] overflow-hidden">
+          <div className="flex items-center justify-between pb-3 px-2 border-b border-[#f2f0e8] dark:border-neutral-800 text-xs font-mono text-[#888780] dark:text-neutral-400">
             <div className="flex items-center gap-2">
-              <span className="w-2.5 h-2.5 rounded-full bg-[#da552f]" />
-              <span className="text-[#141413] font-semibold">EAK Desktop Shell</span>
+              <span className="w-2.5 h-2.5 rounded-full bg-[#da552f] dark:bg-[#ff5500]" />
+              <span className="text-[#141413] dark:text-white font-semibold">EAK Desktop Shell</span>
               <span>/ live_workspace.rs</span>
             </div>
-            <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[11px] font-semibold">
+            <span className="text-emerald-700 dark:text-emerald-400 bg-emerald-50 dark:bg-emerald-950/40 px-2 py-0.5 rounded text-[11px] font-semibold border border-emerald-200 dark:border-emerald-800/60">
               Live Bidirectional Sync Active
             </span>
           </div>
@@ -221,46 +221,46 @@ export default function EAKProductPage() {
       {/* =========================================================================
           WHAT EAK DOES (THE CORE ARCHITECTURE)
           ========================================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 max-w-2xl mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             The Problem &amp; Innovation
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413] dark:text-white">
             Bridging AI Agents and Physical Reality.
           </h2>
-          <p className="text-base text-[#5a5a55] leading-relaxed">
+          <p className="text-base text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
             Legacy electronic design software relies on disjointed legacy interfaces, manual calculators, and disconnected verification tools. EAK re-architects this stack from the ground up.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
-            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+          <div className="p-8 rounded-2xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] dark:bg-neutral-800 flex items-center justify-center text-[#da552f] dark:text-[#ff5500]">
               <Terminal className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#141413]">Unified Design Model</h3>
-            <p className="text-xs text-[#5a5a55] leading-relaxed">
+            <h3 className="text-xl font-serif font-bold text-[#141413] dark:text-white">Unified Design Model</h3>
+            <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
               Terminal agents and graphical editors do not use separate files. They execute typed runtime commands against one single source of truth.
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
-            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+          <div className="p-8 rounded-2xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] dark:bg-neutral-800 flex items-center justify-center text-[#da552f] dark:text-[#ff5500]">
               <ShieldCheck className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#141413]">Fail-Closed Physics</h3>
-            <p className="text-xs text-[#5a5a55] leading-relaxed">
+            <h3 className="text-xl font-serif font-bold text-[#141413] dark:text-white">Fail-Closed Physics</h3>
+            <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
               Neural models propose changes, but deterministic mathematical checkers validate them. Clearances, connectivity, and rules are never hallucinated.
             </p>
           </div>
 
-          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
-            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+          <div className="p-8 rounded-2xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] dark:bg-neutral-800 flex items-center justify-center text-[#da552f] dark:text-[#ff5500]">
               <Layers className="w-6 h-6" />
             </div>
-            <h3 className="text-xl font-serif font-bold text-[#141413]">Auditable Artifacts</h3>
-            <p className="text-xs text-[#5a5a55] leading-relaxed">
+            <h3 className="text-xl font-serif font-bold text-[#141413] dark:text-white">Auditable Artifacts</h3>
+            <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
               Export standard RS-274X Gerbers, NC drill files, centroid placement tables, and consolidated BOMs ready for any standard fabrication house.
             </p>
           </div>
@@ -270,21 +270,21 @@ export default function EAKProductPage() {
       {/* =========================================================================
           AUTHENTIC INTERFACE CAPABILITIES GALLERY
           ========================================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-mono font-medium text-[#da552f] uppercase tracking-wider">
+          <span className="text-xs font-mono font-medium text-[#da552f] dark:text-[#ff5500] uppercase tracking-wider">
             Verified Functionality
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413] dark:text-white">
             Workstation Capabilities
           </h2>
-          <p className="text-base text-[#5a5a55]">
+          <p className="text-base text-[#5a5a55] dark:text-neutral-400">
             Authentic screenshots from the running EAK application interface.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <div className="bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
             <div className="relative aspect-16/10 bg-[#0a0c0f]">
               <Image
                 src="/assets/electronics/pcb-macro-4layer.jpg"
@@ -294,15 +294,15 @@ export default function EAKProductPage() {
               />
             </div>
             <div className="p-6 space-y-2">
-              <span className="text-xs font-mono font-semibold uppercase text-[#da552f]">PCB Engine</span>
-              <h3 className="text-lg font-serif font-bold text-[#141413]">Multi-Layer PCB Layout &amp; Routing</h3>
-              <p className="text-xs text-[#5a5a55] leading-relaxed">
+              <span className="text-xs font-mono font-semibold uppercase text-[#da552f] dark:text-[#ff5500]">PCB Engine</span>
+              <h3 className="text-lg font-serif font-bold text-[#141413] dark:text-white">Multi-Layer PCB Layout &amp; Routing</h3>
+              <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
                 Full layer stackup manager, trace routing, via placement, and dynamic zone flood refills with real-time connectivity validation.
               </p>
             </div>
           </div>
 
-          <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <div className="bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
             <div className="relative aspect-16/10 bg-[#0a0c0f]">
               <Image
                 src="/assets/eak/eak-dfm-fabrication-view.jpg"
@@ -312,9 +312,9 @@ export default function EAKProductPage() {
               />
             </div>
             <div className="p-6 space-y-2">
-              <span className="text-xs font-mono font-semibold uppercase text-[#da552f]">Deterministic Verification</span>
-              <h3 className="text-lg font-serif font-bold text-[#141413]">Automated DFM &amp; Electrical Rules Check</h3>
-              <p className="text-xs text-[#5a5a55] leading-relaxed">
+              <span className="text-xs font-mono font-semibold uppercase text-[#da552f] dark:text-[#ff5500]">Deterministic Verification</span>
+              <h3 className="text-lg font-serif font-bold text-[#141413] dark:text-white">Automated DFM &amp; Electrical Rules Check</h3>
+              <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
                 Clearance DRC, annular ring checks, unconnected net audits, and fail-closed validation before committing board changes.
               </p>
             </div>
@@ -325,30 +325,30 @@ export default function EAKProductPage() {
       {/* =========================================================================
           CAPABILITY STATUS MATRIX (SECTION 5 SPECIFICATION)
           ========================================================================= */}
-      <section id="status" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+      <section id="status" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 max-w-2xl mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             Engineering Transparency
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413] dark:text-white">
             Verified Capability Matrix
           </h2>
-          <p className="text-base text-[#5a5a55]">
+          <p className="text-base text-[#5a5a55] dark:text-neutral-400">
             Every feature status is audited against the active codebase. We distinguish between fully implemented capabilities, beta preview modules, and planned roadmap items.
           </p>
         </div>
 
-        <div className="bg-white rounded-2xl border border-[#e6e4dc] divide-y divide-[#f2f0e8] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+        <div className="bg-white dark:bg-[#121418] rounded-2xl border border-[#e6e4dc] dark:border-neutral-800 divide-y divide-[#f2f0e8] dark:divide-neutral-800 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
           {CAPABILITY_STATUSES.map((cap, idx) => (
             <div key={idx} className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
               <div className="space-y-1 max-w-2xl">
                 <div className="flex items-center gap-3">
-                  <h3 className="text-base font-serif font-bold text-[#141413]">{cap.name}</h3>
-                  <span className="text-[10px] font-mono text-[#888780] bg-[#faf9f5] px-2 py-0.5 rounded border border-[#e6e4dc]">
+                  <h3 className="text-base font-serif font-bold text-[#141413] dark:text-white">{cap.name}</h3>
+                  <span className="text-[10px] font-mono text-[#888780] dark:text-neutral-400 bg-[#faf9f5] dark:bg-neutral-800 px-2 py-0.5 rounded border border-[#e6e4dc] dark:border-neutral-700">
                     {cap.category}
                   </span>
                 </div>
-                <p className="text-xs text-[#5a5a55] leading-relaxed">{cap.description}</p>
+                <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">{cap.description}</p>
               </div>
               <span
                 className={`self-start sm:self-center shrink-0 px-3 py-1 rounded-full text-xs font-mono font-semibold border ${getBadgeStyle(
@@ -365,12 +365,12 @@ export default function EAKProductPage() {
       {/* =========================================================================
           DEVELOPMENT ROADMAP
           ========================================================================= */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
-          <span className="text-xs font-mono font-medium text-[#da552f] uppercase tracking-wider">
+          <span className="text-xs font-mono font-medium text-[#da552f] dark:text-[#ff5500] uppercase tracking-wider">
             Milestones
           </span>
-          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413] dark:text-white">
             Development Roadmap
           </h2>
         </div>
@@ -379,15 +379,15 @@ export default function EAKProductPage() {
           {ROADMAP_MILESTONES.map((m, idx) => (
             <div
               key={idx}
-              className="p-6 rounded-2xl bg-white border border-[#e6e4dc] shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3 flex flex-col justify-between"
+              className="p-6 rounded-2xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3 flex flex-col justify-between"
             >
               <div className="space-y-2">
-                <span className="text-xs font-mono font-bold text-[#da552f]">{m.stage}</span>
-                <h3 className="text-base font-serif font-bold text-[#141413]">{m.title}</h3>
-                <p className="text-xs text-[#5a5a55] leading-relaxed">{m.desc}</p>
+                <span className="text-xs font-mono font-bold text-[#da552f] dark:text-[#ff5500]">{m.stage}</span>
+                <h3 className="text-base font-serif font-bold text-[#141413] dark:text-white">{m.title}</h3>
+                <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">{m.desc}</p>
               </div>
-              <div className="pt-2 text-[11px] font-mono font-semibold text-[#888780]">
-                Status: <span className="text-[#141413]">{m.status}</span>
+              <div className="pt-2 text-[11px] font-mono font-semibold text-[#888780] dark:text-neutral-400">
+                Status: <span className="text-[#141413] dark:text-white">{m.status}</span>
               </div>
             </div>
           ))}
@@ -398,10 +398,10 @@ export default function EAKProductPage() {
           OPEN SOURCE & GITHUB CTA
           ========================================================================= */}
       <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
-        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
           Contribute to Electronics Agent Kit
         </h2>
-        <p className="text-base sm:text-lg text-[#5a5a55] max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 max-w-xl mx-auto">
           EAK is an open initiative. Explore the repository, test the prototype, inspect the Rust and TypeScript implementation, and file feedback on GitHub.
         </p>
         <div className="pt-2 flex flex-wrap justify-center gap-4">
@@ -409,7 +409,7 @@ export default function EAKProductPage() {
             href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm"
           >
             <GithubIcon className="w-4 h-4" />
             <span>View on GitHub</span>
@@ -417,7 +417,7 @@ export default function EAKProductPage() {
           </a>
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium text-[#141413] bg-white border border-[#e6e4dc] hover:bg-[#f5f4ee] rounded-full transition-all"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium text-[#141413] dark:text-white bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 hover:bg-[#f5f4ee] dark:hover:bg-neutral-800 rounded-full transition-all"
           >
             <span>Discuss Custom Hardware Deployment</span>
           </Link>

@@ -61,13 +61,15 @@ export function HeroEngineeringBackground() {
     const drawStaticFrame = () => {
       ctx.clearRect(0, 0, width, height);
 
-      // Warm paper base
-      ctx.fillStyle = '#faf9f5';
+      const isDark = document.documentElement.classList.contains('dark');
+
+      // Base background
+      ctx.fillStyle = isDark ? '#0a0c0f' : '#faf9f5';
       ctx.fillRect(0, 0, width, height);
 
       // Subtle engineering grid
       const gridSize = 40;
-      ctx.strokeStyle = 'rgba(20, 20, 19, 0.035)';
+      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(20, 20, 19, 0.035)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let x = 0; x <= width; x += gridSize) {
@@ -94,7 +96,9 @@ export function HeroEngineeringBackground() {
 
       ctx.clearRect(0, 0, width, height);
 
-      // Warm paper background with subtle radial gradient
+      const isDark = document.documentElement.classList.contains('dark');
+
+      // Adaptive background gradient
       const gradient = ctx.createRadialGradient(
         width * 0.5 + mouseX * 80,
         height * 0.4 + mouseY * 80,
@@ -103,15 +107,21 @@ export function HeroEngineeringBackground() {
         height * 0.5,
         width * 0.8
       );
-      gradient.addColorStop(0, '#ffffff');
-      gradient.addColorStop(0.5, '#faf9f5');
-      gradient.addColorStop(1, '#f5f3ec');
+      if (isDark) {
+        gradient.addColorStop(0, '#13161c');
+        gradient.addColorStop(0.5, '#0d0f14');
+        gradient.addColorStop(1, '#0a0c0f');
+      } else {
+        gradient.addColorStop(0, '#ffffff');
+        gradient.addColorStop(0.5, '#faf9f5');
+        gradient.addColorStop(1, '#f5f3ec');
+      }
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, width, height);
 
       // Engineering grid lines with faint ink
       const gridSize = 44;
-      ctx.strokeStyle = 'rgba(20, 20, 19, 0.03)';
+      ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.04)' : 'rgba(20, 20, 19, 0.03)';
       ctx.lineWidth = 1;
       ctx.beginPath();
       for (let x = 0; x <= width; x += gridSize) {
@@ -147,10 +157,10 @@ export function HeroEngineeringBackground() {
         }
 
         if (i === 0) {
-          ctx.strokeStyle = 'rgba(218, 85, 47, 0.25)'; // Terracotta accent curve
+          ctx.strokeStyle = isDark ? 'rgba(255, 85, 0, 0.35)' : 'rgba(218, 85, 47, 0.25)';
           ctx.lineWidth = 1.5;
         } else {
-          ctx.strokeStyle = 'rgba(20, 20, 19, 0.06)';
+          ctx.strokeStyle = isDark ? 'rgba(255, 255, 255, 0.07)' : 'rgba(20, 20, 19, 0.06)';
           ctx.lineWidth = 1;
         }
         ctx.stroke();
@@ -169,7 +179,9 @@ export function HeroEngineeringBackground() {
           if (influence > 0.05) {
             ctx.beginPath();
             ctx.arc(nx, ny, 1.5 + influence * 2.5, 0, Math.PI * 2);
-            ctx.fillStyle = `rgba(218, 85, 47, ${0.15 + influence * 0.5})`;
+            ctx.fillStyle = isDark
+              ? `rgba(255, 85, 0, ${0.25 + influence * 0.6})`
+              : `rgba(218, 85, 47, ${0.15 + influence * 0.5})`;
             ctx.fill();
           }
         }

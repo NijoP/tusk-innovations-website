@@ -30,10 +30,10 @@ export function BrandLogo({
       </div>
       {showText && (
         <div className="flex flex-col text-left leading-none">
-          <span className={`text-[15px] font-bold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[#121316]'}`}>
+          <span className={`text-[15px] font-bold tracking-tight ${theme === 'dark' ? 'text-white' : 'text-[#121316] dark:text-white'}`}>
             TUSK <span className="font-medium text-[#ff5500]">INNOVATIONS</span>
           </span>
-          <span className={`text-[9px] font-mono uppercase tracking-widest mt-0.5 ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500'}`}>
+          <span className={`text-[9px] font-mono uppercase tracking-widest mt-0.5 ${theme === 'dark' ? 'text-neutral-400' : 'text-neutral-500 dark:text-neutral-400'}`}>
             Global Private Limited
           </span>
         </div>

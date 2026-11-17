@@ -21,17 +21,17 @@ const STACK = [
 
 export default function OpenSourcePage() {
   return (
-    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
+    <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
       {/* Header */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#da552f] mb-6">
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500] mb-6">
           <GithubIcon className="w-3.5 h-3.5" />
           <span>Open Source Initiative</span>
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] leading-[1.1] max-w-4xl">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] dark:text-white leading-[1.1] max-w-4xl">
           Built in the Open. Verifiable by Design.
         </h1>
-        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] dark:text-neutral-400 font-sans leading-relaxed max-w-3xl">
           We believe engineering tools must be transparent and verifiable. Electronics Agent Kit is an open-source prototype licensed under MIT / Apache-2.0.
         </p>
 
@@ -40,7 +40,7 @@ export default function OpenSourcePage() {
             href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm"
           >
             <GithubIcon className="w-4 h-4" />
             <span>GitHub Repository</span>
@@ -50,7 +50,7 @@ export default function OpenSourcePage() {
             href="https://github.com/NijoP/electronics-agent-kit-new-prototype/issues"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#141413] bg-white border border-[#e6e4dc] hover:bg-[#f5f4ee] rounded-full transition-all"
+            className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-medium text-[#141413] dark:text-white bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 hover:bg-[#f5f4ee] dark:hover:bg-neutral-800 rounded-full transition-all"
           >
             <span>Report an Issue</span>
           </a>
@@ -58,42 +58,42 @@ export default function OpenSourcePage() {
       </section>
 
       {/* Technology Stack Breakdown */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 mb-10">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             Engineering Foundation
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
             Modern Typed Technology Stack
           </h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {STACK.map((item, idx) => (
-            <div key={idx} className="p-6 rounded-2xl bg-white border border-[#e6e4dc] space-y-2">
-              <span className="text-xs font-mono font-bold text-[#da552f]">{item.layer}</span>
-              <h3 className="text-lg font-serif font-bold text-[#141413]">{item.tech}</h3>
-              <p className="text-xs text-[#5a5a55] leading-relaxed">{item.role}</p>
+            <div key={idx} className="p-6 rounded-2xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-2">
+              <span className="text-xs font-mono font-bold text-[#da552f] dark:text-[#ff5500]">{item.layer}</span>
+              <h3 className="text-lg font-serif font-bold text-[#141413] dark:text-white">{item.tech}</h3>
+              <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">{item.role}</p>
             </div>
           ))}
         </div>
       </section>
 
       {/* Verified Installation Instructions */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 mb-8">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             Local Setup
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
             Installation &amp; Developer Quickstart
           </h2>
-          <p className="text-sm sm:text-base text-[#5a5a55]">
+          <p className="text-sm sm:text-base text-[#5a5a55] dark:text-neutral-400">
             Prerequisites: Rust (stable toolchain), Node.js (v20+), and pnpm / npm.
           </p>
         </div>
 
-        <div className="bg-[#141413] text-[#f5f4ee] rounded-2xl p-6 sm:p-8 font-mono text-xs overflow-x-auto shadow-md space-y-4">
+        <div className="bg-[#141413] text-[#f5f4ee] rounded-2xl p-6 sm:p-8 font-mono text-xs overflow-x-auto shadow-md border border-neutral-800 space-y-4">
           <div className="text-[#888780] pb-3 border-b border-[#282725] flex justify-between">
             <span># Clone and run the EAK desktop shell</span>
             <span>bash / powershell</span>
@@ -116,31 +116,31 @@ cargo test --workspace`}
       </section>
 
       {/* Contribution Guidelines */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 mb-8">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             Community
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
             How to Contribute
           </h2>
         </div>
 
-        <div className="space-y-4 text-sm text-[#5a5a55] leading-relaxed">
+        <div className="space-y-4 text-sm text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
           <p>
             We welcome contributions to EAK across physical circuit solvers, auto-routing algorithms, KiCad format parsers, and schematic UI components.
           </p>
-          <ul className="space-y-2 text-xs font-mono text-[#141413]">
+          <ul className="space-y-2 text-xs font-mono text-[#141413] dark:text-neutral-200">
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Fork the repo and create a feature branch (<code className="text-[#da552f]">feat/my-feature</code>).</span>
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Fork the repo and create a feature branch (<code className="text-[#da552f] dark:text-[#ff5500]">feat/my-feature</code>).</span>
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-              <span>Ensure all Cargo and TypeScript unit tests pass (<code className="text-[#da552f]">cargo test</code>).</span>
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              <span>Ensure all Cargo and TypeScript unit tests pass (<code className="text-[#da552f] dark:text-[#ff5500]">cargo test</code>).</span>
             </li>
             <li className="flex items-center gap-2">
-              <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
+              <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
               <span>Submit a concise Pull Request with test coverage and reproduction steps.</span>
             </li>
           </ul>
@@ -149,10 +149,10 @@ cargo test --workspace`}
 
       {/* Call to Action */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
-        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
           Join the Hardware Engineering Revolution.
         </h2>
-        <p className="text-base sm:text-lg text-[#5a5a55] max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 max-w-xl mx-auto">
           Star the project on GitHub, follow development milestones, or partner with TUSK on custom commercial deployments.
         </p>
         <div className="pt-2 flex justify-center gap-4">
@@ -160,7 +160,7 @@ cargo test --workspace`}
             href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm"
           >
             <GithubIcon className="w-4 h-4" />
             <span>Star on GitHub</span>

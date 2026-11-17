@@ -82,31 +82,31 @@ const STAGES = [
 
 export default function ProductDevelopmentPage() {
   return (
-    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
+    <div className="bg-[#faf9f5] dark:bg-[#0a0c0f] min-h-screen text-[#141413] dark:text-[#f5f5f7] transition-colors duration-200">
       {/* Hero */}
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#5a5a55] mb-6">
-          <span className="w-1.5 h-1.5 rounded-full bg-[#da552f]" />
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-neutral-900 text-[#5a5a55] dark:text-neutral-300 mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#da552f] dark:bg-[#ff5500]" />
           Flagship Engineering Service
         </div>
-        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] leading-[1.1] max-w-4xl">
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] dark:text-white leading-[1.1] max-w-4xl">
           From Initial Idea to Final Delivery.
         </h1>
-        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] dark:text-neutral-400 font-sans leading-relaxed max-w-3xl">
           We take complete ownership of your product engineering journey. Whether you arrive with a concept sketch, a technical brief, or an early prototype, we deliver a working, manufactured, production-grade reality.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-4">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm"
           >
             <span>Start Your Product Journey</span>
             <ArrowRight className="w-4 h-4" />
           </Link>
           <Link
             href="/services"
-            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#141413] bg-white border border-[#e6e4dc] hover:bg-[#f5f4ee] rounded-full transition-all"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-medium text-[#141413] dark:text-white bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 hover:bg-[#f5f4ee] dark:hover:bg-neutral-800 rounded-full transition-all"
           >
             <span>All Services</span>
           </Link>
@@ -114,46 +114,46 @@ export default function ProductDevelopmentPage() {
       </section>
 
       {/* The Unified Delivery Model */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 mb-12">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             The Unified Advantage
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
             No finger-pointing between software and hardware.
           </h2>
-          <p className="text-base sm:text-lg text-[#5a5a55] max-w-3xl leading-relaxed">
+          <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 max-w-3xl leading-relaxed">
             Traditional product development fragments responsibility across industrial designers, software agencies, and PCB contractors. When issues arise, delays multiply. TUSK unifies the entire engineering stack under one multidisciplinary team with a single point of accountability.
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 rounded-xl bg-white border border-[#e6e4dc] space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+          <div className="p-6 rounded-xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-3">
+            <div className="w-10 h-10 rounded-lg bg-[#f5f4ee] dark:bg-neutral-800 flex items-center justify-center text-[#da552f] dark:text-[#ff5500]">
               <Code2 className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-serif font-bold text-[#141413]">Software & AI Stack</h3>
-            <p className="text-xs text-[#5a5a55] leading-relaxed">
+            <h3 className="text-base font-serif font-bold text-[#141413] dark:text-white">Software & AI Stack</h3>
+            <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
               Cloud backends, AI algorithms, cross-platform UI shells, and REST/WebSocket control interfaces engineered concurrently with hardware.
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-white border border-[#e6e4dc] space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+          <div className="p-6 rounded-xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-3">
+            <div className="w-10 h-10 rounded-lg bg-[#f5f4ee] dark:bg-neutral-800 flex items-center justify-center text-[#da552f] dark:text-[#ff5500]">
               <Cpu className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-serif font-bold text-[#141413]">Embedded Hardware</h3>
-            <p className="text-xs text-[#5a5a55] leading-relaxed">
+            <h3 className="text-base font-serif font-bold text-[#141413] dark:text-white">Embedded Hardware</h3>
+            <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
               Custom schematics, multi-layer high-density PCB layouts, power delivery networks, and low-latency bare-metal/RTOS firmware.
             </p>
           </div>
 
-          <div className="p-6 rounded-xl bg-white border border-[#e6e4dc] space-y-3">
-            <div className="w-10 h-10 rounded-lg bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+          <div className="p-6 rounded-xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 space-y-3">
+            <div className="w-10 h-10 rounded-lg bg-[#f5f4ee] dark:bg-neutral-800 flex items-center justify-center text-[#da552f] dark:text-[#ff5500]">
               <Rocket className="w-5 h-5" />
             </div>
-            <h3 className="text-base font-serif font-bold text-[#141413]">Production Readiness</h3>
-            <p className="text-xs text-[#5a5a55] leading-relaxed">
+            <h3 className="text-base font-serif font-bold text-[#141413] dark:text-white">Production Readiness</h3>
+            <p className="text-xs text-[#5a5a55] dark:text-neutral-400 leading-relaxed">
               DFM verification, vendor-neutral BOM sourcing assistance, fabrication auditing, and smooth client operational handover.
             </p>
           </div>
@@ -161,15 +161,15 @@ export default function ProductDevelopmentPage() {
       </section>
 
       {/* Six-Stage Process Visualization */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc] dark:border-neutral-800">
         <div className="space-y-4 mb-16">
-          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] dark:text-[#ff5500]">
             Structured Methodology
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
             Our 6-Stage Engineering Process
           </h2>
-          <p className="text-sm sm:text-base text-[#5a5a55] max-w-2xl">
+          <p className="text-sm sm:text-base text-[#5a5a55] dark:text-neutral-400 max-w-2xl">
             A disciplined, milestone-gated engineering methodology designed to de-risk projects early and deliver verified outcomes on time.
           </p>
         </div>
@@ -178,33 +178,33 @@ export default function ProductDevelopmentPage() {
           {STAGES.map((s, idx) => (
             <div
               key={idx}
-              className="p-6 sm:p-8 rounded-2xl bg-white border border-[#e6e4dc] shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4"
+              className="p-6 sm:p-8 rounded-2xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-4"
             >
-              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#f2f0e8] pb-4">
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#f2f0e8] dark:border-neutral-800 pb-4">
                 <div className="flex items-center gap-3">
-                  <span className="w-8 h-8 rounded-full bg-[#f5f4ee] text-[#da552f] text-xs font-mono font-bold flex items-center justify-center border border-[#e6e4dc]">
+                  <span className="w-8 h-8 rounded-full bg-[#f5f4ee] dark:bg-neutral-800 text-[#da552f] dark:text-[#ff5500] text-xs font-mono font-bold flex items-center justify-center border border-[#e6e4dc] dark:border-neutral-700">
                     {s.stage}
                   </span>
-                  <h3 className="text-xl font-serif font-bold text-[#141413]">{s.title}</h3>
+                  <h3 className="text-xl font-serif font-bold text-[#141413] dark:text-white">{s.title}</h3>
                 </div>
-                <span className="text-xs font-mono uppercase tracking-wider text-[#888780]">
+                <span className="text-xs font-mono uppercase tracking-wider text-[#888780] dark:text-neutral-500">
                   Gated Milestone
                 </span>
               </div>
 
-              <p className="text-sm text-[#5a5a55] leading-relaxed">
-                <strong className="text-[#141413]">Objective: </strong>
+              <p className="text-sm text-[#5a5a55] dark:text-neutral-300 leading-relaxed">
+                <strong className="text-[#141413] dark:text-white">Objective: </strong>
                 {s.objective}
               </p>
 
               <div>
-                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#da552f]">
+                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#da552f] dark:text-[#ff5500]">
                   Key Deliverables
                 </span>
-                <ul className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#5a5a55]">
+                <ul className="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#5a5a55] dark:text-neutral-300">
                   {s.deliverables.map((item, dIdx) => (
                     <li key={dIdx} className="flex items-start gap-2">
-                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </li>
                   ))}
@@ -217,16 +217,16 @@ export default function ProductDevelopmentPage() {
 
       {/* Call to Action */}
       <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
-        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413] dark:text-white">
           Let&apos;s Build Your Product Together.
         </h2>
-        <p className="text-base sm:text-lg text-[#5a5a55] max-w-xl mx-auto">
+        <p className="text-base sm:text-lg text-[#5a5a55] dark:text-neutral-400 max-w-xl mx-auto">
           Share your idea, timeline, and specifications. We will review your requirements under NDA and prepare a detailed engineering proposal.
         </p>
         <div className="pt-2">
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm"
           >
             <span>Initiate Project Consultation</span>
             <ArrowRight className="w-4 h-4" />

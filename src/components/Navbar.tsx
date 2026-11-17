@@ -6,6 +6,7 @@ import { usePathname } from 'next/navigation';
 import { BrandLogo } from './BrandLogo';
 import { ChevronDown, ArrowUpRight, Menu, X, ArrowRight } from 'lucide-react';
 import { GithubIcon } from '@/components/SocialIcons';
+import { ThemeToggle } from '@/components/ThemeToggle';
 import { COMPANY_DETAILS } from '@/lib/data';
 
 interface NavItemChild {
@@ -192,8 +193,8 @@ export function Navbar() {
       ref={navRef}
       className={`sticky top-0 z-50 w-full transition-all duration-300 ease-in-out border-b ${
         scrolled
-          ? 'bg-[#faf9f5]/92 backdrop-blur-md border-[#e6e4dc] shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
-          : 'bg-[#faf9f5]/80 backdrop-blur-xs border-transparent'
+          ? 'bg-[#faf9f5]/92 dark:bg-[#0a0c0f]/92 backdrop-blur-md border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.03)]'
+          : 'bg-[#faf9f5]/80 dark:bg-[#0a0c0f]/80 backdrop-blur-xs border-transparent'
       }`}
     >
       <div
@@ -207,7 +208,7 @@ export function Navbar() {
           className="group flex items-center transition-opacity hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#da552f] rounded"
           aria-label="TUSK Innovations Home"
         >
-          <BrandLogo size={scrolled ? 34 : 38} theme="light" />
+          <BrandLogo size={scrolled ? 34 : 38} />
         </Link>
 
         {/* Desktop Navigation Groups */}
@@ -230,15 +231,15 @@ export function Navbar() {
                   onClick={() => setActiveDropdown(isOpen ? null : group.label)}
                   className={`inline-flex items-center gap-1.5 px-3 py-2 text-sm font-medium transition-colors rounded-md ${
                     isGroupActive
-                      ? 'text-[#141413] font-semibold'
-                      : 'text-[#5a5a55] hover:text-[#141413]'
+                      ? 'text-[#141413] dark:text-white font-semibold'
+                      : 'text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white'
                   }`}
                   aria-expanded={isOpen}
                 >
                   <span>{group.label}</span>
                   <ChevronDown
-                    className={`w-3.5 h-3.5 text-[#888780] transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-[#141413]' : ''
+                    className={`w-3.5 h-3.5 text-[#888780] dark:text-neutral-500 transition-transform duration-200 ${
+                      isOpen ? 'rotate-180 text-[#141413] dark:text-white' : ''
                     }`}
                   />
                 </button>
@@ -246,7 +247,7 @@ export function Navbar() {
                 {/* Dropdown Menu */}
                 {isOpen && (
                   <div className="absolute top-full left-0 pt-2 w-80 xl:w-96 animate-in fade-in-0 zoom-in-95 duration-150">
-                    <div className="p-3 bg-white/95 backdrop-blur-md border border-[#e6e4dc] rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.06)] divide-y divide-[#f2f0e8]">
+                    <div className="p-3 bg-white/95 dark:bg-[#121418]/95 backdrop-blur-md border border-[#e6e4dc] dark:border-neutral-800 rounded-xl shadow-[0_8px_30px_rgba(0,0,0,0.08)] dark:shadow-[0_8px_30px_rgba(0,0,0,0.5)] divide-y divide-[#f2f0e8] dark:divide-neutral-800">
                       <div className="space-y-1">
                         {group.items.map((item) => {
                           const isActive = pathname === item.href;
@@ -258,21 +259,21 @@ export function Navbar() {
                               rel={item.isExternal ? 'noopener noreferrer' : undefined}
                               className={`group block p-2.5 rounded-lg transition-all ${
                                 isActive
-                                  ? 'bg-[#f5f4ee] text-[#141413]'
-                                  : 'hover:bg-[#faf9f5] text-[#141413]'
+                                  ? 'bg-[#f5f4ee] dark:bg-neutral-800/80 text-[#141413] dark:text-white'
+                                  : 'hover:bg-[#faf9f5] dark:hover:bg-neutral-800/50 text-[#141413] dark:text-neutral-200'
                               }`}
                             >
                               <div className="flex items-center justify-between text-xs font-semibold">
-                                <span className="group-hover:text-[#da552f] transition-colors">
+                                <span className="group-hover:text-[#da552f] dark:group-hover:text-[#ff5500] transition-colors">
                                   {item.label}
                                 </span>
                                 {item.isExternal ? (
-                                  <ArrowUpRight className="w-3.5 h-3.5 text-[#888780] group-hover:text-[#da552f] transition-colors" />
+                                  <ArrowUpRight className="w-3.5 h-3.5 text-[#888780] dark:text-neutral-500 group-hover:text-[#da552f] dark:group-hover:text-[#ff5500] transition-colors" />
                                 ) : (
-                                  <ArrowRight className="w-3.5 h-3.5 text-transparent group-hover:text-[#da552f] group-hover:translate-x-0.5 transition-all" />
+                                  <ArrowRight className="w-3.5 h-3.5 text-transparent group-hover:text-[#da552f] dark:group-hover:text-[#ff5500] group-hover:translate-x-0.5 transition-all" />
                                 )}
                               </div>
-                              <p className="mt-1 text-[11px] leading-relaxed text-[#5a5a55]">
+                              <p className="mt-1 text-[11px] leading-relaxed text-[#5a5a55] dark:text-neutral-400">
                                 {item.description}
                               </p>
                             </Link>
@@ -283,7 +284,7 @@ export function Navbar() {
                         <div className="pt-2 mt-2 px-2.5">
                           <Link
                             href={group.href}
-                            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#888780] hover:text-[#da552f] transition-colors"
+                            className="inline-flex items-center gap-1.5 text-[11px] font-semibold text-[#888780] dark:text-neutral-400 hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors"
                           >
                             <span>Explore all {group.label}</span>
                             <ArrowRight className="w-3 h-3" />
@@ -298,13 +299,15 @@ export function Navbar() {
           })}
         </nav>
 
-        {/* Right Actions: Start a Project (Primary CTA) & GitHub (Secondary) */}
-        <div className="hidden sm:flex items-center gap-3">
+        {/* Right Actions: Theme Toggle, GitHub, Start a Project */}
+        <div className="hidden sm:flex items-center gap-2.5 xl:gap-3">
+          <ThemeToggle />
+
           <Link
             href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-[#5a5a55] hover:text-[#141413] transition-colors"
+            className="inline-flex items-center gap-1.5 px-3 py-2 text-xs font-medium text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white transition-colors"
             title="EAK GitHub Repository"
           >
             <GithubIcon className="w-4 h-4" />
@@ -313,25 +316,26 @@ export function Navbar() {
 
           <Link
             href="/contact"
-            className="inline-flex items-center gap-2 px-5 py-2 text-xs font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#2a2926] rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 px-5 py-2 text-xs font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#2a2926] dark:hover:bg-neutral-200 rounded-full transition-all duration-200 shadow-sm hover:shadow-md hover:-translate-y-0.5"
           >
             <span>Start a Project</span>
             <ArrowRight className="w-3.5 h-3.5" />
           </Link>
         </div>
 
-        {/* Mobile Hamburger Button */}
+        {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
+          <ThemeToggle />
           <Link
             href="/contact"
-            className="inline-flex sm:hidden items-center px-3 py-1.5 text-xs font-semibold text-[#faf9f5] bg-[#141413] rounded-full"
+            className="inline-flex sm:hidden items-center px-3 py-1.5 text-xs font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white rounded-full"
           >
             Start
           </Link>
           <button
             type="button"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 text-[#5a5a55] hover:text-[#141413] rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#da552f]"
+            className="p-2 text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-[#da552f]"
             aria-label="Toggle navigation menu"
           >
             {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -341,21 +345,21 @@ export function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-[#faf9f5] border-t border-[#e6e4dc] overflow-y-auto px-4 py-6 space-y-6 animate-in slide-in-from-top-2 duration-200">
+        <div className="lg:hidden fixed inset-x-0 top-16 sm:top-20 bottom-0 bg-[#faf9f5] dark:bg-[#0a0c0f] border-t border-[#e6e4dc] dark:border-neutral-800 overflow-y-auto px-4 py-6 space-y-6 animate-in slide-in-from-top-2 duration-200">
           <div className="space-y-4">
             {NAV_GROUPS.map((group) => {
               const isExpanded = mobileExpanded === group.label;
               return (
-                <div key={group.label} className="border-b border-[#e6e4dc]/60 pb-3">
+                <div key={group.label} className="border-b border-[#e6e4dc]/60 dark:border-neutral-800 pb-3">
                   <button
                     type="button"
                     onClick={() => setMobileExpanded(isExpanded ? null : group.label)}
-                    className="w-full flex items-center justify-between text-base font-semibold text-[#141413] py-2"
+                    className="w-full flex items-center justify-between text-base font-semibold text-[#141413] dark:text-white py-2"
                   >
                     <span>{group.label}</span>
                     <ChevronDown
-                      className={`w-4 h-4 text-[#888780] transition-transform duration-200 ${
-                        isExpanded ? 'rotate-180 text-[#da552f]' : ''
+                      className={`w-4 h-4 text-[#888780] dark:text-neutral-500 transition-transform duration-200 ${
+                        isExpanded ? 'rotate-180 text-[#da552f] dark:text-[#ff5500]' : ''
                       }`}
                     />
                   </button>
@@ -368,13 +372,13 @@ export function Navbar() {
                           href={item.href}
                           target={item.isExternal ? '_blank' : undefined}
                           rel={item.isExternal ? 'noopener noreferrer' : undefined}
-                          className="block text-sm text-[#5a5a55] hover:text-[#141413] py-1"
+                          className="block text-sm text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white py-1"
                         >
-                          <div className="font-medium text-[#141413] flex items-center gap-1.5">
+                          <div className="font-medium text-[#141413] dark:text-white flex items-center gap-1.5">
                             <span>{item.label}</span>
-                            {item.isExternal && <ArrowUpRight className="w-3.5 h-3.5 text-[#888780]" />}
+                            {item.isExternal && <ArrowUpRight className="w-3.5 h-3.5 text-[#888780] dark:text-neutral-500" />}
                           </div>
-                          <p className="text-xs text-[#888780] mt-0.5">{item.description}</p>
+                          <p className="text-xs text-[#888780] dark:text-neutral-500 mt-0.5">{item.description}</p>
                         </Link>
                       ))}
                     </div>
@@ -387,7 +391,7 @@ export function Navbar() {
           <div className="pt-4 space-y-3">
             <Link
               href="/contact"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-[#faf9f5] bg-[#141413] rounded-full shadow-sm"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white rounded-full shadow-sm"
             >
               <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
@@ -396,11 +400,11 @@ export function Navbar() {
               href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-[#141413] bg-white border border-[#e6e4dc] rounded-full"
+              className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-medium text-[#141413] dark:text-white bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 rounded-full"
             >
               <GithubIcon className="w-4 h-4" />
               <span>Official GitHub Repository</span>
-              <ArrowUpRight className="w-4 h-4 text-[#888780]" />
+              <ArrowUpRight className="w-4 h-4 text-[#888780] dark:text-neutral-500" />
             </Link>
           </div>
         </div>

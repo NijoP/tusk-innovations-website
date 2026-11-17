@@ -44,8 +44,8 @@ const STAGES: TimelineStage[] = [
       'Verified component symbol and footprint mappings',
       'Hardware-software interface contracts',
     ],
-    visual: '/assets/electronics/pcb-macro-4layer.jpg',
-    visualAlt: 'Circuit design and hardware system architecture',
+    visual: '/assets/eak/eak-ai-eda-terminal.jpg',
+    visualAlt: 'Circuit schematics design, pinout mapping, and system architecture',
     icon: Cpu,
   },
   {
@@ -116,31 +116,31 @@ export function InteractiveDevelopmentTimeline() {
               onClick={() => setActiveStep(idx)}
               className={`p-4 rounded-2xl text-left border transition-all duration-200 ${
                 isActive
-                  ? 'bg-white border-[#da552f] shadow-md ring-1 ring-[#da552f]/30'
-                  : 'bg-[#f5f4ee] border-[#e6e4dc] hover:bg-white text-[#5a5a55]'
+                  ? 'bg-white dark:bg-neutral-800 border-[#da552f] dark:border-[#ff5500] shadow-md ring-1 ring-[#da552f]/30 dark:ring-[#ff5500]/30'
+                  : 'bg-[#f5f4ee] dark:bg-neutral-900 border-[#e6e4dc] dark:border-neutral-800 hover:bg-white dark:hover:bg-neutral-800/80 text-[#5a5a55] dark:text-neutral-400'
               }`}
             >
               <div className="flex items-center justify-between pb-2">
                 <span
                   className={`text-xs font-mono font-bold ${
-                    isActive ? 'text-[#da552f]' : 'text-[#888780]'
+                    isActive ? 'text-[#da552f] dark:text-[#ff5500]' : 'text-[#888780] dark:text-neutral-500'
                   }`}
                 >
                   {s.step}
                 </span>
                 {idx < activeStep ? (
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500" />
                 ) : (
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      isActive ? 'bg-[#da552f] animate-pulse' : 'bg-[#e6e4dc]'
+                      isActive ? 'bg-[#da552f] dark:bg-[#ff5500] animate-pulse' : 'bg-[#e6e4dc] dark:bg-neutral-700'
                     }`}
                   />
                 )}
               </div>
               <p
                 className={`text-sm font-serif font-bold ${
-                  isActive ? 'text-[#141413]' : 'text-[#5a5a55]'
+                  isActive ? 'text-[#141413] dark:text-white' : 'text-[#5a5a55] dark:text-neutral-400'
                 }`}
               >
                 {s.name}
@@ -151,34 +151,34 @@ export function InteractiveDevelopmentTimeline() {
       </div>
 
       {/* Selected Stage Detail Card */}
-      <div className="rounded-3xl border border-[#e6e4dc] bg-white overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)] grid grid-cols-1 lg:grid-cols-12">
+      <div className="rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-[#121418] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)] grid grid-cols-1 lg:grid-cols-12">
         {/* Left Info Pane */}
         <div className="lg:col-span-7 p-8 sm:p-12 space-y-6 flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-[#f5f4ee] text-[#da552f] text-xs font-mono font-bold flex items-center justify-center border border-[#e6e4dc]">
+              <span className="w-8 h-8 rounded-full bg-[#f5f4ee] dark:bg-neutral-800 text-[#da552f] dark:text-[#ff5500] text-xs font-mono font-bold flex items-center justify-center border border-[#e6e4dc] dark:border-neutral-700">
                 {current.step}
               </span>
               <div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#141413]">
+                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#141413] dark:text-white">
                   {current.name}
                 </h3>
-                <p className="text-xs font-mono text-[#da552f]">{current.subtitle}</p>
+                <p className="text-xs font-mono text-[#da552f] dark:text-[#ff5500]">{current.subtitle}</p>
               </div>
             </div>
 
-            <p className="text-sm text-[#5a5a55] leading-relaxed pt-2">
+            <p className="text-sm text-[#5a5a55] dark:text-neutral-300 leading-relaxed pt-2">
               {current.description}
             </p>
 
-            <div className="pt-4 border-t border-[#f2f0e8] space-y-3">
-              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#da552f]">
+            <div className="pt-4 border-t border-[#f2f0e8] dark:border-neutral-800 space-y-3">
+              <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#da552f] dark:text-[#ff5500]">
                 Milestone Deliverables &amp; Output
               </span>
-              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#5a5a55]">
+              <ul className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs text-[#5a5a55] dark:text-neutral-300">
                 {current.deliverables.map((item, dIdx) => (
                   <li key={dIdx} className="flex items-start gap-2">
-                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                     <span>{item}</span>
                   </li>
                 ))}
@@ -187,21 +187,21 @@ export function InteractiveDevelopmentTimeline() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="pt-6 border-t border-[#f2f0e8] flex items-center justify-between text-xs font-mono">
+          <div className="pt-6 border-t border-[#f2f0e8] dark:border-neutral-800 flex items-center justify-between text-xs font-mono">
             <button
               type="button"
               disabled={activeStep === 0}
               onClick={() => setActiveStep(activeStep - 1)}
-              className="text-[#5a5a55] hover:text-[#141413] disabled:opacity-40 disabled:cursor-not-allowed"
+              className="text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed"
             >
               ← Previous Stage
             </button>
-            <span className="text-[#888780]">Stage {activeStep + 1} of 5</span>
+            <span className="text-[#888780] dark:text-neutral-500">Stage {activeStep + 1} of 5</span>
             <button
               type="button"
               disabled={activeStep === STAGES.length - 1}
               onClick={() => setActiveStep(activeStep + 1)}
-              className="text-[#da552f] hover:text-[#c24622] font-semibold disabled:opacity-40 disabled:cursor-not-allowed"
+              className="text-[#da552f] dark:text-[#ff5500] hover:text-[#c24622] font-semibold disabled:opacity-40 disabled:cursor-not-allowed"
             >
               Next Stage →
             </button>
@@ -209,7 +209,7 @@ export function InteractiveDevelopmentTimeline() {
         </div>
 
         {/* Right Stage Visual Pane */}
-        <div className="lg:col-span-5 bg-[#0a0c0f] relative min-h-[300px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc]">
+        <div className="lg:col-span-5 bg-[#0a0c0f] relative min-h-[300px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800">
           <Image
             src={current.visual}
             alt={current.visualAlt}
