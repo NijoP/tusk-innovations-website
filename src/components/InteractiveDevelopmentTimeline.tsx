@@ -44,8 +44,8 @@ const STAGES: TimelineStage[] = [
       'Verified component symbol and footprint mappings',
       'Hardware-software interface contracts',
     ],
-    visual: '/assets/eak/schematic/eak-schematic-editor.png',
-    visualAlt: 'Interactive circuit schematic engineering',
+    visual: '/assets/electronics/pcb-macro-4layer.jpg',
+    visualAlt: 'Circuit design and hardware system architecture',
     icon: Cpu,
   },
   {

@@ -208,8 +208,8 @@ export default function EAKProductPage() {
           </div>
           <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-[#0a0c0f] mt-3">
             <Image
-              src="/products/eak/schematic-editor.png"
-              alt="Electronics Agent Kit Interface"
+              src="/assets/eak/pcb/eak-pcb-routing.png"
+              alt="Electronics Agent Kit Multi-Layer PCB Interface"
               fill
               className="object-cover"
               priority

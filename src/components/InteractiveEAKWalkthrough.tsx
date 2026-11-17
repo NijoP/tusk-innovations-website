@@ -2,12 +2,12 @@
 
 import { useState } from 'react';
 import Image from 'next/image';
-import { Terminal, Layers, Activity, Cpu, ShieldCheck, CheckCircle2, ArrowUpRight } from 'lucide-react';
+import { Layers, ShieldCheck, CheckCircle2, FileText, Database, Wrench } from 'lucide-react';
 
 interface WalkthroughTab {
   id: string;
   label: string;
-  icon: typeof Terminal;
+  icon: typeof Layers;
   title: string;
   badge: string;
   description: string;
@@ -18,83 +18,83 @@ interface WalkthroughTab {
 
 const TABS: WalkthroughTab[] = [
   {
-    id: 'workspace',
-    label: 'Main Workspace',
-    icon: Cpu,
-    title: 'Unified Local-First Desktop Shell',
-    badge: 'Verified E2E Capture',
-    description:
-      'A single desktop shell integrating terminal agents with live 2D schematic and PCB viewports. Changes made in the CLI reflect instantly on the canvas with zero file reload latency.',
-    image: '/assets/eak/workspace/eak-main-workspace.png',
-    alt: 'EAK Main Workspace with Dual Schematic and PCB Viewports',
-    features: [
-      'Synchronized split-screen schematic and PCB layout',
-      'Event-sourced design model with append-only revision logging',
-      'Local-first Rust runtime (Tauri v2) with zero cloud telemetry',
-    ],
-  },
-  {
-    id: 'schematic',
-    label: 'Schematic Editor',
-    icon: Activity,
-    title: 'Interactive Circuit Schematic Canvas',
-    badge: 'Verified E2E Capture',
-    description:
-      'Drag-and-drop components, click-to-place with rotation, automatic junction dots, net labels, and multi-level undo/redo directly connected to the kernel.',
-    image: '/assets/eak/schematic/eak-schematic-editor.png',
-    alt: 'EAK Interactive Schematic Editor with Placed Resistors and Wire Connections',
-    features: [
-      'Bidirectional KiCad (.kicad_sym) symbol library interchange',
-      'Deterministic Electrical Rules Check (ERC) before PCB push',
-      'Real-time connectivity net extraction and wire routing',
-    ],
-  },
-  {
     id: 'pcb',
-    label: 'PCB Engine',
+    label: 'PCB Layout & Routing',
     icon: Layers,
-    title: 'Multi-Layer High-Density PCB Layout',
+    title: 'Multi-Layer High-Density PCB Routing Engine',
     badge: 'Verified E2E Capture',
     description:
-      'Full layer stackup management (1 to 8+ layers), manual track routing with clearance halos, interactive via placement, and dynamic copper zone refills.',
+      'High-speed multi-layer trace routing with clearance halos, interactive via placement, ground pour zone refills, and real-time net connectivity checking.',
     image: '/assets/eak/pcb/eak-pcb-routing.png',
     alt: 'EAK PCB Layout Workspace with 4 Copper Layers and Auto-Routed Tracks',
     features: [
       '4-layer high-density routing with impedance control parameters',
       'Dynamic airwire rendering and net highlight inspection',
-      'Heuristic auto-route preview for rapid layout exploration',
+      'Deterministic clearance checking avoiding unrouted nets',
     ],
   },
   {
-    id: 'terminal',
-    label: 'AI Terminal',
-    icon: Terminal,
-    title: 'Autonomous Coding & Design Agent',
+    id: 'layers',
+    label: 'Stackup Manager',
+    icon: Wrench,
+    title: 'Multi-Layer Stackup & Copper Allocation',
     badge: 'Verified E2E Capture',
     description:
-      'A conversational coding agent operates within the terminal pane. The agent executes typed runtime commands, proposes schematic adjustments, and triggers rule checks with fail-closed safeguards.',
-    image: '/assets/eak/terminal/eak-ai-assistant.png',
-    alt: 'EAK AI Terminal Assistant with Offline Interpreter and Accept/Reject Workflow',
+      'Configurable substrate layer stackups supporting 2, 4, 6, and 8+ copper layers. Visualizes top/bottom copper, dielectric prepreg, and internal ground planes.',
+    image: '/assets/eak/pcb/eak-pcb-4layers.png',
+    alt: 'EAK PCB Layer Stackup Manager Showing 4 Copper Layers',
     features: [
-      'Offline deterministic command interpreter & tool orchestration',
-      'Proposal preview with explicit Accept / Reject canvas confirmation',
-      'Provider-agnostic interface (Ollama, Claude, OpenAI or local models)',
+      'Top/Bottom signal layers with internal reference ground planes',
+      'Individual layer visibility, locking, and copper pour assignment',
+      'Direct mapping to standard fabhouse stackup specifications',
     ],
   },
   {
     id: 'dfm',
-    label: 'DFM & Verification',
+    label: 'DFM Verification',
     icon: ShieldCheck,
-    title: 'Automated DFM & Fabrication Package Generator',
+    title: 'Automated DFM & Electrical Rules Check (ERC/DRC)',
     badge: 'Verified E2E Capture',
     description:
-      'Zero-tolerance clearance DRC and Design-for-Manufacturing audits. Generates industry-standard RS-274X Gerbers, NC drill coordinates, centroid pick-and-place files, and BOMs.',
+      'Zero-tolerance clearance DRC and Design-for-Manufacturing audits. Generates tabular finding reports before committing fabrication packages.',
     image: '/assets/eak/visualization/eak-dfm-verification.png',
     alt: 'EAK DFM Verification Matrix and Fabrication Preparation Table',
     features: [
       'Automated DRC clearance checks with explicit violation lists',
-      'Fabrication bundle generator: Gerbers, drill files, CPL, BOM',
-      'Distributor catalog component validation and lifecycle verification',
+      'Design for Assembly (DFA) component boundary verification',
+      'Distributor catalog validation for component availability',
+    ],
+  },
+  {
+    id: 'export',
+    label: 'Fabrication Export',
+    icon: FileText,
+    title: 'Production Gerber & Manufacturing Export Pipeline',
+    badge: 'Verified E2E Capture',
+    description:
+      'Generates 18 production-ready fabrication files including RS-274X Gerbers, NC drill coordinates, centroid pick-and-place files, and verified BOMs.',
+    image: '/assets/eak/visualization/eak-manufacturing-export.png',
+    alt: 'EAK Manufacturing Export Dialog Generating Complete Gerber and BOM Bundles',
+    features: [
+      'Complete RS-274X Gerber layer packages (.gtl, .gbl, .gbo, etc.)',
+      'IPC-D-356 electrical test netlists & NC drill files',
+      'Consolidated BOM with manufacturer part numbers',
+    ],
+  },
+  {
+    id: 'library',
+    label: 'Component Library',
+    icon: Database,
+    title: 'Structured Component Catalog & Parts Discovery',
+    badge: 'Verified E2E Capture',
+    description:
+      'Native vendor-neutral structured component repository with verified pin matrices, parametric footprint mappings, and KiCad library asset interchange.',
+    image: '/assets/eak/workspace/eak-component-library.png',
+    alt: 'EAK Component Library and Parametric Search Interface',
+    features: [
+      'Parametric search across passive and active component packages',
+      'Transactional KiCad (.kicad_sym and .kicad_mod) import',
+      'Zero vendor lock-in with open structured JSON models',
     ],
   },
 ];
@@ -102,7 +102,6 @@ const TABS: WalkthroughTab[] = [
 export function InteractiveEAKWalkthrough() {
   const [activeTab, setActiveTab] = useState(TABS[0].id);
   const currentTab = TABS.find((t) => t.id === activeTab) || TABS[0];
-  const Icon = currentTab.icon;
 
   return (
     <div className="space-y-8">
@@ -141,7 +140,7 @@ export function InteractiveEAKWalkthrough() {
             <span className="text-emerald-700 bg-emerald-50 px-2.5 py-0.5 rounded-full text-[11px] font-semibold border border-emerald-200">
               {currentTab.badge}
             </span>
-            <span className="text-[#888780] hidden sm:inline">• EAK v0.1.3 Desktop App</span>
+            <span className="text-[#888780] hidden sm:inline">• EAK Desktop Engineering Workstation</span>
           </div>
         </div>
 

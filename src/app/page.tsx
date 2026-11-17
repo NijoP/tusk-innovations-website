@@ -83,36 +83,8 @@ export default function HomePage() {
             </Link>
           </div>
 
-          {/* Distinctive Hero Visual Composition */}
-          <div className="pt-10 max-w-4xl mx-auto">
-            <div className="rounded-2xl border border-[#e6e4dc] bg-white p-2.5 sm:p-4 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
-              <div className="flex items-center justify-between pb-3 px-2 border-b border-[#f2f0e8] text-xs font-mono text-[#888780]">
-                <div className="flex items-center gap-2">
-                  <span className="w-2.5 h-2.5 rounded-full bg-[#da552f]" />
-                  <span className="text-[#141413] font-semibold">TUSK Engineering Workstation</span>
-                  <span className="hidden sm:inline text-[#888780]">/ AI-Native Hardware Environment</span>
-                </div>
-                <div className="flex items-center gap-3">
-                  <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[11px] font-semibold">
-                    ERC: Pass (0 errors)
-                  </span>
-                  <span className="hidden sm:inline">Layers: 4</span>
-                </div>
-              </div>
-              <div className="relative aspect-16/9 w-full rounded-xl overflow-hidden bg-[#0a0c0f] mt-3">
-                <Image
-                  src="/assets/eak/schematic/eak-schematic-editor.png"
-                  alt="TUSK Electronics Engineering & AI Environment"
-                  fill
-                  className="object-cover"
-                  priority
-                />
-              </div>
-            </div>
-          </div>
-
           {/* Minimal Trust Strip */}
-          <div className="pt-8 border-t border-[#e6e4dc]/80 max-w-3xl mx-auto">
+          <div className="pt-12 border-t border-[#e6e4dc]/80 max-w-3xl mx-auto">
             <div className="flex flex-wrap items-center justify-center gap-6 sm:gap-10 text-xs font-mono text-[#5a5a55]">
               <span className="inline-flex items-center gap-2">
                 <span className="w-1.5 h-1.5 rounded-full bg-[#da552f]" />
