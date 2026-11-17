@@ -161,18 +161,16 @@ export function InteractiveCapabilities() {
           </div>
         </div>
 
-        {/* Right Column: Framed High-Resolution Visual */}
-        <div className="lg:col-span-6 bg-[#0a0c0f] relative min-h-[380px] lg:min-h-full flex items-center justify-center p-6 border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800">
-          <div className="relative w-full h-full min-h-[340px] rounded-2xl overflow-hidden shadow-2xl border border-neutral-800">
-            <Image
-              src={activePillar.image}
-              alt={activePillar.imageAlt}
-              fill
-              className="object-cover transition-opacity duration-300"
-              sizes="(max-width: 1024px) 100vw, 50vw"
-              priority
-            />
-          </div>
+        {/* Right Column: High-Resolution Visual Studio Frame */}
+        <div className="lg:col-span-6 relative min-h-[360px] sm:min-h-[460px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800 overflow-hidden bg-[#faf9f5] dark:bg-[#0a0c0f]">
+          <Image
+            src={activePillar.image}
+            alt={activePillar.imageAlt}
+            fill
+            className="object-cover object-center transition-opacity duration-300"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            priority
+          />
         </div>
       </div>
     </div>

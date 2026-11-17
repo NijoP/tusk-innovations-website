@@ -118,11 +118,6 @@ const NAV_GROUPS: NavGroup[] = [
         description: 'Our mission, engineering culture, and technology focus.',
       },
       {
-        label: 'Leadership',
-        href: '/about#leadership',
-        description: 'Founder profile and core engineering leadership.',
-      },
-      {
         label: 'Achievements',
         href: '/about#achievements',
         description: 'NVIDIA Inception Program and Kerala Startup Mission Idea Grant.',

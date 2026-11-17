@@ -35,7 +35,6 @@ export default function AboutPage() {
         {/* Quick jumps */}
         <div className="mt-8 flex flex-wrap gap-2 text-xs font-mono">
           <a href="#mission" className="px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#5a5a55] dark:text-neutral-300 hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors">#mission</a>
-          <a href="#leadership" className="px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#5a5a55] dark:text-neutral-300 hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors">#leadership</a>
           <a href="#philosophy" className="px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#5a5a55] dark:text-neutral-300 hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors">#philosophy</a>
           <a href="#achievements" className="px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#5a5a55] dark:text-neutral-300 hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors">#achievements</a>
           <a href="#registrations" className="px-3 py-1.5 rounded-lg bg-white dark:bg-neutral-900 border border-[#e6e4dc] dark:border-neutral-800 text-[#5a5a55] dark:text-neutral-300 hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors">#registrations</a>
