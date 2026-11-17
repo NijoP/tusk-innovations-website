@@ -66,7 +66,7 @@ export const metadata: Metadata = {
     canonical: 'https://www.tuskinnovations.in',
   },
   verification: {
-    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || undefined,
+    google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION || 'google7a389c822d4abb67',
   },
   openGraph: {
     title: 'TUSK Innovations | AI Solutions, Electronics & PCB Engineering',
