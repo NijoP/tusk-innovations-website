@@ -1,9 +1,29 @@
 import type { Metadata } from 'next';
+import { Newsreader, Inter, JetBrains_Mono } from 'next/font/google';
 import { Navbar } from '@/components/Navbar';
 import { Footer } from '@/components/Footer';
 import Script from 'next/script';
 import { COMPANY_DETAILS } from '@/lib/data';
 import './globals.css';
+
+const serifFont = Newsreader({
+  subsets: ['latin'],
+  style: ['normal', 'italic'],
+  variable: '--font-serif',
+  display: 'swap',
+});
+
+const sansFont = Inter({
+  subsets: ['latin'],
+  variable: '--font-sans',
+  display: 'swap',
+});
+
+const monoFont = JetBrains_Mono({
+  subsets: ['latin'],
+  variable: '--font-mono',
+  display: 'swap',
+});
 
 export const metadata: Metadata = {
   title: {
@@ -177,7 +197,7 @@ export default function RootLayout({
           dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
         />
       </head>
-      <body className="min-h-screen flex flex-col bg-[#faf9f6] text-[#121316]">
+      <body className={`${serifFont.variable} ${sansFont.variable} ${monoFont.variable} min-h-screen flex flex-col bg-[#faf9f5] text-[#141413] antialiased selection:bg-[#da552f]/15 selection:text-[#141413]`}>
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

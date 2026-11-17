@@ -1,18 +1,16 @@
 'use client';
 
 import { useState } from 'react';
-import { Section } from '@/components/Section';
 import { COMPANY_DETAILS } from '@/lib/data';
-import { Mail, Phone, ArrowUpRight, Send, CheckCircle2, Copy, Check } from 'lucide-react';
-import Image from 'next/image';
+import { Mail, Phone, MapPin, Send, CheckCircle2, Copy, Check, ArrowRight } from 'lucide-react';
 
 const CATEGORIES = [
-  'AI & Software Solutions',
-  'AI Agents & Automation',
-  'Electronics & PCB Design',
-  'Embedded Systems',
-  'Complete Product Development',
-  'Other Engineering Requirements',
+  'AI Solutions & Software Automation',
+  'Autonomous AI Agents & RAG',
+  'Electronics & Multi-Layer PCB Design',
+  'Embedded Systems & Firmware',
+  'End-to-End Product Development',
+  'Technical Consultation & Feasibility',
 ];
 
 export default function ContactPage() {
@@ -20,9 +18,9 @@ export default function ContactPage() {
     name: '',
     company: '',
     email: '',
+    phone: '',
     category: CATEGORIES[0],
     description: '',
-    requirements: '',
   });
 
   const [copied, setCopied] = useState(false);
@@ -34,13 +32,12 @@ export default function ContactPage() {
     const body = encodeURIComponent(
       `Project Category: ${formData.category}\n` +
       `Contact Name: ${formData.name}\n` +
-      `Company / Organisation: ${formData.company}\n` +
-      `Email: ${formData.email}\n\n` +
-      `Project Description:\n${formData.description}\n\n` +
-      `Key Technical Requirements & Constraints:\n${formData.requirements}\n`
+      `Company / Organisation: ${formData.company || 'Not specified'}\n` +
+      `Email: ${formData.email}\n` +
+      `Phone: ${formData.phone || 'Not specified'}\n\n` +
+      `Project Overview & Technical Requirements:\n${formData.description}\n`
     );
 
-    // Open mail client
     window.location.href = `mailto:${COMPANY_DETAILS.email}?subject=${subject}&body=${body}`;
     setSubmitted(true);
   };
@@ -52,236 +49,208 @@ export default function ContactPage() {
   };
 
   return (
-    <div>
+    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
       {/* Header */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
-        <div className="mx-auto max-w-4xl text-center space-y-4">
-          <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-            Direct Business & Project Inquiries
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121316]">
-            Start a Project with TUSK INNOVATIONS
-          </h1>
-          <p className="text-lg text-[#585c65] max-w-2xl mx-auto leading-relaxed">
-            Reach out to our engineering leads regarding custom AI systems, electronics & PCB engineering, embedded solutions, or complete product development.
-          </p>
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#da552f] mb-6">
+          <Mail className="w-3.5 h-3.5" />
+          <span>Direct Engineering Inquiries</span>
         </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] leading-[1.1] max-w-4xl">
+          Start a Project with TUSK.
+        </h1>
+        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+          Whether you need a custom AI agent pipeline, a high-density 4-layer PCB design, or a complete product engineered from concept to factory release—we are ready to discuss your requirements under NDA.
+        </p>
       </section>
 
-      {/* Main Content */}
-      <Section id="contact-info">
+      {/* Main Grid: Form & Contact Info */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
-          {/* Official Registered Details & Trust */}
-          <div className="lg:col-span-5 space-y-8">
-            <div>
-              <h2 className="text-xl font-bold text-[#121316] mb-2">Corporate Headquarters</h2>
-              <p className="text-sm text-[#585c65] leading-relaxed">
-                TUSK INNOVATIONS GLOBAL PRIVATE LIMITED is an incorporated deep-tech engineering company headquartered in Thiruvananthapuram, Kerala, India.
-              </p>
-            </div>
+          {/* Form */}
+          <div className="lg:col-span-7 bg-white p-8 sm:p-10 rounded-3xl border border-[#e6e4dc] shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
+            <h2 className="text-2xl font-serif font-bold text-[#141413]">
+              Project Details
+            </h2>
 
-            <div className="space-y-4 font-mono text-xs">
-              <div className="p-4 bg-white border border-[#e6e5e0] rounded-lg space-y-2">
-                <span className="text-[#8b909a] block">REGISTERED OFFICE:</span>
-                <p className="text-[#121316] font-sans leading-relaxed text-sm">
-                  {COMPANY_DETAILS.address}
-                </p>
-                <div className="pt-2">
-                  <a
-                    href={COMPANY_DETAILS.mapsUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-[#ff5500] hover:underline"
-                  >
-                    <span>Open in Google Maps</span>
-                    <ArrowUpRight className="w-3.5 h-3.5" />
-                  </a>
-                </div>
-              </div>
-
-              <div className="p-4 bg-white border border-[#e6e5e0] rounded-lg space-y-3">
-                <span className="text-[#8b909a] block">COMMUNICATIONS:</span>
-                <div className="flex items-center justify-between text-sm font-sans text-[#121316]">
-                  <p className="flex items-center gap-2">
-                    <Mail className="w-4 h-4 text-[#ff5500]" />
-                    <a href={`mailto:${COMPANY_DETAILS.email}`} className="hover:underline">
-                      {COMPANY_DETAILS.email}
-                    </a>
-                  </p>
-                  <button
-                    onClick={copyEmail}
-                    className="text-xs font-mono text-[#8b909a] hover:text-[#121316] inline-flex items-center gap-1 px-2 py-1 rounded bg-neutral-100"
-                    title="Copy Email"
-                  >
-                    {copied ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
-                    <span>{copied ? 'Copied' : 'Copy'}</span>
-                  </button>
-                </div>
-                <p className="flex items-center gap-2 text-sm font-sans text-[#121316]">
-                  <Phone className="w-4 h-4 text-[#ff5500]" />
-                  <a href={`tel:${COMPANY_DETAILS.phone.replace(/\s+/g, '')}`} className="hover:underline">
-                    {COMPANY_DETAILS.phone}
-                  </a>
+            {submitted ? (
+              <div className="p-8 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
+                <CheckCircle2 className="w-8 h-8 text-emerald-600 mx-auto" />
+                <h3 className="text-lg font-serif font-bold text-emerald-900">
+                  Enquiry Prepared
+                </h3>
+                <p className="text-xs text-emerald-800">
+                  Your mail client has been opened with your project details addressed to {COMPANY_DETAILS.email}. If it did not open automatically, you can email us directly.
                 </p>
               </div>
+            ) : (
+              <form onSubmit={handleSubmit} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold text-[#5a5a55] uppercase tracking-wider">
+                      Your Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.name}
+                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      placeholder="Jane Doe"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] bg-[#faf9f5] text-sm text-[#141413] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                    />
+                  </div>
 
-              <div className="p-4 bg-white border border-[#e6e5e0] rounded-lg space-y-1">
-                <span className="text-[#8b909a] block">STATUTORY IDENTIFIERS:</span>
-                <p><span className="text-[#8b909a]">CIN:</span> <strong className="text-[#121316]">{COMPANY_DETAILS.cin}</strong></p>
-                <p><span className="text-[#8b909a]">LEGAL:</span> {COMPANY_DETAILS.legalName}</p>
-              </div>
-
-              {/* Recognition Accreditation Badges */}
-              <div className="p-4 bg-[#faf9f6] border border-[#e6e5e0] rounded-lg space-y-2">
-                <span className="text-[#8b909a] block">ACCREDITATIONS & RECOGNITION:</span>
-                <div className="space-y-1 text-[11px] font-sans text-[#585c65]">
-                  <p className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3 text-[#ff5500]" />
-                    Part of the NVIDIA Inception Program
-                  </p>
-                  <p className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                    Selected under Kerala Startup Mission Idea Grant
-                  </p>
-                  <p className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3 text-sky-600" />
-                    DPIIT-Recognised Startup (Startup India)
-                  </p>
-                  <p className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-3 h-3 text-emerald-600" />
-                    Recognised by Kerala Startup Mission
-                  </p>
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold text-[#5a5a55] uppercase tracking-wider">
+                      Company / Organization
+                    </label>
+                    <input
+                      type="text"
+                      value={formData.company}
+                      onChange={(e) => setFormData({ ...formData, company: e.target.value })}
+                      placeholder="Acme Corp"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] bg-[#faf9f5] text-sm text-[#141413] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                    />
+                  </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          {/* Project Enquiry Form */}
-          <div className="lg:col-span-7 bg-white border border-[#e6e5e0] rounded-xl p-6 sm:p-8 shadow-xs">
-            <div className="flex items-center justify-between mb-1">
-              <h2 className="text-xl font-bold text-[#121316]">Project Enquiry Form</h2>
-              <span className="text-[11px] font-mono text-[#ff5500] font-semibold uppercase">Executive Response</span>
-            </div>
-            <p className="text-xs text-[#585c65] mb-6">
-              Tell us about your project requirements. Enquiries are routed directly to our engineering leads.
-            </p>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold text-[#5a5a55] uppercase tracking-wider">
+                      Work Email *
+                    </label>
+                    <input
+                      type="email"
+                      required
+                      value={formData.email}
+                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      placeholder="jane@example.com"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] bg-[#faf9f5] text-sm text-[#141413] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                    />
+                  </div>
 
-            <form onSubmit={handleSubmit} className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div>
-                  <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                    Your Full Name *
+                  <div className="space-y-1.5">
+                    <label className="text-xs font-mono font-semibold text-[#5a5a55] uppercase tracking-wider">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      placeholder="+91 98765 43210"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] bg-[#faf9f5] text-sm text-[#141413] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                    />
+                  </div>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono font-semibold text-[#5a5a55] uppercase tracking-wider">
+                    Project Category *
                   </label>
-                  <input
-                    type="text"
+                  <select
+                    value={formData.category}
+                    onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] bg-[#faf9f5] text-sm text-[#141413] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                  >
+                    {CATEGORIES.map((c) => (
+                      <option key={c} value={c}>
+                        {c}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+
+                <div className="space-y-1.5">
+                  <label className="text-xs font-mono font-semibold text-[#5a5a55] uppercase tracking-wider">
+                    Project Description &amp; Technical Requirements *
+                  </label>
+                  <textarea
                     required
-                    value={formData.name}
-                    onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    placeholder="e.g. John Doe"
-                    className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
+                    rows={4}
+                    value={formData.description}
+                    onChange={(e) => setFormData({ ...formData, description: e.target.value })}
+                    placeholder="Briefly describe what you want to build, target timelines, and any known hardware or software specifications..."
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] bg-[#faf9f5] text-sm text-[#141413] focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                   />
                 </div>
-                <div>
-                  <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                    Company / Organisation *
-                  </label>
-                  <input
-                    type="text"
-                    required
-                    value={formData.company}
-                    onChange={(e) => setFormData({ ...formData, company: e.target.value })}
-                    placeholder="e.g. Acme Tech Solutions"
-                    className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
-                  />
-                </div>
-              </div>
 
-              <div>
-                <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                  Official Email Address *
-                </label>
-                <input
-                  type="email"
-                  required
-                  value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                  placeholder="name@company.com"
-                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
-                />
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                  Project Category *
-                </label>
-                <select
-                  value={formData.category}
-                  onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50 text-[#121316]"
-                >
-                  {CATEGORIES.map((cat) => (
-                    <option key={cat} value={cat}>
-                      {cat}
-                    </option>
-                  ))}
-                </select>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                  Project Description *
-                </label>
-                <textarea
-                  rows={3}
-                  required
-                  value={formData.description}
-                  onChange={(e) => setFormData({ ...formData, description: e.target.value })}
-                  placeholder="Outline the core objective, problem to solve, or product vision..."
-                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
-                ></textarea>
-              </div>
-
-              <div>
-                <label className="block text-xs font-mono font-medium text-[#585c65] mb-1.5">
-                  Technical Requirements & Constraints
-                </label>
-                <textarea
-                  rows={3}
-                  value={formData.requirements}
-                  onChange={(e) => setFormData({ ...formData, requirements: e.target.value })}
-                  placeholder="Mention components, target platform, power constraints, timeline, or interfaces..."
-                  className="w-full px-3.5 py-2.5 text-sm rounded-md border border-[#d0ceca] focus:outline-none focus:ring-1 focus:ring-[#ff5500] focus:border-[#ff5500] bg-neutral-50/50"
-                ></textarea>
-              </div>
-
-              <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-[#ff5500] rounded-md transition-colors shadow-xs"
+                  className="w-full inline-flex items-center justify-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
                 >
-                  <Send className="w-3.5 h-3.5" />
+                  <Send className="w-4 h-4" />
                   <span>Send Project Enquiry</span>
                 </button>
-              </div>
+              </form>
+            )}
+          </div>
 
-              {submitted && (
-                <div className="mt-4 p-4 rounded-md bg-emerald-50 border border-emerald-200 text-xs text-emerald-800 space-y-1">
-                  <p className="font-semibold flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                    Enquiry Form Prepared
-                  </p>
-                  <p>
-                    Your mail client has been opened with your enquiry details. If it did not open automatically, you can send your inquiry directly to{' '}
-                    <a href={`mailto:${COMPANY_DETAILS.email}`} className="font-bold underline">
+          {/* Direct Contact Information */}
+          <div className="lg:col-span-5 space-y-6">
+            <div className="p-8 rounded-3xl bg-white border border-[#e6e4dc] shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
+              <h3 className="text-xl font-serif font-bold text-[#141413]">
+                Direct Contacts
+              </h3>
+
+              <div className="space-y-4">
+                <div className="space-y-1">
+                  <span className="text-[11px] font-mono text-[#888780] uppercase tracking-wider">Corporate Email</span>
+                  <div className="flex items-center justify-between">
+                    <a
+                      href={`mailto:${COMPANY_DETAILS.email}`}
+                      className="text-sm font-semibold text-[#141413] hover:text-[#da552f] transition-colors"
+                    >
                       {COMPANY_DETAILS.email}
-                    </a>.
+                    </a>
+                    <button
+                      type="button"
+                      onClick={copyEmail}
+                      className="p-1.5 text-[#888780] hover:text-[#141413] rounded transition-colors"
+                      title="Copy email"
+                    >
+                      {copied ? <Check className="w-4 h-4 text-emerald-600" /> : <Copy className="w-4 h-4" />}
+                    </button>
+                  </div>
+                </div>
+
+                <div className="space-y-1 border-t border-[#f2f0e8] pt-4">
+                  <span className="text-[11px] font-mono text-[#888780] uppercase tracking-wider">Direct Phone</span>
+                  <p>
+                    <a
+                      href={`tel:${COMPANY_DETAILS.phone.replace(/\s+/g, '')}`}
+                      className="text-sm font-semibold text-[#141413] hover:text-[#da552f] transition-colors font-mono"
+                    >
+                      {COMPANY_DETAILS.phone}
+                    </a>
                   </p>
                 </div>
-              )}
-            </form>
+
+                <div className="space-y-1 border-t border-[#f2f0e8] pt-4">
+                  <span className="text-[11px] font-mono text-[#888780] uppercase tracking-wider">Registered Corporate Office</span>
+                  <p className="text-xs text-[#5a5a55] leading-relaxed">
+                    {COMPANY_DETAILS.address}
+                  </p>
+                </div>
+
+                <div className="space-y-1 border-t border-[#f2f0e8] pt-4 text-xs font-mono text-[#888780]">
+                  <p><strong className="text-[#141413]">CIN:</strong> {COMPANY_DETAILS.cin}</p>
+                  <p><strong className="text-[#141413]">LEGAL:</strong> {COMPANY_DETAILS.legalName}</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="p-6 rounded-2xl bg-[#f5f4ee] border border-[#e6e4dc] space-y-2 text-xs text-[#5a5a55]">
+              <div className="flex items-center gap-2 font-mono font-bold text-[#141413] uppercase tracking-wide">
+                <CheckCircle2 className="w-4 h-4 text-emerald-600" />
+                <span>NDA &amp; Confidentiality</span>
+              </div>
+              <p className="leading-relaxed">
+                All client discussions, technical specifications, and proprietary intellectual property are held under strict mutual confidentiality.
+              </p>
+            </div>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

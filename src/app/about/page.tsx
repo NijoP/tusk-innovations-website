@@ -1,15 +1,16 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeader } from '@/components/Section';
-import { COMPANY_DETAILS } from '@/lib/data';
-import { ShieldCheck, Cpu, Code2, Brain, Rocket } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import { ArrowRight, ArrowUpRight, Award, ShieldCheck, Building2, CheckCircle2 } from 'lucide-react';
+import { LinkedinIcon } from '@/components/SocialIcons';
+import { COMPANY_DETAILS } from '@/lib/data';
 import { AchievementsMilestonesSection } from '@/components/AchievementsMilestonesSection';
 import { CompanyRegistrationsSection } from '@/components/CompanyRegistrationsSection';
 
 export const metadata: Metadata = {
-  title: 'About TUSK Innovations | Corporate Profile & Doctrine',
+  title: 'About TUSK Innovations | AI & Electronics Engineering Company',
   description:
-    'Corporate background, engineering mission, and institutional identity of TUSK Innovations (TUSK Innovations Global Pvt. Ltd.). Deep-tech engineering across AI solutions, electronics, and end-to-end product development.',
+    'TUSK Innovations Global Pvt. Ltd. is an independent AI and electronics engineering startup headquartered in Thiruvananthapuram, Kerala. Founded by Nijo Ponnachan.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/about',
   },
@@ -17,149 +18,150 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <div>
+    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
       {/* Header */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
-        <div className="mx-auto max-w-4xl text-center space-y-4">
-          <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-            Corporate Profile &amp; Mission
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121316]">
-            About TUSK Innovations
-          </h1>
-          <p className="text-lg text-[#585c65] max-w-3xl mx-auto leading-relaxed">
-            An independently operating technology and engineering company focused on AI solutions, electronics engineering, PCB design, and end-to-end product development.
-          </p>
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#da552f] mb-6">
+          <Building2 className="w-3.5 h-3.5" />
+          <span>Company &amp; Engineering Culture</span>
+        </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] leading-[1.1] max-w-4xl">
+          Engineered for Truth. Built for the Physical World.
+        </h1>
+        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+          TUSK Innovations Global Pvt. Ltd. is an independent technology startup based in Thiruvananthapuram, Kerala. We build intelligent software systems and engineer physical electronic hardware from concept to verified delivery.
+        </p>
+
+        {/* Quick jumps */}
+        <div className="mt-8 flex flex-wrap gap-2 text-xs font-mono">
+          <a href="#mission" className="px-3 py-1.5 rounded-lg bg-white border border-[#e6e4dc] hover:text-[#da552f] transition-colors">#mission</a>
+          <a href="#leadership" className="px-3 py-1.5 rounded-lg bg-white border border-[#e6e4dc] hover:text-[#da552f] transition-colors">#leadership</a>
+          <a href="#philosophy" className="px-3 py-1.5 rounded-lg bg-white border border-[#e6e4dc] hover:text-[#da552f] transition-colors">#philosophy</a>
+          <a href="#achievements" className="px-3 py-1.5 rounded-lg bg-white border border-[#e6e4dc] hover:text-[#da552f] transition-colors">#achievements</a>
+          <a href="#registrations" className="px-3 py-1.5 rounded-lg bg-white border border-[#e6e4dc] hover:text-[#da552f] transition-colors">#registrations</a>
         </div>
       </section>
 
-      {/* Corporate Overview */}
-      <Section id="overview">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 space-y-4">
-            <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-              Corporate Overview
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold text-[#121316]">
-              At the Intersection of AI, Systems Software, and Hardware Engineering
-            </h2>
-            <div className="p-4 bg-white border border-[#e6e5e0] rounded-xl font-mono text-xs space-y-2 text-[#585c65]">
-              <p><strong className="text-[#121316]">Company:</strong> {COMPANY_DETAILS.primaryBrand}</p>
-              <p><strong className="text-[#121316]">Legal Entity:</strong> {COMPANY_DETAILS.legalName}</p>
-              <p><strong className="text-[#121316]">CIN:</strong> {COMPANY_DETAILS.cin}</p>
-              <p><strong className="text-[#121316]">Headquarters:</strong> Thiruvananthapuram, Kerala, India</p>
-            </div>
+      {/* Mission & Vision */}
+      <section id="mission" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-3 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] font-semibold">Our Mission</span>
+            <h2 className="text-2xl font-serif font-bold text-[#141413]">Democratize Hardware Creation</h2>
+            <p className="text-sm text-[#5a5a55] leading-relaxed">
+              To eliminate the friction of designing and fabricating physical electronics by bringing intelligent autonomous agents, deterministic verification, and modern systems engineering into a unified workspace.
+            </p>
           </div>
-          <div className="lg:col-span-7 space-y-6 text-[#585c65] text-base leading-relaxed">
-            <p>
-              <strong className="text-[#121316]">TUSK Innovations</strong> (TUSK Innovations Global Pvt. Ltd.) is an independently operating deep-tech engineering startup founded to unify modern computing intelligence with physical hardware engineering.
+
+          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-3 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <span className="text-xs font-mono uppercase tracking-widest text-[#da552f] font-semibold">Our Vision</span>
+            <h2 className="text-2xl font-serif font-bold text-[#141413]">Zero-Loss Physical Synthesis</h2>
+            <p className="text-sm text-[#5a5a55] leading-relaxed">
+              A world where high-reliability hardware engineering is as accessible, verifiable, and fast as deploying modern cloud software—with mathematically guaranteed manufacturing success.
             </p>
-            <p>
-              We operate across three core business capabilities: building intelligent AI solutions and software systems for businesses, engineering electronics, embedded systems, and advanced PCB layouts, and taking complete product development projects from initial concept to final delivery.
-            </p>
-            <p>
-              Through our flagship open-source initiative, <strong>Electronics Agent Kit (EAK)</strong>, we are building an AI-native electronics engineering workstation where professional schematic and PCB editors share one verifiable design model with terminal AI agents.
-            </p>
-            <div className="pt-2 flex flex-wrap gap-4">
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-1.5 text-sm font-semibold text-[#121316] hover:text-[#ff5500] transition-colors"
-              >
-                <span>Explore our engineering services</span>
-                <span aria-hidden="true">&rarr;</span>
-              </Link>
-            </div>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* SEPARATE SECTION 6: Achievements & Milestones */}
-      <AchievementsMilestonesSection />
+      {/* Leadership Profile */}
+      <section id="leadership" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+        <div className="space-y-4 mb-10">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+            Executive Leadership
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+            Founder &amp; Engineering Direction
+          </h2>
+        </div>
 
-      {/* SEPARATE SECTION 7: Company Registrations & Recognitions */}
-      <CompanyRegistrationsSection />
+        <div className="p-8 sm:p-10 rounded-2xl bg-white border border-[#e6e4dc] shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#f2f0e8] pb-6">
+            <div>
+              <h3 className="text-2xl font-serif font-bold text-[#141413]">Nijo Ponnachan</h3>
+              <p className="text-xs font-mono text-[#da552f] uppercase tracking-wider mt-0.5">
+                Founder, Chief Executive Officer &amp; Principal Systems Architect
+              </p>
+            </div>
+            <a
+              href="https://www.linkedin.com/in/nijoponnachan"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-medium text-[#141413] bg-[#faf9f5] border border-[#e6e4dc] hover:bg-[#f2f0e8] rounded-full transition-all self-start sm:self-center"
+            >
+              <LinkedinIcon className="w-3.5 h-3.5 text-[#0077b5]" />
+              <span>LinkedIn Profile</span>
+              <ArrowUpRight className="w-3.5 h-3.5 text-[#888780]" />
+            </a>
+          </div>
 
-      {/* Guiding Engineering Principles */}
-      <Section id="principles" className="bg-[#f5f4ef]">
-        <SectionHeader
-          eyebrow="Our Doctrine"
-          title="Core Engineering Principles"
-          description="We reject superficial marketing claims in favor of foundational systems design and rigorous physical correctness."
-        />
+          <div className="space-y-3 text-sm text-[#5a5a55] leading-relaxed max-w-3xl">
+            <p>
+              Nijo leads architecture and technology strategy across TUSK Innovations, directing the development of Electronics Agent Kit (EAK) and client engineering engagements.
+            </p>
+            <p>
+              His work focuses on deterministic event-sourced engineering models, the intersection of autonomous LLM tool use with physical CAD systems, and high-speed embedded systems design.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Engineering Philosophy */}
+      <section id="philosophy" className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+        <div className="space-y-4 mb-8">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+            Foundational Tenets
+          </span>
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+            How We Approach Engineering
+          </h2>
+        </div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="p-6 bg-white border border-[#e6e5e0] rounded-xl">
-            <div className="w-10 h-10 rounded-lg bg-[#ff5500]/10 flex items-center justify-center text-[#ff5500] mb-4">
-              <ShieldCheck className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-[#121316] mb-2">Deterministic Authority</h3>
-            <p className="text-sm text-[#585c65] leading-relaxed">
-              AI should propose; deterministic physics, electrical constraints, and compilation rules must validate. Authoritative state is never mutated without provable verification.
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e4dc] space-y-2">
+            <h3 className="text-base font-serif font-bold text-[#141413]">1. Fail-Closed Validation</h3>
+            <p className="text-xs text-[#5a5a55] leading-relaxed">
+              If an invariant check cannot be proven correct mathematically, it fails closed. We never gamble with physical hardware.
             </p>
           </div>
-
-          <div className="p-6 bg-white border border-[#e6e5e0] rounded-xl">
-            <div className="w-10 h-10 rounded-lg bg-[#ff5500]/10 flex items-center justify-center text-[#ff5500] mb-4">
-              <Code2 className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-[#121316] mb-2">Verifiable &amp; Open Standards</h3>
-            <p className="text-sm text-[#585c65] leading-relaxed">
-              Tools that build physical reality must be auditable. We engineer our core runtimes with transparent boundaries and open protocols, avoiding opaque lock-ins.
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e4dc] space-y-2">
+            <h3 className="text-base font-serif font-bold text-[#141413]">2. No Vendor Lock-in</h3>
+            <p className="text-xs text-[#5a5a55] leading-relaxed">
+              All outputs are standard open formats (Gerber RS-274X, IPC-D-356, KiCad assets, TypeScript/Rust code). The client owns all IP.
             </p>
           </div>
-
-          <div className="p-6 bg-white border border-[#e6e5e0] rounded-xl">
-            <div className="w-10 h-10 rounded-lg bg-[#ff5500]/10 flex items-center justify-center text-[#ff5500] mb-4">
-              <Cpu className="w-5 h-5" />
-            </div>
-            <h3 className="text-base font-bold text-[#121316] mb-2">High-Performance Foundations</h3>
-            <p className="text-sm text-[#585c65] leading-relaxed">
-              We leverage systems languages like Rust alongside native desktop runtimes. Memory safety, multi-threaded event processing, and typed physical quantities ensure durability.
+          <div className="p-6 rounded-2xl bg-white border border-[#e6e4dc] space-y-2">
+            <h3 className="text-base font-serif font-bold text-[#141413]">3. First-Principles Simplicity</h3>
+            <p className="text-xs text-[#5a5a55] leading-relaxed">
+              We eliminate unnecessary abstractions. The simplest circuit and the cleanest code path is the most reliable.
             </p>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* Leadership */}
-      <Section id="leadership">
-        <SectionHeader
-          eyebrow="Leadership"
-          title="Executive &amp; Engineering Leadership"
-          description="Guided by founders with backgrounds spanning systems software architecture, artificial intelligence, and electronics engineering."
-        />
+      {/* Achievements & Milestones (strictly separate) */}
+      <AchievementsMilestonesSection />
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl">
-          <div className="p-6 bg-white border border-[#e6e5e0] rounded-xl">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-[#121316] text-white flex items-center justify-center font-mono font-bold text-sm">
-                NP
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-[#121316]">Nijo Ponnachan</h3>
-                <span className="text-xs font-mono text-[#ff5500]">Founder &amp; CEO</span>
-              </div>
-            </div>
-            <p className="text-sm text-[#585c65] leading-relaxed">
-              Directing strategic company vision, systems architecture, and core product roadmaps. Passionate about unifying modern AI compilers with physical hardware fabrication.
-            </p>
-          </div>
+      {/* Company Registrations & Recognitions (strictly separate) */}
+      <CompanyRegistrationsSection />
 
-          <div className="p-6 bg-white border border-[#e6e5e0] rounded-xl">
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-12 rounded-full bg-[#121316] text-white flex items-center justify-center font-mono font-bold text-sm">
-                AJ
-              </div>
-              <div>
-                <h3 className="text-lg font-bold text-[#121316]">Anjai Itty Jacob</h3>
-                <span className="text-xs font-mono text-[#ff5500]">CTO</span>
-              </div>
-            </div>
-            <p className="text-sm text-[#585c65] leading-relaxed">
-              Overseeing technical execution, AI agent pipelines, multi-provider model integration, and engineering verification engines across desktop EDA and software platforms.
-            </p>
-          </div>
+      {/* Contact CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
+        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          Partner with TUSK Innovations
+        </h2>
+        <p className="text-base sm:text-lg text-[#5a5a55] max-w-xl mx-auto">
+          We welcome commercial project inquiries, technical partnerships, and research collaborations.
+        </p>
+        <div className="pt-2">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+          >
+            <span>Contact Our Team</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

@@ -4,88 +4,89 @@ import { ACHIEVEMENTS_MILESTONES } from '@/lib/data';
 
 export function AchievementsMilestonesSection() {
   return (
-    <section id="achievements" className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] bg-white">
-      <div className="mx-auto max-w-7xl">
+    <section id="achievements" className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e4dc] bg-[#faf9f5]">
+      <div className="mx-auto max-w-5xl">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff5500]/10 border border-[#ff5500]/20 text-[#ff5500] text-xs font-mono font-medium">
+        <div className="text-center max-w-2xl mx-auto mb-14 space-y-3">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white border border-[#e6e4dc] text-[#da552f] text-xs font-mono font-medium">
             <Award className="w-3.5 h-3.5" />
-            <span>SELECT PROGRAMS & SELECTIONS</span>
+            <span>Select Programs & Grants</span>
           </div>
-          <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121316]">
+          <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
             Achievements & Milestones
           </h2>
-          <p className="text-base sm:text-lg text-[#585c65] leading-relaxed">
-            Selected for premier global acceleration programs and state innovation grants to advance artificial intelligence and physical electronics engineering.
+          <p className="text-sm sm:text-base text-[#5a5a55] leading-relaxed font-sans">
+            Recognized by premier acceleration programs and state innovation initiatives to advance artificial intelligence and physical hardware engineering.
           </p>
         </div>
 
         {/* 2-Column Milestone Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {ACHIEVEMENTS_MILESTONES.map((item) => (
             <div
               key={item.id}
-              className="group relative bg-[#faf9f6] border border-[#e6e5e0] hover:border-[#121316]/30 rounded-xl p-8 transition-all duration-200 hover:shadow-md flex flex-col justify-between"
+              className="group bg-white border border-[#e6e4dc] hover:border-[#d4d1c6] rounded-2xl p-8 transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col justify-between"
             >
               <div className="space-y-6">
                 {/* Header row: Logo & Category Badge */}
-                <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#e6e5e0]">
-                  <div className="h-12 flex items-center">
+                <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#f2f0e8]">
+                  <div className="h-10 flex items-center">
                     {item.id === 'nvidia-inception' ? (
                       <div className="flex items-center gap-3">
-                        <div className="relative h-9 w-36">
+                        <div className="relative h-8 w-32">
                           <Image
                             src="/brand/nvidia-full.svg"
                             alt="NVIDIA Official Logo"
                             fill
                             className="object-contain object-left"
-                            sizes="150px"
+                            sizes="130px"
                           />
                         </div>
-                        <span className="text-xs font-mono font-bold text-neutral-400">/ INCEPTION</span>
+                        <span className="text-[10px] font-mono font-bold text-[#888780]">/ INCEPTION</span>
                       </div>
                     ) : (
-                      <div className="relative h-10 w-44">
+                      <div className="relative h-9 w-40">
                         <Image
                           src="/brand/ksum-logo.svg"
                           alt="Kerala Startup Mission Official Logo"
                           fill
                           className="object-contain object-left"
-                          sizes="180px"
+                          sizes="160px"
                         />
                       </div>
                     )}
                   </div>
-                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-white border border-[#e6e5e0] text-[#585c65]">
-                    <CheckCircle2 className="w-3 h-3 text-[#ff5500]" />
+                  <span className="inline-flex items-center gap-1.5 px-2.5 py-1 text-[11px] font-mono font-semibold uppercase tracking-wider rounded-md bg-[#faf9f5] border border-[#e6e4dc] text-[#5a5a55]">
+                    <CheckCircle2 className="w-3 h-3 text-[#da552f]" />
                     {item.badge}
                   </span>
                 </div>
 
                 {/* Content */}
-                <div>
-                  <h3 className="text-xl font-bold text-[#121316] group-hover:text-[#ff5500] transition-colors leading-snug">
+                <div className="space-y-2">
+                  <h3 className="text-xl font-serif font-bold text-[#141413] group-hover:text-[#da552f] transition-colors leading-snug">
                     {item.title}
                   </h3>
-                  <p className="mt-1 text-xs font-mono text-[#8b909a]">
-                    {item.organization}
+                  <p className="text-xs font-mono text-[#888780]">
+                    Organization: {item.organization}
                   </p>
-                  <p className="mt-4 text-sm text-[#585c65] leading-relaxed">
+                  <p className="pt-2 text-sm text-[#5a5a55] leading-relaxed">
                     {item.description}
                   </p>
                 </div>
               </div>
 
-              {/* Action / Reference Link */}
-              <div className="mt-8 pt-4 border-t border-[#e6e5e0]/60">
+              {/* Footer link */}
+              <div className="pt-6 mt-6 border-t border-[#f2f0e8] flex items-center justify-between">
+                <span className="text-xs font-mono text-[#888780]">{item.category}</span>
                 <a
                   href={item.link}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 text-xs font-mono font-semibold text-[#121316] hover:text-[#ff5500] transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-medium text-[#141413] group-hover:text-[#da552f] transition-colors"
                 >
-                  <span>Official Reference</span>
-                  <ArrowUpRight className="w-3.5 h-3.5 opacity-70 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                  <span>Verify Program</span>
+                  <ArrowUpRight className="w-3.5 h-3.5" />
                 </a>
               </div>
             </div>

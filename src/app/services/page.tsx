@@ -1,257 +1,166 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import Script from 'next/script';
-import { ArrowRight, Check, Brain, Cpu, Rocket } from 'lucide-react';
-import { SERVICES_LIST, WORKFLOW_STEPS, COMPANY_DETAILS } from '@/lib/data';
-import { Section } from '@/components/Section';
-import { AchievementsMilestonesSection } from '@/components/AchievementsMilestonesSection';
-import { CompanyRegistrationsSection } from '@/components/CompanyRegistrationsSection';
+import { ArrowRight, Bot, Cpu, Rocket, CheckCircle2 } from 'lucide-react';
 
 export const metadata: Metadata = {
-  title: 'Engineering & Technology Services | TUSK Innovations',
+  title: 'Engineering & AI Services | TUSK Innovations',
   description:
-    'Comprehensive engineering services from TUSK Innovations: Custom AI Solutions for Businesses, Electronics & PCB Engineering, and End-to-End Product Development from concept to delivery.',
+    'Comprehensive engineering solutions: Custom AI systems for businesses, high-density multi-layer PCB design, embedded systems, and end-to-end product development.',
   alternates: {
     canonical: 'https://www.tuskinnovations.in/services',
   },
 };
 
-export default function ServicesPage() {
-  const serviceSchema = {
-    '@context': 'https://schema.org',
-    '@type': 'Service',
-    serviceType: 'AI & Electronics Engineering Services',
-    provider: {
-      '@type': 'Corporation',
-      name: 'TUSK Innovations',
-      legalName: COMPANY_DETAILS.legalName,
-      url: COMPANY_DETAILS.siteUrl,
-    },
-    areaServed: 'Worldwide',
-    hasOfferCatalog: {
-      '@type': 'OfferCatalog',
-      name: 'Engineering Offerings',
-      itemListElement: [
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'AI Solutions for Businesses',
-            description: 'Custom AI applications, autonomous agents, business workflow automation, and internal operational tools.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'Electronics & PCB Engineering',
-            description: 'Circuit design, schematic engineering, multi-layer PCB layout, embedded firmware, and manufacturing coordination.',
-          },
-        },
-        {
-          '@type': 'Offer',
-          itemOffered: {
-            '@type': 'Service',
-            name: 'End-to-End Product Development',
-            description: 'From project idea to final delivery across software, artificial intelligence, and physical electronics.',
-          },
-        },
-      ],
-    },
-  };
+const SERVICES = [
+  {
+    id: 'ai-solutions',
+    icon: Bot,
+    title: 'AI Solutions for Businesses',
+    tagline: 'Intelligent Software, Autonomous Agents & Process Automation',
+    description:
+      'We architect, build, and deploy custom artificial intelligence systems that solve concrete operational bottlenecks, automate repetitive workflows, and empower businesses with intelligent decision-making.',
+    href: '/services/ai-solutions',
+    highlights: [
+      'Custom AI applications & LLM adapters',
+      'Autonomous multi-agent orchestration',
+      'Enterprise workflow & RPA automation',
+      'Domain knowledge retrieval (RAG)',
+      'Intelligent operational dashboards',
+    ],
+  },
+  {
+    id: 'electronics-pcb',
+    icon: Cpu,
+    title: 'Electronics & PCB Engineering',
+    tagline: 'Circuit Schematics, Multi-Layer Boards & Embedded Firmware',
+    description:
+      'High-reliability electronics engineering from circuit schematics to high-density multi-layer PCB designs, embedded microcontroller firmware, electrical validation, and manufacturing coordination.',
+    href: '/services/electronics-pcb',
+    highlights: [
+      'Circuit design & schematic engineering',
+      'Multi-layer high-density PCB layouts',
+      'ARM Cortex, STM32 & ESP32 firmware',
+      'Design for Manufacturing (DFM) verification',
+      'BOM preparation & component sourcing assistance',
+    ],
+  },
+  {
+    id: 'product-development',
+    icon: Rocket,
+    title: 'End-to-End Product Development',
+    tagline: 'From Initial Idea to Final Delivery',
+    description:
+      'Our signature full-cycle engineering offering. We take complete ownership of your product journey—unifying AI software, physical circuit design, embedded controllers, prototyping, and manufacturing handoff.',
+    href: '/services/product-development',
+    highlights: [
+      'Concept feasibility & system architecture',
+      'Unified software, AI, and hardware co-design',
+      'Rapid prototype bring-up & lab testing',
+      'Production fabrication package delivery',
+      'Post-delivery iteration & technical support',
+    ],
+  },
+];
 
+export default function ServicesOverviewPage() {
   return (
-    <div>
-      <Script
-        id="services-schema"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
-      />
+    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
+      {/* Hero Header */}
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto border-b border-[#e6e4dc]">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#5a5a55] mb-6">
+          <span className="w-1.5 h-1.5 rounded-full bg-[#da552f]" />
+          Engineering Capabilities
+        </div>
+        <h1 className="text-4xl sm:text-5xl lg:text-6xl font-serif tracking-tight text-[#141413] leading-[1.1] max-w-4xl">
+          Engineered for Rigorous Technical Demands.
+        </h1>
+        <p className="mt-6 text-lg sm:text-xl text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+          TUSK Innovations provides focused engineering capabilities across modern artificial intelligence, high-reliability electronics, and complete product development.
+        </p>
 
-      {/* Header */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
-        <div className="mx-auto max-w-4xl text-center space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff5500]/10 border border-[#ff5500]/20 text-[#ff5500] text-xs font-mono font-medium">
-            <span>FULL-LIFECYCLE ENGINEERING</span>
-          </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[#121316] leading-tight">
-            From Concept to Creation. From Project to Delivery.
-          </h1>
-          <p className="text-lg sm:text-xl text-[#585c65] max-w-3xl mx-auto leading-relaxed">
-            We build intelligent software, AI-powered business solutions, electronics, and complete hardware products — from initial concept to engineering, development, testing, and final delivery.
-          </p>
-          <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <Link
-              href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5"
-            >
-              <span>Start a Project</span>
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-            <a
-              href="#end-to-end-workflow"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#121316] bg-white border border-[#d0ceca] hover:bg-neutral-50 rounded-md transition-colors shadow-2xs"
-            >
-              <span>Explore Our Workflow</span>
-            </a>
-          </div>
+        <div className="mt-8 flex flex-wrap gap-4">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+          >
+            <span>Discuss Your Project</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
       </section>
 
-      {/* SERVICE 1: AI Solutions for Businesses */}
-      <Section id="ai-solutions" className="bg-white">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-5 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-[#ff5500]/10 text-[#ff5500] text-xs font-mono font-semibold">
-              <Brain className="w-4 h-4" />
-              <span>SERVICE OFFERING 01</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#121316]">
-              AI Solutions for Businesses
-            </h2>
-            <p className="text-base text-[#585c65] leading-relaxed">
-              We engineer custom AI software, autonomous multi-tool agentic pipelines, and business automation workflows that drive measurable operational leverage.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/contact?category=AI%20%26%20Software%20Solutions"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-[#ff5500] rounded transition-colors"
-              >
-                <span>Request AI Architecture Consultation</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-
-          <div className="lg:col-span-7 bg-[#faf9f6] border border-[#e6e5e0] rounded-xl p-6 sm:p-8">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[#8b909a] mb-4">
-              Scope of Implementation
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {SERVICES_LIST[0].capabilities.map((cap, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 p-3 bg-white rounded-lg border border-[#e6e5e0]">
-                  <Check className="w-4 h-4 text-[#ff5500] shrink-0 mt-0.5" />
-                  <span className="text-xs font-medium text-[#121316]">{cap}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* SERVICE 2: Electronics & PCB Engineering */}
-      <Section id="electronics-engineering" className="bg-[#f5f4ef]">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 order-2 lg:order-1 bg-white border border-[#e6e5e0] rounded-xl p-6 sm:p-8">
-            <h3 className="text-xs font-mono uppercase tracking-wider text-[#8b909a] mb-4">
-              Hardware Engineering Disciplines
-            </h3>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {SERVICES_LIST[1].capabilities.map((cap, idx) => (
-                <div key={idx} className="flex items-start gap-2.5 p-3 bg-[#faf9f6] rounded-lg border border-[#e6e5e0]">
-                  <Cpu className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                  <span className="text-xs font-medium text-[#121316]">{cap}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div className="lg:col-span-5 order-1 lg:order-2 space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-md bg-emerald-500/10 text-emerald-700 text-xs font-mono font-semibold">
-              <Cpu className="w-4 h-4" />
-              <span>SERVICE OFFERING 02</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#121316]">
-              Electronics &amp; PCB Engineering
-            </h2>
-            <p className="text-base text-[#585c65] leading-relaxed">
-              From circuit schematic synthesis to multi-layer impedance-controlled PCB layout, firmware programming, component sourcing assistance, and manufacturing coordination.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/contact?category=Electronics%20%26%20PCB%20Design"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-[#ff5500] rounded transition-colors"
-              >
-                <span>Initiate PCB / Hardware Project</span>
-                <ArrowRight className="w-3.5 h-3.5" />
-              </Link>
-            </div>
-          </div>
-        </div>
-      </Section>
-
-      {/* SERVICE 3: End-to-End Product Development (Dark Showcase) */}
-      <Section id="end-to-end-workflow" dark={true} className="tech-grid-dark">
-        <div className="space-y-16">
-          <div className="max-w-3xl space-y-4">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded bg-[#ff5500]/20 border border-[#ff5500]/40 text-[#ff5500] text-xs font-mono font-medium">
-              <Rocket className="w-3.5 h-3.5" />
-              <span>FLAGSHIP SERVICE OFFERING</span>
-            </div>
-            <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
-              End-to-End Product Development
-            </h2>
-            <p className="text-xl font-mono text-[#ff5500]">
-              From Concept to Creation. From Project to Delivery.
-            </p>
-            <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
-              Clients can approach TUSK Innovations with an idea, an incomplete project, a technical challenge, or a complete product requirement. We take total ownership of the engineering lifecycle across software, artificial intelligence, and electronic hardware.
-            </p>
-          </div>
-
-          {/* The 6-Stage Process */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {WORKFLOW_STEPS.map((step) => (
-              <div
-                key={step.step}
-                className="p-6 bg-[#16181d] border border-neutral-800 rounded-xl space-y-3 relative group hover:border-[#ff5500]/60 transition-colors"
-              >
-                <div className="flex items-center justify-between">
-                  <span className="text-3xl font-mono font-bold text-[#ff5500]">
-                    0{step.step}
-                  </span>
-                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-wider">
-                    Stage {step.step}
-                  </span>
-                </div>
-                <h3 className="text-lg font-bold text-white group-hover:text-[#ff5500] transition-colors">
-                  {step.title}
-                </h3>
-                <p className="text-xs font-medium text-neutral-300">
-                  {step.summary}
-                </p>
-                <p className="text-xs text-neutral-400 leading-relaxed pt-1">
-                  {step.details}
-                </p>
-              </div>
-            ))}
-          </div>
-
-          {/* CTA Box */}
-          <div className="p-8 bg-neutral-900 border border-neutral-800 rounded-xl flex flex-col md:flex-row items-center justify-between gap-6">
-            <div className="space-y-2 text-center md:text-left">
-              <h3 className="text-xl font-bold text-white">
-                Ready to transform your idea into a delivered product?
-              </h3>
-              <p className="text-sm text-neutral-400 max-w-xl">
-                Submit your project specifications or schedule a technical discovery session with our engineering team.
-              </p>
-            </div>
-            <Link
-              href="/contact?category=Complete%20Product%20Development"
-              className="shrink-0 px-6 py-3 text-xs font-mono font-bold uppercase tracking-wider bg-[#ff5500] hover:bg-[#e04a00] text-white rounded-md transition-colors"
+      {/* Services Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-12">
+        {SERVICES.map((srv, index) => {
+          const Icon = srv.icon;
+          return (
+            <div
+              key={srv.id}
+              className="p-8 sm:p-10 rounded-2xl bg-white border border-[#e6e4dc] hover:border-[#d4d1c6] transition-all shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6"
             >
-              Start Your Project
-            </Link>
-          </div>
+              <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-[#f2f0e8] pb-6">
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <span className="text-xs font-mono uppercase tracking-widest text-[#888780]">
+                      Service 0{index + 1}
+                    </span>
+                    <h2 className="text-2xl sm:text-3xl font-serif font-bold text-[#141413]">
+                      {srv.title}
+                    </h2>
+                  </div>
+                </div>
+                <Link
+                  href={srv.href}
+                  className="inline-flex items-center gap-2 px-4 py-2 text-xs font-semibold text-[#141413] bg-[#f5f4ee] hover:bg-[#eae8de] rounded-full transition-all self-start sm:self-center"
+                >
+                  <span>Explore Service Details</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+
+              <p className="text-base text-[#5a5a55] leading-relaxed max-w-3xl">
+                {srv.description}
+              </p>
+
+              <div>
+                <span className="text-xs font-mono font-semibold uppercase tracking-wider text-[#da552f]">
+                  Key Deliverables & Scope
+                </span>
+                <ul className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs text-[#5a5a55]">
+                  {srv.highlights.map((h, i) => (
+                    <li key={i} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0 mt-0.5" />
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          );
+        })}
+      </section>
+
+      {/* Conversion Banner */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6 border-t border-[#e6e4dc]">
+        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          Have a Project in Mind?
+        </h2>
+        <p className="text-base sm:text-lg text-[#5a5a55] max-w-xl mx-auto">
+          Talk to our engineering leads. We provide honest technical assessments, clear milestone budgets, and structured delivery paths.
+        </p>
+        <div className="pt-2">
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+          >
+            <span>Start a Project Enquiry</span>
+            <ArrowRight className="w-4 h-4" />
+          </Link>
         </div>
-      </Section>
-
-      {/* SEPARATE SECTION: Achievements & Milestones */}
-      <AchievementsMilestonesSection />
-
-      {/* SEPARATE SECTION: Company Registrations & Recognitions */}
-      <CompanyRegistrationsSection />
+      </section>
     </div>
   );
 }

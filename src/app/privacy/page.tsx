@@ -1,72 +1,77 @@
 import type { Metadata } from 'next';
-import { Section } from '@/components/Section';
+import Link from 'next/link';
+import { ArrowLeft } from 'lucide-react';
 import { COMPANY_DETAILS } from '@/lib/data';
 
 export const metadata: Metadata = {
-  title: 'Privacy Policy',
+  title: 'Privacy Policy | TUSK Innovations',
   description:
-    'Privacy Policy and Data Protection standards of TUSK INNOVATIONS GLOBAL PRIVATE LIMITED.',
+    'Privacy Policy and Data Protection standards of TUSK Innovations Global Private Limited.',
+  alternates: {
+    canonical: 'https://www.tuskinnovations.in/privacy',
+  },
 };
 
 export default function PrivacyPage() {
   return (
-    <div>
-      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
-        <div className="mx-auto max-w-4xl text-center space-y-4">
-          <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-            Governance & Privacy
-          </span>
-          <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-[#121316]">
-            Privacy Policy
-          </h1>
-          <p className="text-sm font-mono text-[#8b909a]">
-            Effective Date: November 2026 • Version 1.0
-          </p>
-        </div>
+    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto border-b border-[#e6e4dc]">
+        <Link
+          href="/"
+          className="inline-flex items-center gap-1.5 text-xs font-mono text-[#5a5a55] hover:text-[#da552f] transition-colors mb-6"
+        >
+          <ArrowLeft className="w-3.5 h-3.5" />
+          <span>Return Home</span>
+        </Link>
+        <span className="text-xs font-mono font-medium text-[#da552f] uppercase tracking-wider block">
+          Governance &amp; Privacy Standards
+        </span>
+        <h1 className="text-4xl sm:text-5xl font-serif font-bold tracking-tight text-[#141413] mt-2">
+          Privacy Policy
+        </h1>
+        <p className="text-xs font-mono text-[#888780] mt-3">
+          Effective Date: November 2026 • Statutory Identity: {COMPANY_DETAILS.cin}
+        </p>
       </section>
 
-      <Section id="privacy-content">
-        <div className="mx-auto max-w-3xl prose prose-neutral text-base leading-relaxed text-[#585c65] space-y-8">
-          <div>
-            <h2 className="text-xl font-bold text-[#121316] mb-3">1. Corporate Identity</h2>
-            <p>
-              This Privacy Policy applies to the official digital web portal operated by <strong>TUSK INNOVATIONS GLOBAL PRIVATE LIMITED</strong> (CIN: {COMPANY_DETAILS.cin}), with registered office at {COMPANY_DETAILS.address}.
-            </p>
-          </div>
+      <section className="py-16 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto space-y-8 text-sm text-[#5a5a55] leading-relaxed">
+        <div className="bg-white p-8 rounded-2xl border border-[#e6e4dc] space-y-3 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <h2 className="text-xl font-serif font-bold text-[#141413]">1. Corporate Identity</h2>
+          <p>
+            This Privacy Policy governs the official digital portal of <strong>{COMPANY_DETAILS.legalName}</strong> (CIN: {COMPANY_DETAILS.cin}), with registered corporate headquarters at {COMPANY_DETAILS.address}.
+          </p>
+        </div>
 
-          <div>
-            <h2 className="text-xl font-bold text-[#121316] mb-3">2. Information Collection</h2>
-            <p>
-              We collect information strictly necessary to provide official company communications and evaluate collaborative partnerships:
-            </p>
-            <ul className="list-disc pl-5 space-y-2 mt-2">
-              <li>Direct inquiries submitted through our official contact channels (e.g. name, organizational email, company affiliation).</li>
-              <li>Standard technical server logs (IP address, browser type, referring pages) generated automatically for system security and audit purposes.</li>
-            </ul>
-          </div>
+        <div className="bg-white p-8 rounded-2xl border border-[#e6e4dc] space-y-3 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <h2 className="text-xl font-serif font-bold text-[#141413]">2. Information Collection</h2>
+          <p>
+            We collect personal and professional information strictly necessary to facilitate verified business communications, evaluate client project inquiries, and fulfill contractual engineering obligations:
+          </p>
+          <ul className="list-disc pl-5 space-y-1.5 text-xs">
+            <li>Direct project inquiries (full name, work email address, company affiliation, technical requirements).</li>
+            <li>Standard server security logs (IP addresses, user agent headers) collected strictly for cybersecurity audit purposes.</li>
+          </ul>
+        </div>
 
-          <div>
-            <h2 className="text-xl font-bold text-[#121316] mb-3">3. Local-First Engineering Runtimes</h2>
-            <p>
-              Our open-source platform, Electronics Agent Kit (EAK), is architected as a local-first engineering runtime. When executing EAK prototypes locally on developer hardware, design data, event logs, and schematics remain on the engineer’s local storage and are not transmitted to corporate servers unless explicitly configured by the user.
-            </p>
-          </div>
+        <div className="bg-white p-8 rounded-2xl border border-[#e6e4dc] space-y-3 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <h2 className="text-xl font-serif font-bold text-[#141413]">3. Local-First Engineering Runtimes</h2>
+          <p>
+            Our open-source software tools, including Electronics Agent Kit (EAK), are designed as local-first desktop runtimes. Local design files, schematic databases, PCB layouts, and simulation netlists remain stored exclusively on your local workstation and are never transmitted to our servers without explicit user command.
+          </p>
+        </div>
 
-          <div>
-            <h2 className="text-xl font-bold text-[#121316] mb-3">4. Information Sharing & Security</h2>
-            <p>
-              We do not sell, rent, or lease corporate visitor data to third-party commercial marketing platforms. We enforce appropriate administrative, technical, and physical security measures to safeguard communication records against unauthorized access.
-            </p>
-          </div>
-
-          <div>
-            <h2 className="text-xl font-bold text-[#121316] mb-3">5. Official Contact</h2>
-            <p>
-              For privacy-related inquiries, data access requests, or official regulatory queries, contact our legal and compliance office at <a href={`mailto:${COMPANY_DETAILS.email}`} className="text-[#ff5500] underline">{COMPANY_DETAILS.email}</a>.
-            </p>
+        <div className="bg-white p-8 rounded-2xl border border-[#e6e4dc] space-y-3 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          <h2 className="text-xl font-serif font-bold text-[#141413]">4. Contact &amp; Grievances</h2>
+          <p>
+            For privacy inquiries, data subject access requests, or regulatory clarifications, you may contact our corporate office at:
+          </p>
+          <div className="p-4 bg-[#faf9f5] rounded-xl border border-[#e6e4dc] font-mono text-xs text-[#141413] space-y-1">
+            <p>Email: {COMPANY_DETAILS.email}</p>
+            <p>Phone: {COMPANY_DETAILS.phone}</p>
+            <p>Address: {COMPANY_DETAILS.address}</p>
           </div>
         </div>
-      </Section>
+      </section>
     </div>
   );
 }

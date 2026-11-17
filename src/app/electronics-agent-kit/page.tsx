@@ -1,277 +1,426 @@
 import type { Metadata } from 'next';
-import { Section, SectionHeader } from '@/components/Section';
-import { COMPANY_DETAILS, EAK_CAPABILITIES, ROADMAP_STAGES } from '@/lib/data';
-import { ArrowUpRight, GitFork, ArrowRight, ShieldCheck, Terminal, Layers, Cpu } from 'lucide-react';
+import Image from 'next/image';
 import Link from 'next/link';
+import {
+  ArrowRight,
+  ArrowUpRight,
+  CheckCircle2,
+  AlertTriangle,
+  Terminal,
+  Cpu,
+  Layers,
+  Activity,
+  ShieldCheck,
+  Sparkles,
+  GitBranch,
+} from 'lucide-react';
+import { GithubIcon } from '@/components/SocialIcons';
+import { EAK_CAPABILITIES } from '@/lib/data';
 
 export const metadata: Metadata = {
   title: 'Electronics Agent Kit (EAK) | AI-Native Electronics Engineering Workstation',
   description:
-    'Electronics Agent Kit (EAK) is an open-source, AI-native electronics engineering environment designed to transform engineering requirements into manufacturable electronic hardware.',
+    'Electronics Agent Kit (EAK) is an AI-native electronics engineering workstation bringing intelligent agents, schematic design, and PCB engineering into one verifiable environment.',
+  alternates: {
+    canonical: 'https://www.tuskinnovations.in/electronics-agent-kit',
+  },
 };
 
+const CAPABILITY_STATUSES: {
+  name: string;
+  category: string;
+  status: 'Implemented' | 'Implemented in Beta' | 'Partially Implemented' | 'Planned';
+  description: string;
+}[] = [
+  {
+    name: 'Live Terminal-to-EDA Synchronization',
+    category: 'Workstation & Shell',
+    status: 'Implemented',
+    description:
+      'A coding agent in the terminal workspace edits design files via typed commands; the schematic and PCB views update live in real-time, preserving camera orientation and selection.',
+  },
+  {
+    name: 'Typed Deterministic Engine with Fail-Closed Validation',
+    category: 'Kernel & Physics',
+    status: 'Implemented',
+    description:
+      'Every change is a typed runtime command on one canonical design model. Invariant validation (ERC/DRC) is computed by deterministic engines, never guessed by neural models. Unknown checks report fail-closed.',
+  },
+  {
+    name: 'Interactive Schematic Design & Editing',
+    category: 'Schematic Engine',
+    status: 'Implemented',
+    description:
+      'Drag-and-drop component placement, click-to-place with rotation, automatic junction dots, wires, net labels, no-connect markers, mirror, and multi-level undo/redo.',
+  },
+  {
+    name: 'PCB Layout, Layer Manager & Net Highlighting',
+    category: 'PCB Engine',
+    status: 'Implemented in Beta',
+    description:
+      'Board outlines, footprint placement, tracks, vias, zone refills with dynamic connectivity recomputation, net highlighting, and comprehensive multi-layer stackup management.',
+  },
+  {
+    name: 'Electrical Rules Check (ERC) & Design Rules Check (DRC)',
+    category: 'Verification',
+    status: 'Implemented in Beta',
+    description:
+      'Automated ERC verification required before PCB synchronization; clearance and connectivity DRC with explicit finding reports and gap disclosures.',
+  },
+  {
+    name: 'Native 3D PCB Visualization',
+    category: '3D Rendering',
+    status: 'Implemented in Beta',
+    description:
+      'Interactive 3D board rendering with substrate layers, copper geometry, drill holes, and component body projections for visual spatial inspection.',
+  },
+  {
+    name: 'Automated Placement & Routing (Auto-Route)',
+    category: 'PCB Engine',
+    status: 'Partially Implemented',
+    description:
+      "Native auto-place heuristics and EAK's built-in routing engine. Functional in developer preview for rapid board layout exploration.",
+  },
+  {
+    name: 'Circuit Simulation Engine (ngspice)',
+    category: 'Verification & Physics',
+    status: 'Partially Implemented',
+    description:
+      'Embedded SPICE engine for transient, AC, and DC operating point verification directly from the schematic netlist.',
+  },
+  {
+    name: 'Autonomous End-to-End Board Synthesis',
+    category: 'Autonomous Agents',
+    status: 'Planned',
+    description:
+      'Zero-touch pipeline from high-level natural language functional specification directly to verified, DRC-clean, production-ready fabrication packages.',
+  },
+];
+
+const ROADMAP_MILESTONES = [
+  {
+    stage: 'Stage 01',
+    title: 'Deterministic Kernel & Schematic Core',
+    status: 'Completed',
+    desc: 'Event-sourced design model, typed command bus, canvas schematic editor, and zero-hallucination fail-closed ERC.',
+  },
+  {
+    stage: 'Stage 02',
+    title: 'PCB Engine & Multi-Layer Layout',
+    status: 'Active Beta',
+    desc: 'Interactive 2D canvas, multi-layer routing, clearance DRC, KiCad symbol/footprint importer, and 3D board projection.',
+  },
+  {
+    stage: 'Stage 03',
+    title: 'Heuristic Auto-Routing & DFM Verification',
+    status: 'In Development',
+    desc: 'Autonomous trace routing heuristics, design-for-manufacturing checks, and automated Gerber RS-274X export pipeline.',
+  },
+  {
+    stage: 'Stage 04',
+    title: 'Cloud Fabrication Integration & Team Workspaces',
+    status: 'Planned',
+    desc: 'Automated BOM procurement assistance, direct fabhouse API exports, and multi-user collaborative hardware design.',
+  },
+];
+
 export default function EAKProductPage() {
-  const getStatusBadge = (status: string) => {
+  const getBadgeStyle = (status: string) => {
     switch (status) {
       case 'Implemented':
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-mono font-medium bg-emerald-500/10 text-emerald-600 border border-emerald-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-            Implemented (Beta)
-          </span>
-        );
+        return 'bg-emerald-50 text-emerald-700 border-emerald-200';
+      case 'Implemented in Beta':
+        return 'bg-sky-50 text-sky-700 border-sky-200';
       case 'Partially Implemented':
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-mono font-medium bg-amber-500/10 text-amber-600 border border-amber-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-amber-500"></span>
-            Partially Implemented
-          </span>
-        );
-      case 'Experimental':
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-mono font-medium bg-sky-500/10 text-sky-600 border border-sky-500/20">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-500"></span>
-            Experimental
-          </span>
-        );
+        return 'bg-amber-50 text-amber-700 border-amber-200';
       default:
-        return (
-          <span className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-xs font-mono font-medium bg-neutral-200/80 text-neutral-600 border border-neutral-300">
-            <span className="w-1.5 h-1.5 rounded-full bg-neutral-400"></span>
-            Planned
-          </span>
-        );
+        return 'bg-neutral-100 text-neutral-600 border-neutral-200';
     }
   };
 
   return (
-    <div>
-      {/* Header / Hero */}
-      <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
-        <div className="mx-auto max-w-5xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff5500]/10 border border-[#ff5500]/20 text-[#ff5500] text-xs font-mono font-medium mb-6">
-            <span>FLAGSHIP PRODUCT</span>
-            <span>•</span>
-            <span>OPEN SOURCE PROTOTYPE</span>
+    <div className="bg-[#faf9f5] min-h-screen text-[#141413]">
+      {/* =========================================================================
+          HERO & ACTUAL WORKSTATION SCREENSHOT
+          ========================================================================= */}
+      <section className="pt-24 pb-16 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+        <div className="space-y-6 max-w-4xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-mono font-medium tracking-wide border border-[#e6e4dc] bg-white text-[#da552f]">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>Flagship Technology Prototype</span>
+            <span className="text-[#888780]">•</span>
+            <span className="text-[#5a5a55]">Open Source on GitHub</span>
           </div>
-          <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[#121316] leading-tight">
-            Electronics Agent Kit (EAK)
+
+          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-serif tracking-tight text-[#141413] leading-[1.06]">
+            Electronics Engineering, Reimagined.
           </h1>
-          <p className="mt-4 text-xl sm:text-2xl font-mono text-[#ff5500]">
+
+          <p className="text-xl sm:text-2xl font-serif text-[#da552f] tracking-tight">
             Intent In. Manufactured Board Out.
           </p>
-          <p className="mt-6 text-base sm:text-lg text-[#585c65] max-w-3xl leading-relaxed">
-            An AI-native electronics engineering environment designed to transform engineering requirements into manufacturable electronic hardware. Professional schematic and PCB editors share one verifiable design model with terminal AI agents in a local-first, fail-closed desktop shell.
+
+          <p className="text-base sm:text-lg text-[#5a5a55] font-sans leading-relaxed max-w-3xl">
+            Electronics Agent Kit (EAK) is an AI-native engineering workstation bringing intelligent software agents, interactive schematic editing, and deterministic PCB layout into one verifiable environment.
           </p>
 
-          <div className="mt-8 flex flex-wrap items-center gap-4">
+          <div className="pt-2 flex flex-wrap gap-4">
             <a
-              href={COMPANY_DETAILS.eakRepo}
+              href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#121316] hover:bg-neutral-800 rounded-md transition-colors"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm hover:shadow-md"
             >
-              <GitFork className="w-4 h-4 text-[#ff5500]" />
-              <span>Inspect on GitHub (NijoP/electronics-agent-kit-new-prototype)</span>
-              <ArrowUpRight className="w-4 h-4 opacity-70" />
+              <GithubIcon className="w-4 h-4" />
+              <span>Explore GitHub Repository</span>
+              <ArrowUpRight className="w-3.5 h-3.5" />
             </a>
             <a
-              href="#capabilities"
-              className="px-6 py-3.5 text-sm font-semibold text-[#121316] bg-white border border-[#d0ceca] hover:bg-neutral-50 rounded-md transition-colors"
+              href="#status"
+              className="inline-flex items-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#141413] bg-white border border-[#e6e4dc] hover:bg-[#f5f4ee] rounded-full transition-all"
             >
-              Verified Capability Matrix
+              <span>View Capability Matrix</span>
+              <ArrowRight className="w-3.5 h-3.5" />
             </a>
           </div>
 
-          <div className="mt-8 p-4 bg-amber-50 border border-amber-200/80 rounded-lg text-xs text-amber-900 leading-relaxed max-w-3xl">
-            <strong>Development Notice:</strong> EAK is an early prototype under active open-source development. Every check reports with fail-closed integrity; gaps are transparently disclosed in all reports. Nothing EAK produces is claimed as manufacturing-ready without human-in-the-loop review.
+          {/* Development Prototype Warning */}
+          <div className="mt-6 p-4 rounded-xl bg-amber-50/70 border border-amber-200/60 text-xs font-mono text-amber-900 flex items-start gap-3">
+            <AlertTriangle className="w-4 h-4 text-amber-600 shrink-0 mt-0.5" />
+            <div>
+              <strong>Development Status Disclosure: </strong>
+              EAK is actively developed as a working prototype. Core schematic editing, live agent synchronization, and DRC validation are functional; advanced automated routing and simulation are in active development.
+            </div>
+          </div>
+        </div>
+
+        {/* Primary Product Hero Screenshot */}
+        <div className="mt-12 rounded-3xl border border-[#e6e4dc] bg-white p-3 sm:p-5 shadow-[0_12px_40px_rgba(0,0,0,0.06)] overflow-hidden">
+          <div className="flex items-center justify-between pb-3 px-2 border-b border-[#f2f0e8] text-xs font-mono text-[#888780]">
+            <div className="flex items-center gap-2">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#da552f]" />
+              <span className="text-[#141413] font-semibold">EAK Desktop Shell</span>
+              <span>/ live_workspace.rs</span>
+            </div>
+            <span className="text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded text-[11px] font-semibold">
+              Live Bidirectional Sync Active
+            </span>
+          </div>
+          <div className="relative aspect-16/9 w-full rounded-2xl overflow-hidden bg-[#0a0c0f] mt-3">
+            <Image
+              src="/products/eak/schematic-editor.png"
+              alt="Electronics Agent Kit Interface"
+              fill
+              className="object-cover"
+              priority
+            />
           </div>
         </div>
       </section>
 
-      {/* SECTION A: What is EAK? */}
-      <Section id="what-is-eak">
-        <SectionHeader
-          eyebrow="Core Architecture"
-          title="What is Electronics Agent Kit?"
-          description="EAK is not a chatbot wrapper. It is an AI-native electronics engineering workstation built in Rust and Tauri with live terminal-to-EDA synchronization."
-        />
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-[#585c65] text-base leading-relaxed">
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold text-[#121316]">One Verifiable Design Model</h3>
-            <p>
-              In conventional CAD tools, schematics, netlists, footprints, and PCB copper geometries live in disconnected files. When an AI proposes a change, desynchronization between representations causes fatal physical design bugs.
-            </p>
-            <p>
-              EAK solves this by keeping schematic, PCB, and terminal AI agents synchronized against <strong>one authoritative design model</strong>. A coding agent in the terminal edits the circuit through typed commands, while schematic and PCB canvas views update live in front of you.
+      {/* =========================================================================
+          WHAT EAK DOES (THE CORE ARCHITECTURE)
+          ========================================================================= */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+        <div className="space-y-4 max-w-2xl mb-16">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+            The Problem &amp; Innovation
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+            Bridging AI Agents and Physical Reality.
+          </h2>
+          <p className="text-base text-[#5a5a55] leading-relaxed">
+            Legacy electronic design software relies on disjointed legacy interfaces, manual calculators, and disconnected verification tools. EAK re-architects this stack from the ground up.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+              <Terminal className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-serif font-bold text-[#141413]">Unified Design Model</h3>
+            <p className="text-xs text-[#5a5a55] leading-relaxed">
+              Terminal agents and graphical editors do not use separate files. They execute typed runtime commands against one single source of truth.
             </p>
           </div>
-          <div className="space-y-4">
-            <h3 className="text-lg font-bold text-[#121316]">Fail-Closed Validation Engine</h3>
-            <p>
-              AI agents in EAK never write directly to final hardware state without verification. Every incoming proposal passes through deterministic validation engines checking electrical rules (ERC) and design rules (DRC).
+
+          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-serif font-bold text-[#141413]">Fail-Closed Physics</h3>
+            <p className="text-xs text-[#5a5a55] leading-relaxed">
+              Neural models propose changes, but deterministic mathematical checkers validate them. Clearances, connectivity, and rules are never hallucinated.
             </p>
-            <p>
-              Checks are computed purely by EAK&apos;s own deterministic engines, never estimated by neural networks. Unknown or incomplete checks report strictly as unknown, never as passing.
+          </div>
+
+          <div className="p-8 rounded-2xl bg-white border border-[#e6e4dc] space-y-4 shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="w-12 h-12 rounded-xl bg-[#f5f4ee] flex items-center justify-center text-[#da552f]">
+              <Layers className="w-6 h-6" />
+            </div>
+            <h3 className="text-xl font-serif font-bold text-[#141413]">Auditable Artifacts</h3>
+            <p className="text-xs text-[#5a5a55] leading-relaxed">
+              Export standard RS-274X Gerbers, NC drill files, centroid placement tables, and consolidated BOMs ready for any standard fabrication house.
             </p>
           </div>
         </div>
-      </Section>
+      </section>
 
-      {/* SECTION B: Non-Negotiable Architecture Principles */}
-      <Section id="principles" className="bg-[#f5f4ef]">
-        <SectionHeader
-          eyebrow="Architectural Integrity"
-          title="Non-Negotiable Engineering Principles"
-          description="Enforced at compile-time and through the kernel commit pipeline."
-        />
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {[
-            {
-              id: 'P1',
-              title: 'One Verifiable Design Model',
-              desc: 'Schematics, netlists, and PCB layouts share one authoritative design model.',
-            },
-            {
-              id: 'P2',
-              title: 'Live Terminal-to-EDA Sync',
-              desc: 'Terminal commands update the schematic and PCB views live, preserving viewport and selection.',
-            },
-            {
-              id: 'P3',
-              title: 'Fail-Closed ERC & DRC Gates',
-              desc: 'Checks are computed by deterministic engines, never by LLMs. Incomplete checks report fail-closed.',
-            },
-            {
-              id: 'P4',
-              title: 'Native, Vendor-Neutral Library',
-              desc: "EAK's own component format is the source of truth, with KiCad import adapters for interchange.",
-            },
-            {
-              id: 'P5',
-              title: 'Multi-Provider Flexibility',
-              desc: 'Bring your own CLI coding agent (Claude Code, etc.); API keys remain securely in the OS keyring.',
-            },
-            {
-              id: 'P6',
-              title: 'Local-First Architecture',
-              desc: 'Projects are plain folders on disk. Zero mandatory cloud accounts or external telemetry.',
-            },
-          ].map((principle) => (
-            <div key={principle.id} className="p-6 bg-white border border-[#e6e5e0] rounded-xl">
-              <span className="font-mono text-xs font-bold text-[#ff5500] block mb-2">{principle.id}</span>
-              <h4 className="text-base font-bold text-[#121316] mb-1">{principle.title}</h4>
-              <p className="text-sm text-[#585c65] leading-relaxed">{principle.desc}</p>
+      {/* =========================================================================
+          AUTHENTIC INTERFACE CAPABILITIES GALLERY
+          ========================================================================= */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span className="text-xs font-mono font-medium text-[#da552f] uppercase tracking-wider">
+            Verified Functionality
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+            Workstation Capabilities
+          </h2>
+          <p className="text-base text-[#5a5a55]">
+            Authentic screenshots from the running EAK application interface.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="relative aspect-16/10 bg-[#0a0c0f]">
+              <Image
+                src="/products/eak/pcb-routing.png"
+                alt="EAK Multi-Layer PCB Workspace"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6 space-y-2">
+              <span className="text-xs font-mono font-semibold uppercase text-[#da552f]">PCB Engine</span>
+              <h3 className="text-lg font-serif font-bold text-[#141413]">Multi-Layer PCB Layout &amp; Routing</h3>
+              <p className="text-xs text-[#5a5a55] leading-relaxed">
+                Full layer stackup manager, trace routing, via placement, and dynamic zone flood refills with real-time connectivity validation.
+              </p>
+            </div>
+          </div>
+
+          <div className="bg-white border border-[#e6e4dc] rounded-2xl overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+            <div className="relative aspect-16/10 bg-[#0a0c0f]">
+              <Image
+                src="/products/eak/dfm-verification.png"
+                alt="EAK DFM Verification Engine"
+                fill
+                className="object-cover"
+              />
+            </div>
+            <div className="p-6 space-y-2">
+              <span className="text-xs font-mono font-semibold uppercase text-[#da552f]">Deterministic Verification</span>
+              <h3 className="text-lg font-serif font-bold text-[#141413]">Automated DFM &amp; Electrical Rules Check</h3>
+              <p className="text-xs text-[#5a5a55] leading-relaxed">
+                Clearance DRC, annular ring checks, unconnected net audits, and fail-closed validation before committing board changes.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* =========================================================================
+          CAPABILITY STATUS MATRIX (SECTION 5 SPECIFICATION)
+          ========================================================================= */}
+      <section id="status" className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+        <div className="space-y-4 max-w-2xl mb-12">
+          <span className="text-xs font-mono uppercase tracking-widest text-[#da552f]">
+            Engineering Transparency
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+            Verified Capability Matrix
+          </h2>
+          <p className="text-base text-[#5a5a55]">
+            Every feature status is audited against the active codebase. We distinguish between fully implemented capabilities, beta preview modules, and planned roadmap items.
+          </p>
+        </div>
+
+        <div className="bg-white rounded-2xl border border-[#e6e4dc] divide-y divide-[#f2f0e8] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
+          {CAPABILITY_STATUSES.map((cap, idx) => (
+            <div key={idx} className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div className="space-y-1 max-w-2xl">
+                <div className="flex items-center gap-3">
+                  <h3 className="text-base font-serif font-bold text-[#141413]">{cap.name}</h3>
+                  <span className="text-[10px] font-mono text-[#888780] bg-[#faf9f5] px-2 py-0.5 rounded border border-[#e6e4dc]">
+                    {cap.category}
+                  </span>
+                </div>
+                <p className="text-xs text-[#5a5a55] leading-relaxed">{cap.description}</p>
+              </div>
+              <span
+                className={`self-start sm:self-center shrink-0 px-3 py-1 rounded-full text-xs font-mono font-semibold border ${getBadgeStyle(
+                  cap.status
+                )}`}
+              >
+                {cap.status}
+              </span>
             </div>
           ))}
         </div>
-      </Section>
+      </section>
 
-      {/* SECTION C: Verified Capability Matrix */}
-      <Section id="capabilities">
-        <SectionHeader
-          eyebrow="Verifiable Truth"
-          title="Current Engineering Capability Matrix"
-          description="In alignment with corporate integrity standards, we strictly report verified implementation statuses directly from the codebase. We never claim incomplete functionality as production-ready."
-        />
-
-        <div className="overflow-x-auto border border-[#e6e5e0] rounded-xl bg-white shadow-2xs">
-          <table className="w-full text-left text-sm">
-            <thead className="bg-[#f5f4ef] text-xs font-mono uppercase text-[#585c65] border-b border-[#e6e5e0]">
-              <tr>
-                <th className="py-3.5 px-4 sm:px-6">Capability Domain / Module</th>
-                <th className="py-3.5 px-4 sm:px-6">Scope & Verified Implementation</th>
-                <th className="py-3.5 px-4 sm:px-6">Status</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-[#e6e5e0]">
-              {EAK_CAPABILITIES.map((cap, idx) => (
-                <tr key={idx} className="hover:bg-neutral-50/60 transition-colors">
-                  <td className="py-4 px-4 sm:px-6 font-medium text-[#121316]">
-                    <div>{cap.name}</div>
-                    <span className="text-[11px] font-mono text-[#8b909a]">{cap.category}</span>
-                  </td>
-                  <td className="py-4 px-4 sm:px-6 text-[#585c65] max-w-md text-xs sm:text-sm">
-                    {cap.description}
-                  </td>
-                  <td className="py-4 px-4 sm:px-6 whitespace-nowrap">
-                    {getStatusBadge(cap.status)}
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+      {/* =========================================================================
+          DEVELOPMENT ROADMAP
+          ========================================================================= */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-6xl mx-auto border-b border-[#e6e4dc]">
+        <div className="text-center max-w-2xl mx-auto mb-16 space-y-3">
+          <span className="text-xs font-mono font-medium text-[#da552f] uppercase tracking-wider">
+            Milestones
+          </span>
+          <h2 className="text-3xl sm:text-5xl font-serif tracking-tight text-[#141413]">
+            Development Roadmap
+          </h2>
         </div>
-      </Section>
 
-      {/* SECTION D: Master Implementation Roadmap */}
-      <Section id="roadmap" className="bg-[#f5f4ef]">
-        <SectionHeader
-          eyebrow="Development Trajectory"
-          title="Master Implementation Roadmap"
-          description="Dependency-driven development stages with concrete verification gates."
-        />
-
-        <div className="space-y-6">
-          {ROADMAP_STAGES.map((stage) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {ROADMAP_MILESTONES.map((m, idx) => (
             <div
-              key={stage.stage}
-              className="p-6 bg-white border border-[#e6e5e0] rounded-xl shadow-2xs flex flex-col md:flex-row md:items-start justify-between gap-6"
+              key={idx}
+              className="p-6 rounded-2xl bg-white border border-[#e6e4dc] shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3 flex flex-col justify-between"
             >
               <div className="space-y-2">
-                <div className="flex items-center gap-3">
-                  <span className="font-mono text-xs font-bold text-[#ff5500]">
-                    STAGE 0{stage.stage}
-                  </span>
-                  <span className="text-xs font-mono text-[#8b909a]">|</span>
-                  <span className="text-xs font-mono text-[#585c65] font-semibold">{stage.gate}</span>
-                </div>
-                <h3 className="text-lg font-bold text-[#121316]">{stage.title}</h3>
-                <p className="text-sm text-[#585c65] max-w-2xl leading-relaxed">{stage.description}</p>
-                <div className="pt-2 flex flex-wrap gap-2">
-                  {stage.deliverables.map((del, dIdx) => (
-                    <span
-                      key={dIdx}
-                      className="px-2.5 py-1 text-xs font-mono bg-neutral-100 text-[#585c65] rounded"
-                    >
-                      {del}
-                    </span>
-                  ))}
-                </div>
+                <span className="text-xs font-mono font-bold text-[#da552f]">{m.stage}</span>
+                <h3 className="text-base font-serif font-bold text-[#141413]">{m.title}</h3>
+                <p className="text-xs text-[#5a5a55] leading-relaxed">{m.desc}</p>
               </div>
-              <div className="shrink-0">{getStatusBadge(stage.status)}</div>
+              <div className="pt-2 text-[11px] font-mono font-semibold text-[#888780]">
+                Status: <span className="text-[#141413]">{m.status}</span>
+              </div>
             </div>
           ))}
         </div>
-      </Section>
+      </section>
 
-      {/* SECTION E: GitHub Repository CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#121417] text-white border-t border-neutral-800">
-        <div className="mx-auto max-w-4xl text-center space-y-6">
-          <h2 className="text-2xl sm:text-4xl font-bold">
-            Auditable, Open-Source Electronics Engineering
-          </h2>
-          <p className="text-neutral-400 max-w-xl mx-auto text-sm sm:text-base leading-relaxed">
-            The EAK prototype source code, documentation RFCs, and test suites are openly accessible on GitHub under NijoP/electronics-agent-kit-new-prototype.
-          </p>
-          <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a
-              href={COMPANY_DETAILS.eakRepo}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#121316] bg-white hover:bg-neutral-100 rounded-md transition-colors"
-            >
-              <GitFork className="w-4 h-4 text-[#ff5500]" />
-              <span>Clone & Test on GitHub</span>
-              <ArrowUpRight className="w-4 h-4" />
-            </a>
-            <Link
-              href="/contact?category=Electronics%20%26%20PCB%20Design"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-colors"
-            >
-              <span>Discuss Custom EDA Integration</span>
-            </Link>
-          </div>
+      {/* =========================================================================
+          OPEN SOURCE & GITHUB CTA
+          ========================================================================= */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 max-w-4xl mx-auto text-center space-y-6">
+        <h2 className="text-3xl sm:text-4xl font-serif tracking-tight text-[#141413]">
+          Contribute to Electronics Agent Kit
+        </h2>
+        <p className="text-base sm:text-lg text-[#5a5a55] max-w-xl mx-auto">
+          EAK is an open initiative. Explore the repository, test the prototype, inspect the Rust and TypeScript implementation, and file feedback on GitHub.
+        </p>
+        <div className="pt-2 flex flex-wrap justify-center gap-4">
+          <a
+            href="https://github.com/NijoP/electronics-agent-kit-new-prototype"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-semibold text-[#faf9f5] bg-[#141413] hover:bg-[#282725] rounded-full transition-all shadow-sm"
+          >
+            <GithubIcon className="w-4 h-4" />
+            <span>View on GitHub</span>
+            <ArrowUpRight className="w-4 h-4" />
+          </a>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-8 py-3.5 text-sm font-medium text-[#141413] bg-white border border-[#e6e4dc] hover:bg-[#f5f4ee] rounded-full transition-all"
+          >
+            <span>Discuss Custom Hardware Deployment</span>
+          </Link>
         </div>
       </section>
     </div>
