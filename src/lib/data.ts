@@ -25,7 +25,7 @@ export interface ArticleItem {
   content: string[];
 }
 
-export interface RecognitionItem {
+export interface MilestoneItem {
   id: string;
   title: string;
   organization: string;
@@ -34,6 +34,17 @@ export interface RecognitionItem {
   link: string;
   logo: string;
   badge: string;
+}
+
+export interface RegistrationItem {
+  id: string;
+  authority: string;
+  fullName: string;
+  statutoryDetail: string;
+  description: string;
+  link: string;
+  badge: string;
+  logoType: 'mca' | 'dpiit' | 'ksum';
 }
 
 export interface WorkflowStep {
@@ -53,25 +64,28 @@ export interface ServiceCategory {
 
 export const COMPANY_DETAILS = {
   legalName: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
-  shortName: 'TUSK INNOVATIONS',
+  shortName: 'TUSK Innovations',
+  primaryBrand: 'TUSK Innovations',
   cin: 'U62011KL2026PTC106386',
   email: 'tuskinnovationsglobal@gmail.com',
   phone: '+91 62823 53042',
   address: '26/378(1), Thekkumoodu, Vanchiyoor P.O., Thiruvananthapuram, Kerala 695035, India.',
   mapsUrl: 'https://maps.google.com/?q=26/378(1),+Thekkumoodu,+Vanchiyoor+P.O.,+Thiruvananthapuram,+Kerala+695035',
+  siteUrl: 'https://www.tuskinnovations.in',
   githubOrg: 'https://github.com/NijoP',
   eakRepo: 'https://github.com/NijoP/electronics-agent-kit-new-prototype',
   tagline: 'Building Intelligent Technology. Engineering the Future.',
 };
 
-export const RECOGNITIONS: RecognitionItem[] = [
+// SECTION 6: Achievements & Milestones (ONLY actual achievements and selections)
+export const ACHIEVEMENTS_MILESTONES: MilestoneItem[] = [
   {
     id: 'nvidia-inception',
     title: 'Selected for the NVIDIA Inception Program',
     organization: 'NVIDIA Corporation',
-    category: 'Global Tech Acceleration',
+    category: 'Global AI Startup Acceleration',
     description:
-      'TUSK Innovations is part of the NVIDIA Inception Program, supporting startups building innovative technology and AI solutions with technical tools, mentorship, and ecosystem resources.',
+      'TUSK Innovations is part of the NVIDIA Inception Program, supporting technology startups building innovative AI and advanced technology solutions.',
     link: 'https://www.nvidia.com/en-us/startups/',
     logo: '/brand/nvidia-full.svg',
     badge: 'NVIDIA Inception',
@@ -80,58 +94,73 @@ export const RECOGNITIONS: RecognitionItem[] = [
     id: 'ksum-idea-grant',
     title: 'Selected under Kerala Startup Mission Idea Grant',
     organization: 'Kerala Startup Mission (KSUM)',
-    category: 'R&D Innovation Selection',
+    category: 'Technology & Innovation Grant Selection',
     description:
-      'Selected under the Kerala Startup Mission Idea Grant program to accelerate research, architectural prototyping, and technology development in AI-assisted electronics engineering.',
+      'TUSK Innovations was selected under the Kerala Startup Mission Idea Grant program for technology and innovation development in AI-assisted electronics engineering.',
     link: 'https://startupmission.kerala.gov.in/',
     logo: '/brand/ksum-logo.svg',
     badge: 'KSUM Idea Grant',
   },
+];
+
+// SECTION 7: Company Registrations & Recognitions (COMPLETELY SEPARATE)
+export const COMPANY_REGISTRATIONS: RegistrationItem[] = [
   {
-    id: 'dpiit-recognition',
-    title: 'DPIIT-Recognised Startup',
-    organization: 'Ministry of Commerce & Industry, Govt. of India',
-    category: 'National Startup Recognition',
+    id: 'mca-registration',
+    authority: 'Ministry of Corporate Affairs (MCA)',
+    fullName: 'Government of India',
+    statutoryDetail: 'CIN: U62011KL2026PTC106386',
     description:
-      'Officially recognized as an innovative startup under the Startup India initiative by the Department for Promotion of Industry and Internal Trade (DPIIT), Government of India.',
-    link: 'https://www.startupindia.gov.in/',
-    logo: '/brand/startup-india.png',
-    badge: 'Startup India',
+      'TUSK Innovations Global Pvt. Ltd. is incorporated and registered with the Ministry of Corporate Affairs, Government of India, under the Companies Act.',
+    link: 'https://www.mca.gov.in/',
+    badge: 'Statutory Incorporation',
+    logoType: 'mca',
   },
   {
-    id: 'ksum-recognition',
-    title: 'Recognised by Kerala Startup Mission',
-    organization: 'Kerala Startup Mission',
-    category: 'State Startup Ecosystem',
+    id: 'dpiit-recognition',
+    authority: 'DPIIT (Startup India)',
+    fullName: 'Department for Promotion of Industry and Internal Trade',
+    statutoryDetail: 'Startup India Initiative',
     description:
-      'Accredited and registered with Kerala Startup Mission (KSUM), the nodal agency of the Government of Kerala for fostering entrepreneurship and technology innovation.',
+      'TUSK Innovations is a DPIIT-recognised startup under the Startup India initiative by the Department for Promotion of Industry and Internal Trade, Government of India.',
+    link: 'https://www.startupindia.gov.in/',
+    badge: 'DPIIT-Recognised Startup',
+    logoType: 'dpiit',
+  },
+  {
+    id: 'ksum-registration',
+    authority: 'Kerala Startup Mission (KSUM)',
+    fullName: 'Government of Kerala',
+    statutoryDetail: 'State Innovation Portal',
+    description:
+      'Accredited and registered as an innovative technology startup with Kerala Startup Mission (KSUM), the nodal agency of the Government of Kerala for entrepreneurship development.',
     link: 'https://startupmission.kerala.gov.in/',
-    logo: '/brand/ksum-logo.svg',
-    badge: 'Recognised Startup',
+    badge: 'Registered Startup',
+    logoType: 'ksum',
   },
 ];
 
 export const WORKFLOW_STEPS: WorkflowStep[] = [
   {
     step: 1,
-    title: 'Discovery',
+    title: 'Project Discovery',
     summary: 'Understand business requirements, project objectives, and technical constraints.',
     details:
-      'We engage directly with your team to dissect functional requirements, operational environments, compliance requirements, target user experience, and cost boundaries.',
+      'We engage directly with your team to dissect functional requirements, operational environments, compliance boundaries, target user experience, and cost targets.',
   },
   {
     step: 2,
-    title: 'Research & Architecture',
-    summary: 'Develop the technical architecture, component roadmap, and engineering strategy.',
+    title: 'Technical Research & Architecture',
+    summary: 'Develop technical architecture, component roadmaps, and engineering strategies.',
     details:
-      'We establish deterministic system topologies, evaluate component feasibility, formulate hardware-software interfaces, and design the complete technical foundation.',
+      'We establish deterministic system topologies, evaluate component feasibility, formulate hardware-software interfaces, and formulate the complete technical foundation.',
   },
   {
     step: 3,
     title: 'Design & Development',
-    summary: 'Build software, AI systems, circuit schematics, and PCB layouts.',
+    summary: 'Build software, AI systems, circuit schematics, and multi-layer PCB layouts.',
     details:
-      'Our engineers implement custom AI pipelines, robust systems software, multi-layer PCB designs, embedded firmware, and responsive modern user interfaces in parallel.',
+      'Our engineers implement custom AI pipelines, robust systems software, high-speed PCB designs, embedded firmware, and responsive modern interfaces in parallel.',
   },
   {
     step: 4,
@@ -149,8 +178,8 @@ export const WORKFLOW_STEPS: WorkflowStep[] = [
   },
   {
     step: 6,
-    title: 'Final Delivery',
-    summary: 'Deliver the completed solution, documentation, and operational handoff.',
+    title: 'Final Delivery & Documentation',
+    summary: 'Deliver the completed solution, technical documentation, and operational handoff.',
     details:
       'We deliver fully verified physical hardware, working software codebases, comprehensive schematics, architecture documentation, and ongoing maintenance support.',
   },
@@ -196,7 +225,7 @@ export const SERVICES_LIST: ServiceCategory[] = [
   {
     id: 'end-to-end',
     title: 'End-to-End Product Development',
-    subtitle: 'From Project Idea to Final Delivery',
+    subtitle: 'From Concept to Creation. From Project to Delivery.',
     description:
       'Our signature offering. Whether you arrive with a napkin sketch, an incomplete hardware prototype, or an enterprise specification, we take full ownership of the engineering cycle from discovery to deployed reality.',
     capabilities: [

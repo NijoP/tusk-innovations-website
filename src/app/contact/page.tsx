@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Section } from '@/components/Section';
-import { COMPANY_DETAILS, RECOGNITIONS } from '@/lib/data';
+import { COMPANY_DETAILS } from '@/lib/data';
 import { Mail, Phone, ArrowUpRight, Send, CheckCircle2, Copy, Check } from 'lucide-react';
 import Image from 'next/image';
 

@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, Brain, Cpu, Rocket, Check, ArrowUpRight } from 'lucide-react';
+import { ArrowRight, Brain, Cpu, Rocket, Check } from 'lucide-react';
 import { SERVICES_LIST, WORKFLOW_STEPS } from '@/lib/data';
 
 interface ServicesSectionProps {
@@ -12,7 +12,7 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
       case 'ai-solutions':
         return <Brain className="w-6 h-6 text-[#ff5500]" />;
       case 'electronics-engineering':
-        return <Cpu className="w-6 h-6 text-[#ff5500]" />;
+        return <Cpu className="w-6 h-6 text-emerald-600" />;
       default:
         return <Rocket className="w-6 h-6 text-[#ff5500]" />;
     }
@@ -24,10 +24,10 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
         {/* Main Section Header */}
         <div className="text-center max-w-3xl mx-auto space-y-4">
           <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-            Engineering & Technology Services
+            Engineering &amp; Technology Services
           </span>
           <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#121316]">
-            Engineering Ideas Into Real-World Solutions.
+            From Concept to Creation. From Project to Delivery.
           </h2>
           <p className="text-base sm:text-lg text-[#585c65] leading-relaxed">
             We build intelligent software, AI-powered business solutions, electronics, and complete hardware products. From initial concept to engineering, development, testing, and final delivery.
@@ -35,9 +35,9 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
           <div className="pt-2">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-colors shadow-xs"
+              className="inline-flex items-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5"
             >
-              <span>Start a Project With Us</span>
+              <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
@@ -62,11 +62,11 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
 
               <div className="space-y-6">
                 <div className="flex items-center justify-between">
-                  <div className={`p-3 rounded-lg ${service.id === 'end-to-end' ? 'bg-neutral-800' : 'bg-[#ff5500]/10'}`}>
+                  <div className={`p-3 rounded-lg ${service.id === 'end-to-end' ? 'bg-neutral-800' : 'bg-neutral-100'}`}>
                     {getCategoryIcon(service.id)}
                   </div>
                   <span className={`text-xs font-mono uppercase tracking-wider ${service.id === 'end-to-end' ? 'text-[#ff5500]' : 'text-[#8b909a]'}`}>
-                    {service.id === 'end-to-end' ? 'Full Lifecycle' : 'Specialized'}
+                    {service.id === 'end-to-end' ? 'Full Lifecycle' : 'Specialized Service'}
                   </span>
                 </div>
 
@@ -122,10 +122,10 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
                 End-to-End Product Development Workflow
               </span>
               <h3 className="text-3xl font-bold tracking-tight text-[#121316]">
-                From Project Idea to Final Delivery.
+                From Concept to Creation. From Project to Delivery.
               </h3>
               <p className="text-sm sm:text-base text-[#585c65] leading-relaxed">
-                Whether you come to us with a raw idea, an incomplete prototype, a technical challenge, or a complete specification — our 6-stage engineering process takes you from inception through verified deployment.
+                Whether you come to us with an idea, an incomplete project, a technical challenge, or a complete product requirement — our 6-stage engineering process takes you from inception through verified delivery.
               </p>
             </div>
 
@@ -139,7 +139,7 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
                     <span className="text-2xl font-mono font-bold text-[#ff5500]">
                       0{step.step}
                     </span>
-                    <span className="text-[11px] font-mono text-[#8b909a] uppercase">Phase {step.step}</span>
+                    <span className="text-[11px] font-mono text-[#8b909a] uppercase">Stage {step.step}</span>
                   </div>
                   <h4 className="text-lg font-bold text-[#121316] group-hover:text-[#ff5500] transition-colors mb-2">
                     {step.title}
@@ -157,14 +157,14 @@ export function ServicesSection({ showWorkflow = true }: ServicesSectionProps) {
             {/* Workflow Bottom Callout */}
             <div className="p-8 bg-[#121417] text-white rounded-xl border border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-6">
               <div className="space-y-2 text-center sm:text-left">
-                <h4 className="text-xl font-bold">Have a Project or Technical Challenge?</h4>
+                <h4 className="text-xl font-bold">Have an Idea or Technical Challenge?</h4>
                 <p className="text-sm text-neutral-400 max-w-xl">
-                  Talk to our engineering leads. We provide architectural assessments, technical feasibility reviews, and fixed or milestone-based delivery models.
+                  Talk to our engineering leads. We take on complete projects, hardware prototypes, embedded controllers, and custom AI systems from concept to final delivery.
                 </p>
               </div>
               <Link
                 href="/contact"
-                className="shrink-0 px-6 py-3 text-xs font-mono font-bold uppercase tracking-wider bg-white text-[#121316] hover:bg-neutral-100 rounded-md transition-colors"
+                className="shrink-0 px-6 py-3.5 text-xs font-mono font-bold uppercase tracking-wider bg-white text-[#121316] hover:bg-neutral-100 rounded-md transition-colors"
               >
                 Discuss Your Requirements
               </Link>

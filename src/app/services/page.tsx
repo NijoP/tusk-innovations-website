@@ -1,19 +1,73 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import { ArrowRight, Check, Brain, Cpu, Rocket, ShieldCheck, Clock, Award } from 'lucide-react';
+import Script from 'next/script';
+import { ArrowRight, Check, Brain, Cpu, Rocket } from 'lucide-react';
 import { SERVICES_LIST, WORKFLOW_STEPS, COMPANY_DETAILS } from '@/lib/data';
 import { Section } from '@/components/Section';
-import { AchievementsSection } from '@/components/AchievementsSection';
+import { AchievementsMilestonesSection } from '@/components/AchievementsMilestonesSection';
+import { CompanyRegistrationsSection } from '@/components/CompanyRegistrationsSection';
 
 export const metadata: Metadata = {
-  title: 'Engineering & Technology Services | TUSK INNOVATIONS',
+  title: 'Engineering & Technology Services | TUSK Innovations',
   description:
-    'Comprehensive engineering services from TUSK INNOVATIONS: Custom AI Solutions for Businesses, Electronics & PCB Engineering, and End-to-End Product Development from concept to delivery.',
+    'Comprehensive engineering services from TUSK Innovations: Custom AI Solutions for Businesses, Electronics & PCB Engineering, and End-to-End Product Development from concept to delivery.',
+  alternates: {
+    canonical: 'https://www.tuskinnovations.in/services',
+  },
 };
 
 export default function ServicesPage() {
+  const serviceSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'AI & Electronics Engineering Services',
+    provider: {
+      '@type': 'Corporation',
+      name: 'TUSK Innovations',
+      legalName: COMPANY_DETAILS.legalName,
+      url: COMPANY_DETAILS.siteUrl,
+    },
+    areaServed: 'Worldwide',
+    hasOfferCatalog: {
+      '@type': 'OfferCatalog',
+      name: 'Engineering Offerings',
+      itemListElement: [
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'AI Solutions for Businesses',
+            description: 'Custom AI applications, autonomous agents, business workflow automation, and internal operational tools.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'Electronics & PCB Engineering',
+            description: 'Circuit design, schematic engineering, multi-layer PCB layout, embedded firmware, and manufacturing coordination.',
+          },
+        },
+        {
+          '@type': 'Offer',
+          itemOffered: {
+            '@type': 'Service',
+            name: 'End-to-End Product Development',
+            description: 'From project idea to final delivery across software, artificial intelligence, and physical electronics.',
+          },
+        },
+      ],
+    },
+  };
+
   return (
     <div>
+      <Script
+        id="services-schema"
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
+      />
+
       {/* Header */}
       <section className="pt-24 pb-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] tech-grid">
         <div className="mx-auto max-w-4xl text-center space-y-4">
@@ -21,22 +75,22 @@ export default function ServicesPage() {
             <span>FULL-LIFECYCLE ENGINEERING</span>
           </div>
           <h1 className="text-4xl sm:text-6xl font-bold tracking-tight text-[#121316] leading-tight">
-            Engineering Ideas Into Real-World Solutions.
+            From Concept to Creation. From Project to Delivery.
           </h1>
-          <p className="text-lg sm:text-xl text-[#585c65] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg sm:text-xl text-[#585c65] max-w-3xl mx-auto leading-relaxed">
             We build intelligent software, AI-powered business solutions, electronics, and complete hardware products — from initial concept to engineering, development, testing, and final delivery.
           </p>
           <div className="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-colors shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5"
             >
               <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <a
               href="#end-to-end-workflow"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-6 py-3.5 text-sm font-semibold text-[#121316] bg-white border border-[#d0ceca] hover:bg-neutral-50 rounded-md transition-colors shadow-2xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#121316] bg-white border border-[#d0ceca] hover:bg-neutral-50 rounded-md transition-colors shadow-2xs"
             >
               <span>Explore Our Workflow</span>
             </a>
@@ -61,7 +115,7 @@ export default function ServicesPage() {
             <div className="pt-2">
               <Link
                 href="/contact?category=AI%20%26%20Software%20Solutions"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-neutral-800 rounded transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-[#ff5500] rounded transition-colors"
               >
                 <span>Request AI Architecture Consultation</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -108,15 +162,15 @@ export default function ServicesPage() {
               <span>SERVICE OFFERING 02</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#121316]">
-              Electronics & PCB Engineering
+              Electronics &amp; PCB Engineering
             </h2>
             <p className="text-base text-[#585c65] leading-relaxed">
-              From circuit schematic synthesis to multi-layer impedance-controlled PCB layout, firmware programming, component sourcing preparation, and manufacturing coordination.
+              From circuit schematic synthesis to multi-layer impedance-controlled PCB layout, firmware programming, component sourcing assistance, and manufacturing coordination.
             </p>
             <div className="pt-2">
               <Link
                 href="/contact?category=Electronics%20%26%20PCB%20Design"
-                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-neutral-800 rounded transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold uppercase text-white bg-[#121316] hover:bg-[#ff5500] rounded transition-colors"
               >
                 <span>Initiate PCB / Hardware Project</span>
                 <ArrowRight className="w-3.5 h-3.5" />
@@ -138,10 +192,10 @@ export default function ServicesPage() {
               End-to-End Product Development
             </h2>
             <p className="text-xl font-mono text-[#ff5500]">
-              From Project Idea to Final Delivery.
+              From Concept to Creation. From Project to Delivery.
             </p>
             <p className="text-base sm:text-lg text-neutral-300 leading-relaxed">
-              Clients can approach us with a raw idea, an incomplete prototype, a complex technical challenge, or an end-to-end product requirement. We take total ownership of the engineering lifecycle across software, artificial intelligence, and electronic hardware.
+              Clients can approach TUSK Innovations with an idea, an incomplete project, a technical challenge, or a complete product requirement. We take total ownership of the engineering lifecycle across software, artificial intelligence, and electronic hardware.
             </p>
           </div>
 
@@ -193,8 +247,11 @@ export default function ServicesPage() {
         </div>
       </Section>
 
-      {/* Achievements Section Embed */}
-      <AchievementsSection />
+      {/* SEPARATE SECTION: Achievements & Milestones */}
+      <AchievementsMilestonesSection />
+
+      {/* SEPARATE SECTION: Company Registrations & Recognitions */}
+      <CompanyRegistrationsSection />
     </div>
   );
 }

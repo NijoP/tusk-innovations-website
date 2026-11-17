@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import type { Metadata } from 'next';
 import {
   ArrowUpRight,
   ArrowRight,
@@ -9,14 +10,25 @@ import {
   Brain,
   Rocket,
   CheckCircle2,
-  Terminal,
   Activity,
-  Award,
+  Code2,
+  Wrench,
+  Sparkles,
 } from 'lucide-react';
 import { Section, SectionHeader } from '@/components/Section';
-import { COMPANY_DETAILS, RECOGNITIONS } from '@/lib/data';
-import { AchievementsSection } from '@/components/AchievementsSection';
+import { COMPANY_DETAILS } from '@/lib/data';
+import { AchievementsMilestonesSection } from '@/components/AchievementsMilestonesSection';
+import { CompanyRegistrationsSection } from '@/components/CompanyRegistrationsSection';
 import { ServicesSection } from '@/components/ServicesSection';
+
+export const metadata: Metadata = {
+  title: 'TUSK Innovations | AI Solutions, Electronics & PCB Engineering',
+  description:
+    'TUSK Innovations is an AI and engineering startup building intelligent business solutions, AI-powered software, electronics, embedded systems, and advanced PCB designs. We deliver projects from concept to final delivery.',
+  alternates: {
+    canonical: 'https://www.tuskinnovations.in',
+  },
+};
 
 export default function HomePage() {
   return (
@@ -37,23 +49,23 @@ export default function HomePage() {
             Building Intelligent Technology. Engineering the Future.
           </h1>
 
-          {/* Supporting Text */}
+          {/* Supporting Description */}
           <p className="mt-8 text-lg sm:text-xl text-[#585c65] max-w-3xl mx-auto leading-relaxed font-normal">
-            TUSK Innovations develops AI-powered software, intelligent automation, electronics, and advanced engineering solutions. We turn ideas into working products through end-to-end design, development, testing, and delivery.
+            TUSK Innovations develops AI-powered software, intelligent automation, electronics, and advanced engineering solutions. We transform ideas into real-world products through end-to-end design, development, testing, and delivery.
           </p>
 
           {/* Primary & Secondary CTAs */}
           <div className="mt-10 flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-colors shadow-xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5"
             >
               <span>Start a Project</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
             <Link
               href="/services"
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#121316] bg-white border border-[#d0ceca] hover:bg-neutral-50 rounded-md transition-colors shadow-2xs"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3.5 text-sm font-semibold text-[#121316] bg-white border border-[#d0ceca] hover:bg-neutral-50 rounded-md transition-all duration-200 shadow-2xs hover:shadow-xs hover:-translate-y-0.5"
             >
               <span>Explore Our Solutions</span>
             </Link>
@@ -74,111 +86,147 @@ export default function HomePage() {
               <span className="text-sm font-semibold text-[#121316]">DPIIT-Recognised</span>
             </div>
             <div className="p-3 bg-white/80 border border-[#e6e5e0] rounded-md">
-              <span className="block text-[11px] font-mono text-[#8b909a] uppercase">Core Discipline</span>
-              <span className="text-sm font-semibold text-[#121316]">AI & Electronics</span>
+              <span className="block text-[11px] font-mono text-[#8b909a] uppercase">Core Disciplines</span>
+              <span className="text-sm font-semibold text-[#121316]">AI &amp; Electronics</span>
             </div>
           </div>
         </div>
       </section>
 
-      {/* SECTION 2 — ACHIEVEMENTS & RECOGNITIONS */}
-      <AchievementsSection />
-
-      {/* SECTION 3 — WHAT WE DO (THE 3 CORE PILLARS) */}
-      <Section id="what-we-do" className="bg-[#faf9f6]">
+      {/* SECTION 2 — THREE BUSINESS CAPABILITIES */}
+      <Section id="capabilities-overview" className="bg-[#faf9f6]">
         <div className="space-y-16">
           <div className="max-w-3xl">
             <span className="text-xs font-mono font-medium text-[#ff5500] uppercase tracking-wider">
-              Core Capabilities
+              Core Engineering Pillars
             </span>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-[#121316] mt-2">
-              Three Pillars of Modern Engineering.
+              Three Pillars of Intelligent Engineering.
             </h2>
             <p className="mt-4 text-base sm:text-lg text-[#585c65] leading-relaxed">
-              We bridge software intelligence with physical hardware fabrication. Our multidisciplinary engineering team solves complex problems across three integrated pillars:
+              As an AI development company and deep-tech electronics engineering firm based in Kerala, India, we bridge computational software with physical hardware fabrication:
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Pillar 1 */}
-            <div className="bg-white border border-[#e6e5e0] rounded-xl p-8 space-y-4 hover:border-[#121316]/30 transition-all duration-200 shadow-xs">
-              <div className="w-12 h-12 rounded-lg bg-[#ff5500]/10 flex items-center justify-center text-[#ff5500]">
-                <Brain className="w-6 h-6" />
+            {/* Capability 1 */}
+            <div className="bg-white border border-[#e6e5e0] rounded-xl p-8 space-y-4 hover:border-[#121316]/30 transition-all duration-200 shadow-xs flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-lg bg-[#ff5500]/10 flex items-center justify-center text-[#ff5500]">
+                  <Brain className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#121316]">1. AI &amp; Software Solutions</h3>
+                <p className="text-sm text-[#585c65] leading-relaxed">
+                  We build custom AI applications, autonomous agent development pipelines, workflow automation tools, and secure cloud software tailored for high-efficiency enterprise operations.
+                </p>
+                <ul className="pt-2 space-y-2 text-xs font-medium text-[#121316]">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
+                    AI solutions for businesses &amp; workflow automation
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
+                    Custom AI agents, LLM integrations &amp; APIs
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
+                    Intelligent operational dashboards &amp; internal tools
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-[#121316]">AI & Software Systems</h3>
-              <p className="text-sm text-[#585c65] leading-relaxed">
-                We build intelligent AI solutions, autonomous agent pipelines, internal business automation tools, and secure cloud software that streamline operations and eliminate bottlenecks.
-              </p>
-              <ul className="pt-2 space-y-2 text-xs font-medium text-[#121316]">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
-                  Custom AI application & agent development
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
-                  Business workflow automation & intelligent tools
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
-                  LLM integrations, APIs & enterprise dashboards
-                </li>
-              </ul>
+              <div className="pt-4 border-t border-neutral-100">
+                <Link
+                  href="/services#ai-solutions"
+                  className="text-xs font-mono font-semibold text-[#ff5500] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Explore AI Solutions</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
 
-            {/* Pillar 2 */}
-            <div className="bg-white border border-[#e6e5e0] rounded-xl p-8 space-y-4 hover:border-[#121316]/30 transition-all duration-200 shadow-xs">
-              <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
-                <Cpu className="w-6 h-6" />
+            {/* Capability 2 */}
+            <div className="bg-white border border-[#e6e5e0] rounded-xl p-8 space-y-4 hover:border-[#121316]/30 transition-all duration-200 shadow-xs flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-600">
+                  <Cpu className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-[#121316]">2. Electronics &amp; Hardware</h3>
+                <p className="text-sm text-[#585c65] leading-relaxed">
+                  We design and engineer electronic products, embedded systems, microcontrollers, and multi-layer high-speed PCB layouts from schematic formulation to verified hardware bring-up.
+                </p>
+                <ul className="pt-2 space-y-2 text-xs font-medium text-[#121316]">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    Circuit design &amp; schematic engineering
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    Multi-layer PCB design services &amp; routing
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                    Embedded systems development (ARM, ESP32, STM32)
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-[#121316]">Electronics & Hardware</h3>
-              <p className="text-sm text-[#585c65] leading-relaxed">
-                We design and engineer electronic products, embedded systems, microcontrollers, and multi-layer high-speed PCB layouts from first schematic principles to verified boards.
-              </p>
-              <ul className="pt-2 space-y-2 text-xs font-medium text-[#121316]">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Circuit design & schematic engineering
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Multi-layer PCB layout & impedance routing
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
-                  Embedded firmware & microcontroller systems
-                </li>
-              </ul>
+              <div className="pt-4 border-t border-neutral-100">
+                <Link
+                  href="/services#electronics-engineering"
+                  className="text-xs font-mono font-semibold text-[#ff5500] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Explore Hardware Engineering</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
 
-            {/* Pillar 3 */}
-            <div className="bg-[#121417] text-white rounded-xl p-8 space-y-4 border border-neutral-800 shadow-lg relative ring-1 ring-[#ff5500]/40">
-              <div className="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-[#ff5500]">
-                <Rocket className="w-6 h-6" />
+            {/* Capability 3 */}
+            <div className="bg-[#121417] text-white rounded-xl p-8 space-y-4 border border-neutral-800 shadow-lg relative ring-1 ring-[#ff5500]/40 flex flex-col justify-between">
+              <div className="space-y-4">
+                <div className="w-12 h-12 rounded-lg bg-neutral-800 flex items-center justify-center text-[#ff5500]">
+                  <Rocket className="w-6 h-6" />
+                </div>
+                <h3 className="text-xl font-bold text-white">3. End-to-End Product Delivery</h3>
+                <p className="text-sm text-neutral-300 leading-relaxed">
+                  We take projects from initial project discovery and technical architecture through full design, development, laboratory testing, fabrication coordination, and final delivery.
+                </p>
+                <ul className="pt-2 space-y-2 text-xs font-medium text-neutral-200">
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
+                    Project discovery &amp; technical architecture
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
+                    Integrated software, AI &amp; hardware co-design
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
+                    Manufacturing coordination &amp; complete handover
+                  </li>
+                </ul>
               </div>
-              <h3 className="text-xl font-bold text-white">End-to-End Delivery</h3>
-              <p className="text-sm text-neutral-300 leading-relaxed">
-                We take projects from initial discovery and technical architecture through full design, development, laboratory testing, fabrication coordination, and final delivery.
-              </p>
-              <ul className="pt-2 space-y-2 text-xs font-medium text-neutral-200">
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
-                  Concept feasibility & systems architecture
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
-                  Unified software, AI & hardware co-design
-                </li>
-                <li className="flex items-center gap-2">
-                  <CheckCircle2 className="w-3.5 h-3.5 text-[#ff5500]" />
-                  Fabrication packages & client handover
-                </li>
-              </ul>
+              <div className="pt-4 border-t border-neutral-800">
+                <Link
+                  href="/services#end-to-end-workflow"
+                  className="text-xs font-mono font-semibold text-[#ff5500] hover:underline inline-flex items-center gap-1"
+                >
+                  <span>Explore 6-Stage Delivery</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>
       </Section>
 
-      {/* SECTION 4 — FLAGSHIP PRODUCT (DARK TECHNICAL SHOWCASE) */}
+      {/* SECTION 3 — SEPARATE: ACHIEVEMENTS & MILESTONES (Directive Section 6) */}
+      <AchievementsMilestonesSection />
+
+      {/* SECTION 4 — SEPARATE: COMPANY REGISTRATIONS & RECOGNITIONS (Directive Section 7) */}
+      <CompanyRegistrationsSection />
+
+      {/* SECTION 5 — FLAGSHIP PRODUCT (DARK TECHNICAL SHOWCASE) */}
       <Section id="flagship-eak" dark={true} className="tech-grid-dark">
         <div className="space-y-12">
           <div className="max-w-3xl">
@@ -188,13 +236,10 @@ export default function HomePage() {
               <span>OPEN SOURCE PROTOTYPE</span>
             </div>
             <h2 className="text-3xl sm:text-5xl font-bold tracking-tight text-white">
-              Electronics Agent Kit (EAK)
+              Electronics Agent Kit — Intent In. Manufactured Board Out.
             </h2>
-            <p className="mt-3 text-xl font-mono text-[#ff5500]">
-              Intent In. Manufactured Board Out.
-            </p>
             <p className="mt-4 text-base sm:text-lg text-neutral-300 leading-relaxed">
-              An AI-native electronics engineering workstation where professional schematic and PCB editors share one verifiable design model with terminal AI agents. Built in Rust and Tauri with live terminal-to-EDA synchronization and fail-closed deterministic verification.
+              An AI-native electronics engineering environment designed to transform engineering requirements into manufacturable electronic hardware. Professional schematic and PCB editors share one verifiable design model with terminal AI agents in a local-first, fail-closed desktop shell.
             </p>
           </div>
 
@@ -203,8 +248,8 @@ export default function HomePage() {
             <div className="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-800 gap-4">
               <div className="flex items-center gap-3">
                 <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span className="text-white font-semibold">eak-runtime (Rust + Tauri)</span>
-                <span className="text-neutral-500 hidden md:inline">| Clean Concentric Architecture</span>
+                <span className="text-white font-semibold">eak-runtime (Rust + Tauri v2)</span>
+                <span className="text-neutral-500 hidden md:inline">| Deterministic State Machine</span>
               </div>
               <div className="flex items-center gap-2 text-neutral-400">
                 <span className="text-emerald-400">Fail-Closed Verification Active</span>
@@ -217,23 +262,23 @@ export default function HomePage() {
                   01. LIVE TERMINAL-TO-EDA SYNC
                 </span>
                 <p className="text-neutral-300 text-xs leading-relaxed font-sans">
-                  A coding agent in the terminal workspace edits the design via typed commands; the schematic and multi-layer PCB canvases update live in front of you.
+                  A coding agent in the terminal edits the design via typed commands; schematic and multi-layer PCB canvases update live in front of you.
                 </p>
               </div>
               <div className="p-4 bg-neutral-900/80 rounded-lg border border-neutral-800 space-y-2">
                 <span className="text-emerald-400 text-[11px] block font-bold uppercase tracking-wider">
-                  02. DETERMINISTIC ENGINE & DRC
+                  02. DETERMINISTIC ENGINE &amp; DRC
                 </span>
                 <p className="text-neutral-300 text-xs leading-relaxed font-sans">
-                  Electrical rules check (ERC) gate runs before PCB synchronization; clearance and connectivity DRC with fail-closed gap reporting. Pure deterministic logic.
+                  Electrical rules checks (ERC) required prior to PCB sync; clearance and connectivity DRC with explicit fail-closed finding disclosures.
                 </p>
               </div>
               <div className="p-4 bg-neutral-900/80 rounded-lg border border-neutral-800 space-y-2">
                 <span className="text-sky-400 text-[11px] block font-bold uppercase tracking-wider">
-                  03. 3D VISUALIZATION & BOM
+                  03. 3D VISUALIZATION &amp; BOM
                 </span>
                 <p className="text-neutral-300 text-xs leading-relaxed font-sans">
-                  Interactive 3D board rendering with copper geometry, vendor-neutral library schemas, KiCad asset interchange, and draft fabrication package export.
+                  Interactive 3D board rendering with substrate layers, vendor-neutral library schemas, KiCad asset interchange, and draft fabrication exports.
                 </p>
               </div>
             </div>
@@ -266,10 +311,10 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* SECTION 5 — OUR SERVICES & WORKFLOW */}
+      {/* SECTION 6 — SERVICES & WORKFLOW (From Concept to Creation. From Project to Delivery.) */}
       <ServicesSection />
 
-      {/* SECTION 6 — OUR ENGINEERING APPROACH */}
+      {/* SECTION 7 — ENGINEERING APPROACH */}
       <Section id="engineering-approach" className="bg-white">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
           <div className="lg:col-span-5 space-y-4">
@@ -329,7 +374,7 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* SECTION 7 — OPEN SOURCE SECTION */}
+      {/* SECTION 8 — OPEN SOURCE SECTION */}
       <Section id="open-source" dark={true}>
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
           <div className="lg:col-span-7 space-y-4">
@@ -360,7 +405,7 @@ export default function HomePage() {
                 href="/open-source"
                 className="inline-flex items-center gap-2 px-5 py-2.5 text-xs font-mono font-semibold text-white border border-neutral-700 hover:bg-neutral-800 rounded-md transition-colors"
               >
-                <span>Contribution & Architecture</span>
+                <span>Contribution &amp; Architecture</span>
               </Link>
             </div>
           </div>
@@ -370,11 +415,11 @@ export default function HomePage() {
               # One-line install or build from source
             </div>
             <div className="text-neutral-400"># Windows (PowerShell):</div>
-            <div className="text-emerald-400 break-all">
+            <div className="text-emerald-400 break-all select-all">
               irm https://raw.githubusercontent.com/NijoP/electronics-agent-kit-new-prototype/main/install.ps1 | iex
             </div>
             <div className="text-neutral-400 pt-1"># Clone repository:</div>
-            <div className="text-sky-400 break-all">
+            <div className="text-sky-400 break-all select-all">
               git clone https://github.com/NijoP/electronics-agent-kit-new-prototype.git
             </div>
             <div className="pt-2 text-[11px] text-neutral-500 border-t border-neutral-800">
@@ -384,8 +429,8 @@ export default function HomePage() {
         </div>
       </Section>
 
-      {/* SECTION 8 — CONTACT & PROJECT ENQUIRY CTA */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#121316] text-white border-t border-neutral-800">
+      {/* SECTION 9 — CONTACT & PROJECT ENQUIRY CTA */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#121417] text-white border-t border-neutral-800">
         <div className="mx-auto max-w-4xl text-center space-y-6">
           <span className="text-xs font-mono font-semibold text-[#ff5500] uppercase tracking-wider">
             Initiate Project Collaboration
@@ -394,12 +439,12 @@ export default function HomePage() {
             Let’s engineer your next breakthrough.
           </h2>
           <p className="text-neutral-400 max-w-xl mx-auto text-base sm:text-lg">
-            Have a project, hardware challenge, or custom AI requirement? Share your goals with our engineering leads to discuss feasibility, architecture, and delivery timelines.
+            Have an idea, project, hardware challenge, or custom AI requirement? Share your goals with our engineering leads to discuss feasibility, architecture, and delivery timelines.
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-7 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-colors shadow-xs"
+              className="w-full sm:w-auto px-7 py-3.5 text-sm font-semibold text-white bg-[#ff5500] hover:bg-[#e04a00] rounded-md transition-all duration-200 shadow-xs hover:shadow-md hover:-translate-y-0.5"
             >
               Start a Project Enquiry
             </Link>

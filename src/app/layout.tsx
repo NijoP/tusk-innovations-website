@@ -7,35 +7,35 @@ import './globals.css';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
-    default: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED | AI Solutions, Electronics & Hardware Engineering',
+    template: '%s | TUSK Innovations',
+    default: 'TUSK Innovations | AI Solutions, Electronics & PCB Engineering',
   },
   description:
-    'Official corporate portal of TUSK INNOVATIONS GLOBAL PRIVATE LIMITED (CIN: U62011KL2026PTC106386). Engineering intelligent software, AI business automation, electronics engineering, PCB design, and end-to-end product development. Developers of Electronics Agent Kit (EAK).',
+    'TUSK Innovations is an AI and engineering startup building intelligent business solutions, AI-powered software, electronics, embedded systems, and advanced PCB designs. We deliver projects from concept to final delivery.',
   keywords: [
-    'Tusk Innovations',
-    'Tusk Innovations Global',
-    'Tusk Innovations Global Private Limited',
-    'Tusk Innovations Global Pvt Ltd',
-    'Tusk Innovation',
-    'Tusk Innovations Kerala',
-    'Nijo Ponnachan',
-    'AI Solutions',
-    'AI Agents',
-    'Workflow Automation',
-    'Electronics Engineering',
-    'PCB Design',
-    'PCB Layout',
-    'Embedded Systems',
-    'End-to-End Product Development',
+    'TUSK Innovations',
+    'TUSK Innovation',
+    'TUSK Innovations Global',
+    'TUSK Innovations Global Pvt Ltd',
+    'TUSK AI',
+    'TUSK Innovations Kerala',
+    'AI development company in Kerala',
+    'AI solutions for businesses',
+    'AI agent development',
+    'Electronics product development',
+    'PCB design services',
+    'Embedded systems development',
+    'Custom electronics engineering',
+    'End-to-end product development',
+    'AI-powered engineering solutions',
     'Electronics Agent Kit',
     'EAK',
-    'EDA',
     'NVIDIA Inception',
     'Kerala Startup Mission',
     'DPIIT Startup India',
+    'Nijo Ponnachan',
   ],
-  authors: [{ name: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED' }],
+  authors: [{ name: 'TUSK Innovations Global Pvt. Ltd.' }],
   icons: {
     icon: '/icon.png',
     shortcut: '/favicon.ico',
@@ -46,26 +46,27 @@ export const metadata: Metadata = {
     canonical: 'https://www.tuskinnovations.in',
   },
   openGraph: {
-    title: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
+    title: 'TUSK Innovations | AI Solutions, Electronics & PCB Engineering',
     description:
-      'Engineering intelligent software, custom AI systems, electronics engineering, and end-to-end hardware solutions from concept to delivery.',
+      'TUSK Innovations is an AI and engineering startup building intelligent business solutions, AI-powered software, electronics, embedded systems, and advanced PCB designs. We deliver projects from concept to final delivery.',
     type: 'website',
     locale: 'en_US',
     url: 'https://www.tuskinnovations.in',
-    siteName: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
+    siteName: 'TUSK Innovations',
     images: [
       {
         url: '/brand/tusk-logo.jpg',
         width: 800,
         height: 800,
-        alt: 'TUSK INNOVATIONS Official Logo',
+        alt: 'TUSK Innovations Official Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
-    description: 'Building Intelligent Technology. Engineering the Future.',
+    title: 'TUSK Innovations | AI Solutions, Electronics & PCB Engineering',
+    description:
+      'TUSK Innovations is an AI and engineering startup building intelligent business solutions, AI-powered software, electronics, embedded systems, and advanced PCB designs.',
     images: ['/brand/tusk-logo.jpg'],
   },
   robots: {
@@ -86,13 +87,20 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // Google Structured Organization Schema (JSON-LD)
-  const structuredData = {
+  // Enhanced Google Structured Data (JSON-LD)
+  const organizationSchema = {
     '@context': 'https://schema.org',
     '@type': 'Corporation',
-    name: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
+    '@id': 'https://www.tuskinnovations.in/#organization',
+    name: 'TUSK Innovations',
     legalName: 'TUSK INNOVATIONS GLOBAL PRIVATE LIMITED',
-    alternateName: ['TUSK INNOVATIONS', 'Tusk Innovations Global Pvt Ltd', 'Tusk Innovations'],
+    alternateName: [
+      'TUSK Innovation',
+      'TUSK Innovations Global',
+      'TUSK Innovations Global Pvt Ltd',
+      'TUSK AI',
+      'TUSK Innovations Kerala',
+    ],
     url: 'https://www.tuskinnovations.in',
     logo: 'https://www.tuskinnovations.in/brand/tusk-logo.jpg',
     founder: {
@@ -114,18 +122,44 @@ export default function RootLayout({
       telephone: COMPANY_DETAILS.phone,
       contactType: 'corporate',
       email: COMPANY_DETAILS.email,
-      areaServed: 'IN',
+      areaServed: ['IN', 'Worldwide'],
       availableLanguage: ['English', 'Malayalam'],
     },
     sameAs: [
       'https://github.com/NijoP',
       'https://github.com/NijoP/electronics-agent-kit-new-prototype',
       'https://github.com/NijoP/tusk-innovations-website',
+      'https://www.linkedin.com/company/tusk-innovations',
     ],
     identifier: {
       '@type': 'PropertyValue',
       name: 'Corporate Identification Number (CIN)',
       value: 'U62011KL2026PTC106386',
+    },
+    knowsAbout: [
+      'Artificial Intelligence',
+      'AI Agent Development',
+      'Business Workflow Automation',
+      'Electronics Engineering',
+      'PCB Design',
+      'Embedded Systems',
+      'Electronics Design Automation',
+    ],
+  };
+
+  const webSiteSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    '@id': 'https://www.tuskinnovations.in/#website',
+    url: 'https://www.tuskinnovations.in',
+    name: 'TUSK Innovations',
+    publisher: {
+      '@id': 'https://www.tuskinnovations.in/#organization',
+    },
+    potentialAction: {
+      '@type': 'SearchAction',
+      target: 'https://www.tuskinnovations.in/insights?q={search_term_string}',
+      'query-input': 'required name=search_term_string',
     },
   };
 
@@ -135,7 +169,12 @@ export default function RootLayout({
         <Script
           id="organization-ld-json"
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationSchema) }}
+        />
+        <Script
+          id="website-ld-json"
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(webSiteSchema) }}
         />
       </head>
       <body className="min-h-screen flex flex-col bg-[#faf9f6] text-[#121316]">

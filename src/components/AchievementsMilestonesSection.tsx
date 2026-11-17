@@ -1,32 +1,28 @@
 import Image from 'next/image';
 import { ArrowUpRight, Award, CheckCircle2 } from 'lucide-react';
-import { RECOGNITIONS } from '@/lib/data';
+import { ACHIEVEMENTS_MILESTONES } from '@/lib/data';
 
-interface AchievementsSectionProps {
-  compact?: boolean;
-}
-
-export function AchievementsSection({ compact = false }: AchievementsSectionProps) {
+export function AchievementsMilestonesSection() {
   return (
-    <section className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] bg-white">
+    <section id="achievements" className="relative py-20 px-4 sm:px-6 lg:px-8 border-b border-[#e6e5e0] bg-white">
       <div className="mx-auto max-w-7xl">
         {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
+        <div className="text-center max-w-3xl mx-auto mb-14 space-y-3">
           <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#ff5500]/10 border border-[#ff5500]/20 text-[#ff5500] text-xs font-mono font-medium">
             <Award className="w-3.5 h-3.5" />
-            <span>CREDIBILITY & RECOGNITION</span>
+            <span>SELECT PROGRAMS & SELECTIONS</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight text-[#121316]">
-            Achievements & Recognitions
+            Achievements & Milestones
           </h2>
           <p className="text-base sm:text-lg text-[#585c65] leading-relaxed">
-            Recognised by leading national and state innovation bodies, and selected for premier technology acceleration programs to pioneer AI and electronics engineering solutions.
+            Selected for premier global acceleration programs and state innovation grants to advance artificial intelligence and physical electronics engineering.
           </p>
         </div>
 
-        {/* Highlight Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {RECOGNITIONS.map((item) => (
+        {/* 2-Column Milestone Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+          {ACHIEVEMENTS_MILESTONES.map((item) => (
             <div
               key={item.id}
               className="group relative bg-[#faf9f6] border border-[#e6e5e0] hover:border-[#121316]/30 rounded-xl p-8 transition-all duration-200 hover:shadow-md flex flex-col justify-between"
@@ -35,9 +31,8 @@ export function AchievementsSection({ compact = false }: AchievementsSectionProp
                 {/* Header row: Logo & Category Badge */}
                 <div className="flex items-center justify-between gap-4 pb-4 border-b border-[#e6e5e0]">
                   <div className="h-12 flex items-center">
-                    {item.id === 'nvidia-inception' && (
+                    {item.id === 'nvidia-inception' ? (
                       <div className="flex items-center gap-3">
-                        {/* Authentic NVIDIA logo with green eye */}
                         <div className="relative h-9 w-36">
                           <Image
                             src="/brand/nvidia-full.svg"
@@ -49,41 +44,7 @@ export function AchievementsSection({ compact = false }: AchievementsSectionProp
                         </div>
                         <span className="text-xs font-mono font-bold text-neutral-400">/ INCEPTION</span>
                       </div>
-                    )}
-                    {item.id === 'ksum-idea-grant' && (
-                      <div className="relative h-10 w-44">
-                        <Image
-                          src="/brand/ksum-logo.svg"
-                          alt="Kerala Startup Mission Official Logo"
-                          fill
-                          className="object-contain object-left"
-                          sizes="180px"
-                        />
-                      </div>
-                    )}
-                    {item.id === 'dpiit-recognition' && (
-                      <div className="flex items-center gap-3">
-                        <div className="relative h-10 w-36">
-                          <Image
-                            src="/brand/startup-india.png"
-                            alt="Startup India Official Logo"
-                            fill
-                            className="object-contain object-left"
-                            sizes="150px"
-                          />
-                        </div>
-                        <div className="relative h-8 w-24 hidden sm:block border-l border-neutral-300 pl-3">
-                          <Image
-                            src="/brand/dpiit-header.png"
-                            alt="DPIIT Official Emblem"
-                            fill
-                            className="object-contain object-left"
-                            sizes="100px"
-                          />
-                        </div>
-                      </div>
-                    )}
-                    {item.id === 'ksum-recognition' && (
+                    ) : (
                       <div className="relative h-10 w-44">
                         <Image
                           src="/brand/ksum-logo.svg"
