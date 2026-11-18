@@ -35,13 +35,13 @@ export function CompanyRegistrationsSection() {
           {COMPANY_REGISTRATIONS.map((reg) => (
             <div
               key={reg.id}
-              className="bg-[#faf9f5] dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 hover:border-[#d4d1c6] dark:hover:border-neutral-700 rounded-2xl p-6 transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col justify-between space-y-6"
+              className="bg-[#faf9f5] dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 hover:border-[#d4d1c6] dark:hover:border-neutral-700 rounded-2xl p-5 sm:p-6 transition-all duration-200 shadow-[0_1px_3px_rgba(0,0,0,0.02)] flex flex-col justify-between space-y-5 sm:space-y-6"
             >
               <div className="space-y-4">
                 {/* Authority Header */}
-                <div className="flex items-center justify-between pb-3 border-b border-[#e6e4dc] dark:border-neutral-800">
+                <div className="flex flex-wrap sm:flex-nowrap items-center justify-between gap-2 pb-3 border-b border-[#e6e4dc] dark:border-neutral-800">
                   <div className="flex items-center gap-2.5">
-                    <div className="p-2 rounded-lg bg-white dark:bg-neutral-800 border border-[#e6e4dc] dark:border-neutral-700">
+                    <div className="p-2 rounded-lg bg-white dark:bg-neutral-800 border border-[#e6e4dc] dark:border-neutral-700 shrink-0">
                       {getIcon(reg.logoType)}
                     </div>
                     <div>
@@ -49,7 +49,7 @@ export function CompanyRegistrationsSection() {
                       <span className="text-[10px] font-mono text-[#888780] dark:text-neutral-400">{reg.fullName}</span>
                     </div>
                   </div>
-                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white dark:bg-neutral-800 text-[#5a5a55] dark:text-neutral-300 border border-[#e6e4dc] dark:border-neutral-700 uppercase font-semibold">
+                  <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-white dark:bg-neutral-800 text-[#5a5a55] dark:text-neutral-300 border border-[#e6e4dc] dark:border-neutral-700 uppercase font-semibold shrink-0">
                     {reg.badge}
                   </span>
                 </div>
@@ -98,7 +98,7 @@ export function CompanyRegistrationsSection() {
                           sizes="140px"
                         />
                       </div>
-                      <div className="text-xs font-mono font-bold text-[#141413] dark:text-white bg-white dark:bg-neutral-800/80 border border-[#e6e4dc] dark:border-neutral-700 p-2.5 rounded-lg">
+                      <div className="text-xs font-mono font-bold text-[#141413] dark:text-white bg-white dark:bg-neutral-800/80 border border-[#e6e4dc] dark:border-neutral-700 p-2.5 rounded-lg break-all">
                         <span className="text-[10px] text-[#888780] dark:text-neutral-400 block font-normal">CIN (Statutory Identity)</span>
                         U62011KL2026PTC106386
                       </div>

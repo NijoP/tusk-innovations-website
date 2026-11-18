@@ -146,34 +146,34 @@ export function Footer() {
         </div>
 
         {/* Contact & Legal Bar */}
-        <div className="mt-12 pt-8 border-t border-[#e6e4dc] dark:border-neutral-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#888780] dark:text-neutral-400">
-          <div className="flex flex-wrap items-center gap-6">
+        <div className="mt-12 pt-8 border-t border-[#e6e4dc] dark:border-neutral-800 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-[#888780] dark:text-neutral-400">
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-2.5">
             <a
               href={`mailto:${COMPANY_DETAILS.email}`}
-              className="inline-flex items-center gap-1.5 hover:text-[#141413] dark:hover:text-white transition-colors"
+              className="inline-flex items-center gap-1.5 hover:text-[#141413] dark:hover:text-white transition-colors break-all"
             >
-              <Mail className="w-3.5 h-3.5 text-[#da552f] dark:text-[#ff5500]" />
+              <Mail className="w-3.5 h-3.5 text-[#da552f] dark:text-[#ff5500] shrink-0" />
               <span>{COMPANY_DETAILS.email}</span>
             </a>
             <a
               href={`tel:${COMPANY_DETAILS.phone.replace(/\s+/g, '')}`}
               className="inline-flex items-center gap-1.5 hover:text-[#141413] dark:hover:text-white transition-colors"
             >
-              <Phone className="w-3.5 h-3.5 text-[#da552f] dark:text-[#ff5500]" />
+              <Phone className="w-3.5 h-3.5 text-[#da552f] dark:text-[#ff5500] shrink-0" />
               <span>{COMPANY_DETAILS.phone}</span>
             </a>
             <span className="inline-flex items-center gap-1.5">
-              <MapPin className="w-3.5 h-3.5 text-[#da552f] dark:text-[#ff5500]" />
+              <MapPin className="w-3.5 h-3.5 text-[#da552f] dark:text-[#ff5500] shrink-0" />
               <span>Thiruvananthapuram, Kerala, India</span>
             </span>
           </div>
 
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-1 pt-2 sm:pt-0">
             <Link href="/privacy" className="hover:text-[#141413] dark:hover:text-white transition-colors">
               Privacy Policy
             </Link>
             <span>•</span>
-            <p>© {new Date().getFullYear()} TUSK Innovations Global Pvt. Ltd. All rights reserved.</p>
+            <p className="break-words">© {new Date().getFullYear()} TUSK Innovations Global Pvt. Ltd. All rights reserved.</p>
           </div>
         </div>
       </div>

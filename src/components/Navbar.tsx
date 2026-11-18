@@ -367,7 +367,8 @@ export function Navbar() {
                           href={item.href}
                           target={item.isExternal ? '_blank' : undefined}
                           rel={item.isExternal ? 'noopener noreferrer' : undefined}
-                          className="block text-sm text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white py-1"
+                          onClick={() => setMobileMenuOpen(false)}
+                          className="block text-sm text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white py-2"
                         >
                           <div className="font-medium text-[#141413] dark:text-white flex items-center gap-1.5">
                             <span>{item.label}</span>
@@ -386,6 +387,7 @@ export function Navbar() {
           <div className="pt-4 space-y-3">
             <Link
               href="/contact"
+              onClick={() => setMobileMenuOpen(false)}
               className="w-full flex items-center justify-center gap-2 px-6 py-3 text-sm font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white rounded-full shadow-sm"
             >
               <span>Start a Project</span>

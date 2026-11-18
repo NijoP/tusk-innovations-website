@@ -89,9 +89,9 @@ export function InteractiveCapabilities() {
   const Icon = activePillar.icon;
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-6 sm:space-y-8">
       {/* Interactive Tabs */}
-      <div className="flex flex-wrap items-center justify-center gap-2 p-1.5 bg-[#f5f4ee] dark:bg-neutral-900 rounded-full border border-[#e6e4dc] dark:border-neutral-800 max-w-xl mx-auto">
+      <div className="flex items-center gap-1.5 sm:gap-2 p-1.5 bg-[#f5f4ee] dark:bg-neutral-900 rounded-2xl sm:rounded-full border border-[#e6e4dc] dark:border-neutral-800 max-w-xl mx-auto overflow-x-auto no-scrollbar">
         {PILLARS.map((pillar) => {
           const isActive = pillar.id === activeTab;
           const TabIcon = pillar.icon;
@@ -100,13 +100,13 @@ export function InteractiveCapabilities() {
               key={pillar.id}
               type="button"
               onClick={() => setActiveTab(pillar.id)}
-              className={`flex-1 inline-flex items-center justify-center gap-2 px-5 py-2.5 text-xs font-semibold rounded-full transition-all duration-200 ${
+              className={`shrink-0 sm:flex-1 inline-flex items-center justify-center gap-1.5 sm:gap-2 px-3.5 sm:px-5 py-2 sm:py-2.5 text-xs font-semibold rounded-xl sm:rounded-full whitespace-nowrap transition-all duration-200 ${
                 isActive
                   ? 'bg-white dark:bg-neutral-800 text-[#141413] dark:text-white shadow-sm border border-[#e6e4dc] dark:border-neutral-700'
                   : 'text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white'
               }`}
             >
-              <TabIcon className={`w-4 h-4 ${isActive ? 'text-[#da552f] dark:text-[#ff5500]' : 'text-[#888780] dark:text-neutral-500'}`} />
+              <TabIcon className={`w-3.5 h-3.5 sm:w-4 sm:h-4 ${isActive ? 'text-[#da552f] dark:text-[#ff5500]' : 'text-[#888780] dark:text-neutral-500'}`} />
               <span>{pillar.tabLabel}</span>
             </button>
           );
@@ -114,16 +114,16 @@ export function InteractiveCapabilities() {
       </div>
 
       {/* Asymmetric Content & Visual Composition */}
-      <div className="bg-white dark:bg-[#121418] rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)] grid grid-cols-1 lg:grid-cols-12 gap-0">
+      <div className="bg-white dark:bg-[#121418] rounded-2xl sm:rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)] grid grid-cols-1 lg:grid-cols-12 gap-0">
         {/* Left Column: Editorial Information */}
-        <div className="lg:col-span-6 p-8 sm:p-12 lg:p-14 flex flex-col justify-between space-y-8">
-          <div className="space-y-4">
+        <div className="lg:col-span-6 p-5 sm:p-8 lg:p-14 flex flex-col justify-between space-y-6 sm:space-y-8">
+          <div className="space-y-3 sm:space-y-4">
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-[11px] font-mono font-medium tracking-wide border border-[#e6e4dc] dark:border-neutral-800 bg-[#faf9f5] dark:bg-neutral-900 text-[#da552f] dark:text-[#ff5500]">
               <Icon className="w-3.5 h-3.5" />
               <span>{activePillar.tag}</span>
             </div>
 
-            <h3 className="text-2xl sm:text-4xl font-serif font-bold text-[#141413] dark:text-white leading-snug">
+            <h3 className="text-xl sm:text-3xl lg:text-4xl font-serif font-bold text-[#141413] dark:text-white leading-snug">
               {activePillar.title}
             </h3>
 
@@ -131,7 +131,7 @@ export function InteractiveCapabilities() {
               {activePillar.subtitle}
             </p>
 
-            <p className="text-sm text-[#5a5a55] dark:text-neutral-300 font-sans leading-relaxed pt-2">
+            <p className="text-sm text-[#5a5a55] dark:text-neutral-300 font-sans leading-relaxed pt-1 sm:pt-2">
               {activePillar.description}
             </p>
 
@@ -150,7 +150,7 @@ export function InteractiveCapabilities() {
             </div>
           </div>
 
-          <div className="pt-4">
+          <div className="pt-2 sm:pt-4">
             <Link
               href={activePillar.ctaHref}
               className="inline-flex items-center gap-2 px-6 py-3 text-xs font-semibold text-[#faf9f5] dark:text-[#141413] bg-[#141413] dark:bg-white hover:bg-[#282725] dark:hover:bg-neutral-200 rounded-full transition-all shadow-sm hover:shadow-md"
@@ -162,7 +162,7 @@ export function InteractiveCapabilities() {
         </div>
 
         {/* Right Column: High-Resolution Visual Studio Frame */}
-        <div className="lg:col-span-6 relative min-h-[360px] sm:min-h-[460px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800 overflow-hidden bg-[#faf9f5] dark:bg-[#0a0c0f]">
+        <div className="lg:col-span-6 relative min-h-[260px] sm:min-h-[380px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800 overflow-hidden bg-[#faf9f5] dark:bg-[#0a0c0f]">
           <Image
             src={activePillar.image}
             alt={activePillar.imageAlt}

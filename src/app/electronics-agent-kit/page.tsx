@@ -378,9 +378,9 @@ export default function EAKProductPage() {
 
         <div className="bg-white dark:bg-[#121418] rounded-2xl border border-[#e6e4dc] dark:border-neutral-800 divide-y divide-[#f2f0e8] dark:divide-neutral-800 overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)]">
           {CAPABILITY_STATUSES.map((cap, idx) => (
-            <div key={idx} className="p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-              <div className="space-y-1 max-w-2xl">
-                <div className="flex items-center gap-3">
+            <div key={idx} className="p-4 sm:p-6 flex flex-col sm:flex-row sm:items-center justify-between gap-3 sm:gap-4">
+              <div className="space-y-1.5 max-w-2xl">
+                <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                   <h3 className="text-base font-serif font-bold text-[#141413] dark:text-white">{cap.name}</h3>
                   <span className="text-[10px] font-mono text-[#888780] dark:text-neutral-400 bg-[#faf9f5] dark:bg-neutral-800 px-2 py-0.5 rounded border border-[#e6e4dc] dark:border-neutral-700">
                     {cap.category}

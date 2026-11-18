@@ -65,16 +65,16 @@ export default function ContactPage() {
       </section>
 
       {/* Main Grid: Form & Contact Info */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <section className="py-14 sm:py-20 px-4 sm:px-6 lg:px-8 max-w-5xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12">
           {/* Form */}
-          <div className="lg:col-span-7 bg-white dark:bg-[#121418] p-8 sm:p-10 rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
-            <h2 className="text-2xl font-serif font-bold text-[#141413] dark:text-white">
+          <div className="lg:col-span-7 bg-white dark:bg-[#121418] p-5 sm:p-8 lg:p-10 rounded-2xl sm:rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
+            <h2 className="text-xl sm:text-2xl font-serif font-bold text-[#141413] dark:text-white">
               Project Details
             </h2>
 
             {submitted ? (
-              <div className="p-8 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-center space-y-3">
+              <div className="p-6 sm:p-8 rounded-2xl bg-emerald-50 dark:bg-emerald-950/30 border border-emerald-200 dark:border-emerald-800 text-center space-y-3">
                 <CheckCircle2 className="w-8 h-8 text-emerald-600 dark:text-emerald-400 mx-auto" />
                 <h3 className="text-lg font-serif font-bold text-emerald-900 dark:text-emerald-200">
                   Enquiry Prepared
@@ -96,7 +96,7 @@ export default function ContactPage() {
                       value={formData.name}
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       placeholder="Jane Doe"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-base sm:text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                     />
                   </div>
 
@@ -109,7 +109,7 @@ export default function ContactPage() {
                       value={formData.company}
                       onChange={(e) => setFormData({ ...formData, company: e.target.value })}
                       placeholder="Acme Corp"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-base sm:text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                     />
                   </div>
                 </div>
@@ -125,7 +125,7 @@ export default function ContactPage() {
                       value={formData.email}
                       onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                       placeholder="jane@example.com"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-base sm:text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                     />
                   </div>
 
@@ -138,7 +138,7 @@ export default function ContactPage() {
                       value={formData.phone}
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       placeholder="+91 98765 43210"
-                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                      className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-base sm:text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                     />
                   </div>
                 </div>
@@ -150,7 +150,7 @@ export default function ContactPage() {
                   <select
                     value={formData.category}
                     onChange={(e) => setFormData({ ...formData, category: e.target.value })}
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-sm text-[#141413] dark:text-white focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-base sm:text-sm text-[#141413] dark:text-white focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                   >
                     {CATEGORIES.map((c) => (
                       <option key={c} value={c} className="bg-white dark:bg-neutral-900 text-black dark:text-white">
@@ -170,7 +170,7 @@ export default function ContactPage() {
                     value={formData.description}
                     onChange={(e) => setFormData({ ...formData, description: e.target.value })}
                     placeholder="Briefly describe what you want to build, target timelines, and any known hardware or software specifications..."
-                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
+                    className="w-full px-3.5 py-2.5 rounded-xl border border-[#e6e4dc] dark:border-neutral-700 bg-[#faf9f5] dark:bg-neutral-900 text-base sm:text-sm text-[#141413] dark:text-white placeholder:text-neutral-400 dark:placeholder:text-neutral-500 focus:bg-white dark:focus:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-[#da552f]"
                   />
                 </div>
 
@@ -187,7 +187,7 @@ export default function ContactPage() {
 
           {/* Direct Contact Information */}
           <div className="lg:col-span-5 space-y-6">
-            <div className="p-8 rounded-3xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
+            <div className="p-5 sm:p-8 rounded-2xl sm:rounded-3xl bg-white dark:bg-[#121418] border border-[#e6e4dc] dark:border-neutral-800 shadow-[0_1px_3px_rgba(0,0,0,0.02)] space-y-6">
               <h3 className="text-xl font-serif font-bold text-[#141413] dark:text-white">
                 Direct Contacts
               </h3>
@@ -195,10 +195,10 @@ export default function ContactPage() {
               <div className="space-y-4">
                 <div className="space-y-1">
                   <span className="text-[11px] font-mono text-[#888780] dark:text-neutral-400 uppercase tracking-wider">Corporate Email</span>
-                  <div className="flex items-center justify-between">
+                  <div className="flex items-center justify-between gap-2">
                     <a
                       href={`mailto:${COMPANY_DETAILS.email}`}
-                      className="text-sm font-semibold text-[#141413] dark:text-white hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors"
+                      className="text-xs sm:text-sm font-semibold break-all text-[#141413] dark:text-white hover:text-[#da552f] dark:hover:text-[#ff5500] transition-colors"
                     >
                       {COMPANY_DETAILS.email}
                     </a>

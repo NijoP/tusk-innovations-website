@@ -104,9 +104,9 @@ export function InteractiveDevelopmentTimeline() {
   const StepIcon = current.icon;
 
   return (
-    <div className="space-y-10">
+    <div className="space-y-6 sm:space-y-10">
       {/* Interactive Step Navigator */}
-      <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+      <div className="flex overflow-x-auto no-scrollbar sm:grid sm:grid-cols-5 gap-2.5 sm:gap-3 pb-1 sm:pb-0">
         {STAGES.map((s, idx) => {
           const isActive = idx === activeStep;
           return (
@@ -114,7 +114,7 @@ export function InteractiveDevelopmentTimeline() {
               key={s.step}
               type="button"
               onClick={() => setActiveStep(idx)}
-              className={`p-4 rounded-2xl text-left border transition-all duration-200 ${
+              className={`min-w-[130px] sm:min-w-0 flex-1 shrink-0 p-3.5 sm:p-4 rounded-xl sm:rounded-2xl text-left border transition-all duration-200 ${
                 isActive
                   ? 'bg-white dark:bg-neutral-800 border-[#da552f] dark:border-[#ff5500] shadow-md ring-1 ring-[#da552f]/30 dark:ring-[#ff5500]/30'
                   : 'bg-[#f5f4ee] dark:bg-neutral-900 border-[#e6e4dc] dark:border-neutral-800 hover:bg-white dark:hover:bg-neutral-800/80 text-[#5a5a55] dark:text-neutral-400'
@@ -133,7 +133,7 @@ export function InteractiveDevelopmentTimeline() {
                 ) : (
                   <span
                     className={`w-2 h-2 rounded-full ${
-                      isActive ? 'bg-[#da552f] dark:bg-[#ff5500] animate-pulse' : 'bg-[#e6e4dc] dark:bg-neutral-700'
+                      isActive ? 'bg-[#da552f] dark:bg-[#ff5500] animate-pulse' : 'bg-[#e6e4dc] dark:neutral-700'
                     }`}
                   />
                 )}
@@ -151,23 +151,23 @@ export function InteractiveDevelopmentTimeline() {
       </div>
 
       {/* Selected Stage Detail Card */}
-      <div className="rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-[#121418] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)] grid grid-cols-1 lg:grid-cols-12">
+      <div className="rounded-2xl sm:rounded-3xl border border-[#e6e4dc] dark:border-neutral-800 bg-white dark:bg-[#121418] overflow-hidden shadow-[0_1px_3px_rgba(0,0,0,0.02)] grid grid-cols-1 lg:grid-cols-12">
         {/* Left Info Pane */}
-        <div className="lg:col-span-7 p-8 sm:p-12 space-y-6 flex flex-col justify-between">
+        <div className="lg:col-span-7 p-5 sm:p-8 lg:p-12 space-y-6 flex flex-col justify-between">
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <span className="w-8 h-8 rounded-full bg-[#f5f4ee] dark:bg-neutral-800 text-[#da552f] dark:text-[#ff5500] text-xs font-mono font-bold flex items-center justify-center border border-[#e6e4dc] dark:border-neutral-700">
+              <span className="w-8 h-8 rounded-full bg-[#f5f4ee] dark:bg-neutral-800 text-[#da552f] dark:text-[#ff5500] text-xs font-mono font-bold flex items-center justify-center border border-[#e6e4dc] dark:border-neutral-700 shrink-0">
                 {current.step}
               </span>
               <div>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-[#141413] dark:text-white">
+                <h3 className="text-xl sm:text-2xl lg:text-3xl font-serif font-bold text-[#141413] dark:text-white">
                   {current.name}
                 </h3>
                 <p className="text-xs font-mono text-[#da552f] dark:text-[#ff5500]">{current.subtitle}</p>
               </div>
             </div>
 
-            <p className="text-sm text-[#5a5a55] dark:text-neutral-300 leading-relaxed pt-2">
+            <p className="text-sm text-[#5a5a55] dark:text-neutral-300 leading-relaxed pt-1 sm:pt-2">
               {current.description}
             </p>
 
@@ -192,24 +192,24 @@ export function InteractiveDevelopmentTimeline() {
               type="button"
               disabled={activeStep === 0}
               onClick={() => setActiveStep(activeStep - 1)}
-              className="text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white disabled:opacity-40 disabled:cursor-not-allowed"
+              className="py-1.5 px-3 rounded-lg text-[#5a5a55] dark:text-neutral-400 hover:text-[#141413] dark:hover:text-white hover:bg-[#f5f4ee] dark:hover:bg-neutral-800 disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
-              ← Previous Stage
+              ← Previous
             </button>
-            <span className="text-[#888780] dark:text-neutral-500">Stage {activeStep + 1} of 5</span>
+            <span className="text-[#888780] dark:text-neutral-500 font-medium">Stage {activeStep + 1} of 5</span>
             <button
               type="button"
               disabled={activeStep === STAGES.length - 1}
               onClick={() => setActiveStep(activeStep + 1)}
-              className="text-[#da552f] dark:text-[#ff5500] hover:text-[#c24622] font-semibold disabled:opacity-40 disabled:cursor-not-allowed"
+              className="py-1.5 px-3 rounded-lg text-[#da552f] dark:text-[#ff5500] hover:text-[#c24622] hover:bg-[#f5f4ee] dark:hover:bg-neutral-800 font-semibold disabled:opacity-40 disabled:cursor-not-allowed transition-colors"
             >
-              Next Stage →
+              Next →
             </button>
           </div>
         </div>
 
         {/* Right Stage Visual Pane */}
-        <div className="lg:col-span-5 bg-[#0a0c0f] relative min-h-[300px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800">
+        <div className="lg:col-span-5 bg-[#0a0c0f] relative min-h-[240px] sm:min-h-[320px] lg:min-h-full border-t lg:border-t-0 lg:border-l border-[#e6e4dc] dark:border-neutral-800">
           <Image
             src={current.visual}
             alt={current.visualAlt}
